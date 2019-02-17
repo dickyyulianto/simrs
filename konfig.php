@@ -16,11 +16,12 @@
 	$pass = "";
 	$dbname = "sirusak";
         
-    $base_url = "http://localhost/sirusak/";
+    $base_url = "http://simrs.test";
 	
-	if (mysql_connect($server,$user,$pass)){
+	if (mysqli_connect($server,$user,$pass)){
 		//echo ":)";
-		mysql_select_db($dbname) or die("database not found");
+        $db_handle = mysqli_connect($server,$user,$pass);
+		mysqli_select_db($db_handle, $dbname) or die("database not found");
 	}else{
 		echo ":(";
 	}

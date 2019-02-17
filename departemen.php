@@ -12,6 +12,7 @@
 */
 include 'konfig.php';
 session_start();
+
 if ($_SESSION['hak_akses'] == 'Departemen') {
     ?>
     <html>
@@ -43,8 +44,8 @@ if ($_SESSION['hak_akses'] == 'Departemen') {
     } ?>><a href="?view=tampil_pasien">Pasien &nbsp;
                                 <span class="label label-warning" style="border-radius: 50px;"> 
                                     <?php
-                                    $hitung_pasien = mysql_query("select * from tbl_prj where departemen='" . $_SESSION['grup'] . "'");
-                                    echo mysql_num_rows($hitung_pasien);
+                                    $hitung_pasien = mysqli_query($db_handle, "select * from tbl_prj where departemen='" . $_SESSION['grup'] . "'");
+                                    echo mysqli_num_rows($hitung_pasien);
                                     ?></span></a>
                         </li>
                         <li <?php if (isset($_GET['view'])) {
@@ -52,8 +53,8 @@ if ($_SESSION['hak_akses'] == 'Departemen') {
                                     } ?>><a href="?view=tampil_jadwal_dokter">Dokter &nbsp;
                                 <span class="label label-info" style="border-radius: 50px;"> 
                                     <?php
-                                    $hitung_pasien = mysql_query("select * from tbl_dokter where departemen='" . $_SESSION['grup'] . "'");
-                                    echo mysql_num_rows($hitung_pasien);
+                                    $hitung_pasien = mysqli_query($db_handle, "select * from tbl_dokter where departemen='" . $_SESSION['grup'] . "'");
+                                    echo mysqli_num_rows($hitung_pasien);
                                     ?></span></a>
                         </li>  
 
