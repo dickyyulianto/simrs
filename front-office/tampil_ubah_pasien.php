@@ -3,7 +3,7 @@ if (isset($_GET)) {
     include './konfig.php';
     $id_ubah_pasien = $_GET['id_pasien'];
     $query = "SELECT * FROM tbl_pasien where id_pasien = '$id_ubah_pasien'";
-    $result = mysqli_query($query);
+    $result = mysqli_query($db_handle, $query);
     if (mysqli_num_rows($result)) {
         while ($row = mysqli_fetch_array($result)) {
             ?>
@@ -12,8 +12,6 @@ if (isset($_GET)) {
             </div>
             <div class="modal-body">
                 <form name="edit_pasien" id="edit_pasien" method="POST" action="front-office/aksi_ubah_pasien.php">
-
-
                     <input type="hidden" name="id_pasien" value="<?php echo $id_ubah_pasien; ?>"/>
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
@@ -57,10 +55,6 @@ if (isset($_GET)) {
                     </div>
                 </form>
             </div>
-
-
-
-
 
             <?php
         }

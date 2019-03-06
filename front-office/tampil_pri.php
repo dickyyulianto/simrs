@@ -19,8 +19,8 @@
 <?php
 $queryselect = "SELECT * FROM tbl_pri, tbl_pasien where
             tbl_pri.id_pasien = tbl_pasien.id_pasien order by 
-            tbl_pri.no_ri desc";
-$resultselect = mysqli_query($queryselect);
+            tbl_pri.id_ri desc";
+$resultselect = mysqli_query($db_handle, $queryselect);
 if (mysqli_num_rows($resultselect)) {
     //echo "ada isinya";	
     $no = 1;

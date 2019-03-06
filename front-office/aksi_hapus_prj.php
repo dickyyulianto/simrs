@@ -8,6 +8,6 @@
 include 'konfig.php';
 $id = $_GET['no_rj'];
 $query = "delete from tbl_prj where no_rj='$id' ";
-mysqli_query($query);
+mysqli_query($db_handle, $query);
 header("location:front-office.php?view=tampil_prj");
 

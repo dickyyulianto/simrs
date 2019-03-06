@@ -8,5 +8,5 @@
 include '../konfig.php';
 extract($_POST);
 $query = "insert into tbl_prj values(null,'$id_dokter','$id_pasien', '$departemen', curtime(), '$keluhan', null, '$biaya', '$bayar', null)";
-mysqli_query($query);
+mysqli_query($db_handle, $query) or die(mysqli_error($db_handle));
 return true;

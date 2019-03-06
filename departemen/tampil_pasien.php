@@ -10,10 +10,10 @@
 <tbody>
     <?php
     $query = "SELECT rj.no_rj, p.nama_pasien, rj.keluhan, d.nama_dokter, rj.diagnosa FROM tbl_prj rj left join tbl_pasien p on rj.id_pasien=p.id_pasien left join tbl_dokter d on d.id_user = rj.id_dokter where rj.departemen = '" . $_SESSION['grup'] . "' order by rj.tanggal desc";
-    $result = mysql_query($query);
-    if (mysql_num_rows($result)) {
+    $result = mysqli_query($db_handle, $query);
+    if (mysqli_num_rows($result)) {
         //echo"ada isinya";	
-        while ($row = mysql_fetch_array($result)) {
+        while ($row = mysqli_fetch_array($result)) {
             ?>
             <tr>
                 <td class="no_rj"><?php echo $row['no_rj']; ?> </td>
@@ -82,9 +82,9 @@
                             <option value=''>Pilih Dokter</option>
                             <?php
                             $query = "SELECT distinct id_user, nama_dokter from tbl_dokter where departemen = '" . $_SESSION['grup'] . "'";
-                            $result = mysql_query($query);
-                            if (mysql_num_rows($result)) {
-                                while ($row = mysql_fetch_array($result)) {
+                            $result = mysqli_query($db_handle, $query);
+                            if (mysqli_num_rows($result)) {
+                                while ($row = mysqli_fetch_array($result)) {
                                     echo '<option value="' . $row['id_user'] . '">' . $row['nama_dokter'] . '</option>';
                                 }
                             }

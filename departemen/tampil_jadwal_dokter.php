@@ -7,10 +7,10 @@
 <tbody>
     <?php
     $query = "SELECT * from tbl_dokter where departemen = '" . $_SESSION['grup'] . "'";
-    $result = mysql_query($query);
-    if (mysql_num_rows($result)) {
+    $result = mysqli_query($db_handle, $query);
+    if (mysqli_num_rows($result)) {
         //echo"ada isinya";	
-        while ($row = mysql_fetch_array($result)) {
+        while ($row = mysqli_fetch_array($result)) {
             ?>
             <tr>
                 <td><img src="images/dokter/<?php echo $row['id_user']; ?>.png" </td>

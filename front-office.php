@@ -128,8 +128,8 @@ if ($_SESSION['hak_akses'] == 'Front Office') {
                                         </div>
 
                                         <footer align="center">
-                Didownload dari Sedot Code <a href="http://sedotcode.blogspot.com/" title="Sedot Code, source code php gratis">Sedot Code</a> || Created by <a href="http://dendicious.com">dendicious</a>
-            </footer>
+
+                                        </footer>
                                         </body>
 
                                         </html>

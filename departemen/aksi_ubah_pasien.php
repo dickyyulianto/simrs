@@ -8,6 +8,6 @@
 include '../konfig.php';
 extract($_POST);
 $query = "update tbl_prj set id_dokter = '$nama_dokter' where no_rj='$no_rj' ";
-mysql_query($query);
+mysqli_query($db_handle, $query);
 header("location:../departemen.php?view=tampil_pasien");
 

@@ -2,7 +2,7 @@
 include('../konfig.php');
 if ($_POST) {
     $q = $_POST['search'];
-    $sql_res = mysqli_query("select id_pasien,nama_pasien, alamat from tbl_pasien where id_pasien like '%$q%' or nama_pasien like '%$q%' order by id_pasien LIMIT 5");
+    $sql_res = mysqli_query($db_handle, "select id_pasien,nama_pasien, alamat from tbl_pasien where id_pasien like '%$q%' or nama_pasien like '%$q%' order by id_pasien LIMIT 5");
     while ($row = mysqli_fetch_array($sql_res)) {
         $id_pasien = $row['id_pasien'];
         $nama = $row['nama_pasien'];

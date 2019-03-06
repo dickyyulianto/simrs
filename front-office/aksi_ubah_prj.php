@@ -8,6 +8,6 @@
 include 'konfig.php';
 extract($_POST);
 $query = "update tbl_prj set id_pasien='$id_pasien', departemen = '$departemen', tanggal = curtime(), keluhan = '$keluhan', biaya = '$biaya', bayar = '$bayar' where no_rj='$no_rj' ";
-mysqli_query($query);
+mysqli_query($db_handle, $query);
 header("location:../front-office.php?view=tampil_prj");
 
