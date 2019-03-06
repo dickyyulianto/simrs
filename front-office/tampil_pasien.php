@@ -19,7 +19,7 @@
 <tbody>
     <?php
     $query = "SELECT * FROM tbl_pasien order by id_pasien desc";
-    $result = mysqli_query($query);
+    $result = mysqli_query($db_handle, $query);
     if (mysqli_num_rows($result)) {
         //echo"ada isinya";	
         $no = 1;

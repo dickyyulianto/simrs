@@ -83,7 +83,7 @@ if ($_SESSION['hak_akses'] == 'Front Office') {
     } ?>><a href="front-office.php?view=tampil_pasien">Pasien &nbsp;
                                 <span class="label label-success" style="border-radius: 50px;"> 
                                     <?php
-                                    $hitung_pasien = mysqli_query("select * from tbl_pasien");
+                                    $hitung_pasien = mysqli_query($db_handle,"select * from tbl_pasien");
                                     echo mysqli_num_rows($hitung_pasien);
                                     ?></span></a>
                         </li>  
@@ -92,7 +92,7 @@ if ($_SESSION['hak_akses'] == 'Front Office') {
                                     } ?>><a href="front-office.php?view=tampil_prj">Pasien Rawat Jalan &nbsp; 
                                 <span class="label label-info" style="border-radius: 50px;"> 
                                     <?php
-                                    $hitung_pri = mysqli_query("select * from tbl_prj");
+                                    $hitung_pri = mysqli_query($db_handle,"select * from tbl_prj");
                                     echo mysqli_num_rows($hitung_pri);
                                     ?>
                                     <li <?php if (isset($_GET['view'])) {
@@ -100,7 +100,7 @@ if ($_SESSION['hak_akses'] == 'Front Office') {
                                             } ?>><a href="front-office.php?view=tampil_pri">Pasien Rawat Inap &nbsp;
                                             <span class="label label-warning" style="border-radius: 50px;"> 
     <?php
-    $hitung_pri = mysqli_query("select * from tbl_pri");
+    $hitung_pri = mysqli_query($db_handle,"select * from tbl_pri");
     echo mysqli_num_rows($hitung_pri);
     ?>
                                             </span></a>
