@@ -9,15 +9,16 @@
     <th>Keluhan</th>
     <th>Diagnosa</th>
     <th>Tindakan</th>
+    <th>Biaya</th>
     <th>Aksi</th>
 </thead>
 <tbody>
     <?php
-    $query = "SELECT rj.no_rj, p.nama_pasien, rj.keluhan, rj.diagnosa, rj.tindakan FROM tbl_prj rj left join tbl_pasien p on rj.id_pasien=p.id_pasien left join tbl_dokter d on d.id_user = rj.id_dokter where d.nama_dokter = '" . $_SESSION['grup'] . "' order by rj.tanggal desc";
-    $result = mysql_query($query);
-    if (mysql_num_rows($result)) {
+    $query = "SELECT p.nama_pasien, rj.* FROM tbl_prj rj left join tbl_pasien p on rj.id_pasien=p.id_pasien left join tbl_dokter d on d.id_user = rj.id_dokter where d.nama_dokter = '" . $_SESSION['grup'] . "' order by rj.tanggal desc";
+    $result = mysqli_query($db_handle, $query);
+    if (mysqli_num_rows($result)) {
         //echo"ada isinya";	
-        while ($row = mysql_fetch_array($result)) {
+        while ($row = mysqli_fetch_array($result)) {
             ?>
             <tr>
                 <td class="no_rj"><?php echo $row['no_rj']; ?> </td>
@@ -25,6 +26,7 @@
                 <td class="keluhan"><?php echo $row['keluhan']; ?> </td>
                 <td class="diagnosa"><?php echo $row['diagnosa']; ?> </td>
                 <td class="tindakan"><?php echo $row['tindakan']; ?> </td>
+                <td class="biaya"><?php echo $row['biaya']; ?> </td>
                 <td><?php echo '<button id="' . $row['no_rj'] . '" class="btn btn-info btn-sm edit_data" data-toggle="modal" data-target="#editModal">
     <i class="glyphicon glyphicon-edit"></i> Tulis Diagnosa
 </button>';
@@ -43,6 +45,7 @@
     <th>Keluhan</th>
     <th>Diagnosa</th>
     <th>Tindakan</th>
+    <th>Biaya</th>
     <th>Aksi</th>
 </tfoot>
 </table>
@@ -85,22 +88,41 @@
                         <textarea name="diagnosa" id="diagnosa" placeholder="Diagnosa Pasien" class="form-control" rows="7"></textarea>
  
                     </div>
-                        <div align="center">
-                         Tindakan
-                         <br>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </span>
+                        <textarea name="tindakan" id="tindakan" placeholder="tindakan" class="form-control" rows="7"></textarea>
+                    </div>
 
-                            <div class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-info">
-                                    <input type="radio"  name="tindakan" value="Beri Resep" required>Beri Resep
-                                </label>
-                                <label class="btn btn-danger">
-                                       <input type="radio" name="tindakan" value="Rawat Inap" required>Rawat Inap
-                                </label>
-                                <label class="btn btn-success">
-                                       <input type="radio" name="tindakan" value="Rumah Sakit Rujukan" required>Rumah Sakit Rujukan
-                                </label>
-                            </div>
-                        </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </span>
+                        <textarea name="resep" id="resep" placeholder="Resep" class="form-control" rows="7"></textarea>
+                    </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-check"></i>
+                        </span>
+                        <input type="number" id="biaya" name="biaya" value="" placeholder="biaya" class="form-control input-lg" required>
+                    </div>
+<!--                        <div align="center">-->
+<!--                         Tindakan-->
+<!--                         <br>-->
+<!---->
+<!--                            <div class="btn-group" data-toggle="buttons">-->
+<!--                                <label class="btn btn-info">-->
+<!--                                    <input type="radio"  name="tindakan" value="Beri Resep" >Beri Resep-->
+<!--                                </label>-->
+<!--                                <label class="btn btn-danger">-->
+<!--                                       <input type="radio" name="tindakan" value="Rawat Inap" >Rawat Inap-->
+<!--                                </label>-->
+<!--                                <label class="btn btn-success">-->
+<!--                                       <input type="radio" name="tindakan" value="Rumah Sakit Rujukan" >Rumah Sakit Rujukan-->
+<!--                                </label>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
                     <br>
                     <div align="center">
@@ -126,12 +148,16 @@
             var keluhan = $(this).closest('tr').find('td.keluhan').html();
             var diagnosa = $(this).closest('tr').find('td.diagnosa').html();
             var tindakan = $(this).closest('tr').find('td.tindakan').html();
+            // var resep = $(this).closest('tr').find('td.resep').html();
+            var biaya = $(this).closest('tr').find('td.biaya').html();
 
             document.getElementById('no_rj').value = no_rj;
             document.getElementById('nama_pasien').value = nama_pasien;
             document.getElementById('keluhan').value = keluhan;
             document.getElementById('diagnosa').value = diagnosa;
             document.getElementById('tindakan').value = tindakan;
+            // document.getElementById('resep').value = resep;
+            document.getElementById('biaya').value = biaya;
         });
     });
 </script>

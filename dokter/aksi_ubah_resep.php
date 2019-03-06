@@ -9,5 +9,5 @@
 include '../konfig.php';
 extract($_POST);
 $query = "update tbl_resep set nama_resep = '$nama_resep', rincian_resep = '$rincian_resep' where id_resep='$id_resep' ";
-mysql_query($query);
+mysqli_query($db_handle, $query);
 header("location:../dokter.php?view=tampil_resep");

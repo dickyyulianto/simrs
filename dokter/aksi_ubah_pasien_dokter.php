@@ -7,7 +7,8 @@
  */
 include '../konfig.php';
 extract($_POST);
-$query = "update tbl_prj set diagnosa = '$diagnosa', tindakan = '$tindakan' where no_rj='$no_rj' ";
-mysql_query($query);
+$query = "update tbl_prj set diagnosa = '$diagnosa', tindakan = '$tindakan', biaya = '$biaya'  where no_rj='$no_rj' ";
+//$query = "update tbl_prj set diagnosa = '$diagnosa', tindakan = '$tindakan', biaya = '$biaya', resep = '$resep'  where no_rj='$no_rj' ";
+mysqli_query($db_handle, $query);
 header("location:../dokter.php?view=tampil_pasien_dokter");
 

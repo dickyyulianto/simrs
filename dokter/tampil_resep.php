@@ -17,10 +17,10 @@
 <tbody>
     <?php
     $query = "SELECT r.id_resep, p.nama_pasien, r.nama_resep, r.rincian_resep, d.nama_dokter from tbl_resep r left join tbl_pasien p on r.id_pasien = p.id_pasien left join tbl_dokter d on r.id_dokter = d.id_user where d.nama_dokter = '" . $_SESSION['grup'] . "' group by r.id_resep";
-    $result = mysql_query($query);
-    if (mysql_num_rows($result)) {
+    $result = mysqli_query($db_handle, $query);
+    if (mysqli_num_rows($result)) {
         //echo"ada isinya";	
-        while ($row = mysql_fetch_array($result)) {
+        while ($row = mysqli_fetch_array($result)) {
             ?>
             <tr>
                 <td class="id_resep"><?php echo $row['id_resep']; ?> </td>

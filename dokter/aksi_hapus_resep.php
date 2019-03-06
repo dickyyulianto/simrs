@@ -8,7 +8,7 @@
 include '../konfig.php';
 $id = $_GET['id_resep'];
 $query = "delete from tbl_resep where id_resep='$id' ";
-mysql_query($query);
+mysqli_query($db_handle, $query);
 ?>
 <script type="text/javascript">
 location.href = '../dokter.php?view=tampil_resep';
