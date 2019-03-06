@@ -8,6 +8,6 @@
 include 'konfig.php';
 $id_pasien = $_GET['id_pasien'];
 $query = "delete from tbl_pasien where id_pasien='$id_pasien'";
-mysql_query($query);
+mysqli_query($query);
 header("location:front-office.php?view=tampil_pasien");
 

@@ -5,9 +5,9 @@ if (isset($_GET)) {
     $query = "SELECT * FROM tbl_prj, tbl_pasien where "
             . "tbl_prj.id_pasien = tbl_pasien.id_pasien and "
             . "no_rj = '$id_ubah'";
-    $result = mysql_query($query);
-    if (mysql_num_rows($result)) {
-        while ($row = mysql_fetch_array($result)) {
+    $result = mysqli_query($query);
+    if (mysqli_num_rows($result)) {
+        while ($row = mysqli_fetch_array($result)) {
             ?>
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Ubah Pasien Rawat Jalan</h4>
@@ -36,9 +36,9 @@ if (isset($_GET)) {
                             <option value=''>Pilih Departemen</option>
                             <?php
                             $query2 = "SELECT distinct departemen from tbl_dokter";
-                            $result2 = mysql_query($query2);
-                            if (mysql_num_rows($result2)) {
-                                while ($row2 = mysql_fetch_array($result2)) {
+                            $result2 = mysqli_query($query2);
+                            if (mysqli_num_rows($result2)) {
+                                while ($row2 = mysqli_fetch_array($result2)) {
                                     echo '<option ';
                                     if ($row['departemen'] == $row2['departemen']) {
                                         echo 'selected';

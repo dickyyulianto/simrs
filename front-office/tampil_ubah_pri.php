@@ -5,9 +5,9 @@ if (isset($_GET)) {
     $query = "SELECT * FROM tbl_pri, tbl_pasien, tbl_tarif_ri where "
             . "tbl_pri.id_pasien = tbl_pasien.id_pasien and tbl_tarif_ri.id_tarif_ri = tbl_pri.id_ruang and "
             . "tbl_pri.no_ri = '$id_ubah'";
-    $result = mysql_query($query);
-    if (mysql_num_rows($result)) {
-        while ($row = mysql_fetch_array($result)) {
+    $result = mysqli_query($query);
+    if (mysqli_num_rows($result)) {
+        while ($row = mysqli_fetch_array($result)) {
             ?>
 
             <div class="modal-header">

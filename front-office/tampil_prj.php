@@ -19,11 +19,11 @@
 $queryselect = "SELECT * FROM tbl_prj, tbl_pasien where
             tbl_prj.id_pasien = tbl_pasien.id_pasien order by 
             tbl_prj.no_rj desc";
-$resultselect = mysql_query($queryselect);
-if (mysql_num_rows($resultselect)) {
+$resultselect = mysqli_query($queryselect);
+if (mysqli_num_rows($resultselect)) {
     //echo"ada isinya";	
     $no = 1;
-    while ($row = mysql_fetch_array($resultselect)) {
+    while ($row = mysqli_fetch_array($resultselect)) {
         ?>
         <tr>
             <td><?php echo $no; ?> </td>
@@ -92,9 +92,9 @@ if (mysql_num_rows($resultselect)) {
                             <option value=''>Pilih Departemen</option>
                             <?php
                             $query = "SELECT distinct departemen from tbl_dokter";
-                            $result = mysql_query($query);
-                            if (mysql_num_rows($result)) {
-                                while ($row = mysql_fetch_array($result)) {
+                            $result = mysqli_query($query);
+                            if (mysqli_num_rows($result)) {
+                                while ($row = mysqli_fetch_array($result)) {
                                     echo '<option>' . $row['departemen'] . '</option>';
                                 }
                             }

@@ -82,8 +82,8 @@ if ($_SESSION['hak_akses'] == 'Dokter') {
     } ?>><a href="?view=tampil_pasien_dokter">Pasien &nbsp;
                                 <span class="label label-warning" style="border-radius: 50px;"> 
                                     <?php
-                                    $hitung_pasien = mysql_query("select rj.no_rj from tbl_prj rj left join tbl_dokter d on rj.id_dokter = d.id_user where d.nama_dokter='" . $_SESSION['grup'] . "'");
-                                    echo mysql_num_rows($hitung_pasien);
+                                    $hitung_pasien = mysqli_query("select rj.no_rj from tbl_prj rj left join tbl_dokter d on rj.id_dokter = d.id_user where d.nama_dokter='" . $_SESSION['grup'] . "'");
+                                    echo mysqli_num_rows($hitung_pasien);
                                     ?></span></a>
                         </li>
                         <li <?php if (isset($_GET['view'])) {
@@ -91,8 +91,8 @@ if ($_SESSION['hak_akses'] == 'Dokter') {
                                     } ?>><a href="?view=tampil_resep">Resep &nbsp;
                                 <span class="label label-info" style="border-radius: 50px;"> 
                                     <?php
-                                    $hitung_resep = mysql_query("select distinct id_resep from tbl_resep where id_dokter=".$_SESSION['id_user']);
-                                    echo mysql_num_rows($hitung_resep);
+                                    $hitung_resep = mysqli_query("select distinct id_resep from tbl_resep where id_dokter=".$_SESSION['id_user']);
+                                    echo mysqli_num_rows($hitung_resep);
                                     ?></span></a>
                         </li>  
 

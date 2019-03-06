@@ -20,11 +20,11 @@
 $queryselect = "SELECT * FROM tbl_pri, tbl_pasien where
             tbl_pri.id_pasien = tbl_pasien.id_pasien order by 
             tbl_pri.no_ri desc";
-$resultselect = mysql_query($queryselect);
-if (mysql_num_rows($resultselect)) {
+$resultselect = mysqli_query($queryselect);
+if (mysqli_num_rows($resultselect)) {
     //echo "ada isinya";	
     $no = 1;
-    while ($row = mysql_fetch_array($resultselect)) {
+    while ($row = mysqli_fetch_array($resultselect)) {
         ?>
         <tr>
             <td><?php echo $no; ?> </td>

@@ -3,9 +3,9 @@ if (isset($_GET)) {
     include './konfig.php';
     $id_ubah_pasien = $_GET['id_pasien'];
     $query = "SELECT * FROM tbl_pasien where id_pasien = '$id_ubah_pasien'";
-    $result = mysql_query($query);
-    if (mysql_num_rows($result)) {
-        while ($row = mysql_fetch_array($result)) {
+    $result = mysqli_query($query);
+    if (mysqli_num_rows($result)) {
+        while ($row = mysqli_fetch_array($result)) {
             ?>
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Edit Biodata Pasien</h4>
