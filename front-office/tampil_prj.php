@@ -12,7 +12,7 @@
     <th>Pasien</th>
     <th>Departemen</th>
     <th>Tanggal</th>
-    <th>Pembayaran</th>
+    <!--<th>Pembayaran</th>-->
     <th>Aksi</th>
 </thead>
 <?php
@@ -30,13 +30,13 @@ if (mysqli_num_rows($resultselect)) {
             <td><?php echo $row['nama_pasien']; ?> </td>
             <td><?php echo $row['departemen']; ?> </td>
             <td><?php echo $row['tanggal']; ?> </td>
-            <td><?php
+            <!--<td><?php
                 if ($row['bayar'] >= $row['biaya']) {
                     echo "<span class='label label-success'>SELESAI</span>";
                 } else {
                     echo "<span class='label label-danger'>BELUM</span>";
                 };
-                ?> </td>
+                ?></td>-->
             <td><?php echo "<a class='btn btn-info btn-sm' href='front-office.php?view=tampil_ubah_prj&no_rj=" . $row['no_rj'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
                     <a class='btn btn-danger btn-sm' href='front-office.php?view=aksi_hapus_prj&no_rj=" . $row['no_rj'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien rawat jalan tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>";
                 ?></td>
@@ -54,7 +54,7 @@ if (mysqli_num_rows($resultselect)) {
 <th>Pasien</th>
 <th>Departemen</th>
 <th>Tanggal</th>
-<th>Pembayaran</th>
+<!--<th>Pembayaran</th>-->
 <th>Aksi</th>
 </tfoot>
 </table>
@@ -107,16 +107,16 @@ if (mysqli_num_rows($resultselect)) {
                         </span>
                         <textarea name="keluhan" placeholder="Keluhan" class="form-control" rows="5" required></textarea>
                     </div>
-                    <div class="input-group input-lg">
+                    <!--<div class="input-group input-lg">
                         <span class="input-group-addon">Rp</span>
                         <input type="text" id="biaya" name="biaya" placeholder="Biaya" class="form-control input-lg" value="" readonly required />
                         <span class="input-group-addon">,-</span>
-                    </div>
-                    <div class="input-group input-lg">
+                    </div>-->
+                    <!--<div class="input-group input-lg">
                         <span class="input-group-addon">Rp</span>
                         <input type="text" name="bayar" placeholder="Bayar" class="form-control input-lg" value="" required />
                         <span class="input-group-addon">,-</span>
-                    </div>  
+                    </div>-->
 
                 </form>
 

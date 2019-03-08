@@ -55,7 +55,7 @@ if (isset($_GET)) {
                         </span>
                         <input type="text" name="keluhan" value="<?php echo $row['keluhan']; ?>" placeholder="Keluhan" class="form-control input-lg" required />
                     </div>
-                    <div class="input-group input-lg">
+                    <!--<div class="input-group input-lg">
                         <span class="input-group-addon">Rp</span>
                         <input type="text" id="biaya" value="<?php echo $row['biaya']; ?>" name="biaya" placeholder="Biaya" class="form-control input-lg" value="" readonly required />
                         <span class="input-group-addon">,-</span>
@@ -64,7 +64,7 @@ if (isset($_GET)) {
                         <span class="input-group-addon">Rp</span>
                         <input type="text" name="bayar" value="<?php echo $row['bayar']; ?>" placeholder="Bayar" class="form-control input-lg" value="" required />
                         <span class="input-group-addon">,-</span>
-                    </div>
+                    </div>-->
                     <div align="center">
                         <button type="reset" class="btn btn-inverse btn-lg"><i class="glyphicon glyphicon-refresh"></i> Reset </button>
                         <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>
