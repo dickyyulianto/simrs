@@ -11,6 +11,11 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+
+-- Dumping database structure for sirusak
+CREATE DATABASE IF NOT EXISTS `sirusak` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `sirusak`;
+
 -- Dumping structure for table sirusak.tbl_dokter
 CREATE TABLE IF NOT EXISTS `tbl_dokter` (
   `id_user` int(5) NOT NULL AUTO_INCREMENT,
@@ -49,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `tbl_pasien` (
   PRIMARY KEY (`id_pasien`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sirusak.tbl_pasien: ~11 rows (approximately)
+-- Dumping data for table sirusak.tbl_pasien: ~12 rows (approximately)
 /*!40000 ALTER TABLE `tbl_pasien` DISABLE KEYS */;
 INSERT INTO `tbl_pasien` (`id_pasien`, `nama_pasien`, `alamat`, `jenis_kelamin`, `no_telepon`) VALUES
 	(11, 'Muhammad Ilyas Firdaus', 'alam kubur', 'P', '081264162'),
@@ -92,20 +97,22 @@ CREATE TABLE IF NOT EXISTS `tbl_prj` (
   `tanggal` datetime NOT NULL,
   `keluhan` varchar(255) NOT NULL,
   `diagnosa` varchar(255) DEFAULT NULL,
-  `biaya` int(10) NOT NULL,
+  `biaya` int(10) DEFAULT NULL,
   `bayar` int(12) DEFAULT NULL,
   `tindakan` varchar(20) DEFAULT NULL,
   `resep` text,
   PRIMARY KEY (`no_rj`),
   KEY `id_pasien` (`id_pasien`),
   CONSTRAINT `tbl_prj_ibfk_1` FOREIGN KEY (`id_pasien`) REFERENCES `tbl_pasien` (`id_pasien`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sirusak.tbl_prj: ~2 rows (approximately)
+-- Dumping data for table sirusak.tbl_prj: ~4 rows (approximately)
 /*!40000 ALTER TABLE `tbl_prj` DISABLE KEYS */;
 INSERT INTO `tbl_prj` (`no_rj`, `id_dokter`, `id_pasien`, `departemen`, `tanggal`, `keluhan`, `diagnosa`, `biaya`, `bayar`, `tindakan`, `resep`) VALUES
 	(14, '1004', 19, 'Kandungan', '2014-12-05 03:54:46', 'Mual-mual', ' aasasfsdfsdfsdf\r\nsdf\r\nsdf\r\nasdf\r\nasdf\r\n  ', 200000, 200000, 'Rawat Inap', NULL),
-	(15, '', 21, 'Syaraf', '2014-12-06 01:30:30', 'sasdfasdg', NULL, 180000, 34534535, NULL, NULL);
+	(15, '', 21, 'Syaraf', '2014-12-06 01:30:30', 'sasdfasdg', NULL, 180000, 34534535, NULL, NULL),
+	(16, '', 19, 'Gigi', '2019-03-11 15:02:50', 'asas', NULL, NULL, NULL, NULL, NULL),
+	(17, '', 22, 'Syaraf', '2019-03-11 15:03:07', 'asasa', NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `tbl_prj` ENABLE KEYS */;
 
 -- Dumping structure for table sirusak.tbl_resep

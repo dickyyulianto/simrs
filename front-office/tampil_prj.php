@@ -198,19 +198,19 @@ if (mysqli_num_rows($resultselect)) {
 
 <!------------------------- lihat tarif -------------------->
 
-<script type="text/javascript" language="javascript">
-    $(document).ready(function () {
-        $("#departemen").change(function (event) {
-            var selectvalue = $(this).val();
-            $.ajax({
-                url: 'front-office/aksi_lihat_tarif_rj.php?departemen=' + selectvalue,
-                success: function (tarif) {
-                    document.getElementById('biaya').value = tarif;
-                }
-            });
-        });
-    });
-</script>
+<!--<script type="text/javascript" language="javascript">-->
+<!--    $(document).ready(function () {-->
+<!--        $("#departemen").change(function (event) {-->
+<!--            var selectvalue = $(this).val();-->
+<!--            $.ajax({-->
+<!--                url: 'front-office/aksi_lihat_tarif_rj.php?departemen=' + selectvalue,-->
+<!--                success: function (tarif) {-->
+<!--                    document.getElementById('biaya').value = tarif;-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 
 <!--<script type="text/javascript">
     $(document).ready(function ($) {
