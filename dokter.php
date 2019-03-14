@@ -86,7 +86,7 @@ if ($_SESSION['hak_akses'] == 'Dokter') {
                                     echo mysqli_num_rows($hitung_pasien);
                                     ?></span></a>
                         </li>
-                        <li <?php if (isset($_GET['view'])) {
+                        <!--<li <?php if (isset($_GET['view'])) {
                                         echo $_GET['view'] == 'tampil_resep' ? 'class="active"' : '';
                                     } ?>><a href="?view=tampil_resep">Resep &nbsp;
                                 <span class="label label-info" style="border-radius: 50px;"> 
@@ -94,7 +94,7 @@ if ($_SESSION['hak_akses'] == 'Dokter') {
                                     $hitung_resep = mysqli_query($db_handle,"select distinct id_resep from tbl_resep where id_dokter=".$_SESSION['id_user']);
                                     echo mysqli_num_rows($hitung_resep);
                                     ?></span></a>
-                        </li>  
+                        </li>-->
 
                     </ul>
 

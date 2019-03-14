@@ -9,6 +9,7 @@
     <th>Keluhan</th>
     <th>Diagnosa</th>
     <th>Tindakan</th>
+    <th>Resep</th>
     <th>Biaya</th>
     <th>Aksi</th>
 </thead>
@@ -26,11 +27,10 @@
                 <td class="keluhan"><?php echo $row['keluhan']; ?> </td>
                 <td class="diagnosa"><?php echo $row['diagnosa']; ?> </td>
                 <td class="tindakan"><?php echo $row['tindakan']; ?> </td>
+                <td class="resep"><?php echo $row['resep']; ?> </td>
                 <td class="biaya"><?php echo $row['biaya']; ?> </td>
                 <td><?php echo '<button id="' . $row['no_rj'] . '" class="btn btn-info btn-sm edit_data" data-toggle="modal" data-target="#editModal">
-    <i class="glyphicon glyphicon-edit"></i> Tulis Diagnosa
-</button>';
-            ?></td>
+                <i class="glyphicon glyphicon-edit"></i>Periksa</button>'; ?></td>
             </tr>
             <?php
         }
@@ -45,6 +45,7 @@
     <th>Keluhan</th>
     <th>Diagnosa</th>
     <th>Tindakan</th>
+    <th>Resep</th>
     <th>Biaya</th>
     <th>Aksi</th>
 </tfoot>
@@ -85,27 +86,25 @@
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-edit"></i>
                         </span>
-                        <textarea name="diagnosa" id="diagnosa" placeholder="Diagnosa Pasien" class="form-control" rows="7"></textarea>
- 
+                        <textarea name="diagnosa" id="diagnosa" placeholder="Diagnosa" class="form-control" rows="7"></textarea>
                     </div>
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-edit"></i>
                         </span>
-                        <textarea name="tindakan" id="tindakan" placeholder="tindakan" class="form-control" rows="7"></textarea>
+                        <textarea name="tindakan" id="tindakan" placeholder="Tindakan" class="form-control" rows="7"></textarea>
                     </div>
-
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-edit"></i>
                         </span>
-                        <textarea name="resep" id="resep" placeholder="Resep" class="form-control" rows="7"></textarea>
+                        <textarea name="resep" id="resep" placeholder="Resep | Anjuran " class="form-control" rows="7"></textarea>
                     </div>
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-check"></i>
                         </span>
-                        <input type="number" id="biaya" name="biaya" value="" placeholder="biaya" class="form-control input-lg" required>
+                        <input type="int" id="biaya" name="biaya" value="" placeholder="Biaya" class="form-control input-lg" required>
                     </div>
 <!--                        <div align="center">-->
 <!--                         Tindakan-->
@@ -146,18 +145,18 @@
             var no_rj = $(this).closest('tr').find('td.no_rj').html();
             var nama_pasien = $(this).closest('tr').find('td.nama_pasien').html();
             var keluhan = $(this).closest('tr').find('td.keluhan').html();
-            var diagnosa = $(this).closest('tr').find('td.diagnosa').html();
-            var tindakan = $(this).closest('tr').find('td.tindakan').html();
+           //var diagnosa = $(this).closest('tr').find('td.diagnosa').html();
+            //var tindakan = $(this).closest('tr').find('td.tindakan').html();
             // var resep = $(this).closest('tr').find('td.resep').html();
-            var biaya = $(this).closest('tr').find('td.biaya').html();
+            //var biaya = $(this).closest('tr').find('td.biaya').html();
 
             document.getElementById('no_rj').value = no_rj;
             document.getElementById('nama_pasien').value = nama_pasien;
             document.getElementById('keluhan').value = keluhan;
-            document.getElementById('diagnosa').value = diagnosa;
-            document.getElementById('tindakan').value = tindakan;
+            //document.getElementById('diagnosa').value = diagnosa;
+            //document.getElementById('tindakan').value = tindakan;
             // document.getElementById('resep').value = resep;
-            document.getElementById('biaya').value = biaya;
+            //document.getElementById('biaya').value = biaya;
         });
     });
 </script>

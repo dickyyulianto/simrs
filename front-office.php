@@ -79,8 +79,7 @@ if ($_SESSION['hak_akses'] == 'Front Office') {
                 <div>
                     <ul class="nav navbar-nav">
                         <li <?php if (isset($_GET['view'])) {
-        echo $_GET['view'] == 'tampil_pasien' || $_GET['view'] == 'tampil_ubah_pasien' ? 'class="active"' : '';
-    } ?>><a href="front-office.php?view=tampil_pasien">Pasien &nbsp;
+                                echo $_GET['view'] == 'tampil_pasien' || $_GET['view'] == 'tampil_ubah_pasien' ? 'class="active"' : '';} ?>><a href="front-office.php?view=tampil_pasien">Pasien &nbsp;
                                 <span class="label label-success" style="border-radius: 50px;"> 
                                     <?php
                                     $hitung_pasien = mysqli_query($db_handle,"select * from tbl_pasien");
@@ -98,14 +97,22 @@ if ($_SESSION['hak_akses'] == 'Front Office') {
                                     <li <?php if (isset($_GET['view'])) {
                                                 echo $_GET['view'] == 'tampil_pri' || $_GET['view'] == 'tampil_ubah_pri' ? 'class="active"' : '';
                                             } ?>><a href="front-office.php?view=tampil_pri">Pasien Rawat Inap &nbsp;
-                                            <span class="label label-warning" style="border-radius: 50px;"> 
-    <?php
-    $hitung_pri = mysqli_query($db_handle,"select * from tbl_pri");
-    echo mysqli_num_rows($hitung_pri);
-    ?>
+                                            <span class="label label-warning" style="border-radius: 50px;">
+                                                <?php
+                                                $hitung_pri = mysqli_query($db_handle,"select * from tbl_pri");
+                                                echo mysqli_num_rows($hitung_pri);
+                                                ?>
                                             </span></a>
-                                    </li> 
-                                    </ul>
+                                    </li>
+                                        <li <?php if (isset($_GET['view'])) {
+                                            echo $_GET['view'] == 'tampil_dokter' || $_GET['view'] == 'tampil_ubah_dokter' ? 'class="active"' : '';} ?>><a href="front-office.php?view=tampil_dokter">Dokter &nbsp;
+                                                <span class="label label-success" style="border-radius: 50px;">
+                                                    <?php
+                                                    $hitung_dokter = mysqli_query($db_handle,"select * from tbl_dokter");
+                                                    echo mysqli_num_rows($hitung_dokter);
+                                                    ?></span></a>
+                                        </li>
+                    </ul>
                                     <p class="navbar-text navbar-right"><?php echo $_SESSION['username']; ?> login sebagai <?php echo $_SESSION['hak_akses']; ?> | <a class="btn btn-default btn-xs" href="logout.php"><i class="glyphicon glyphicon-off"></i> Logout</a>  &nbsp;</p>
                                     </div>
 
