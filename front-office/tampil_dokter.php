@@ -13,13 +13,13 @@
     <th>Nama Dokter</th>
     <th>Departemen</th>
     <th>Jadwal Praktik</th>
+    <th>Aksi</th>
     </thead>
     <tbody>
     <?php
     $query = "SELECT * FROM tbl_dokter order by id_user desc";
     $result = mysqli_query($db_handle, $query);
     if (mysqli_num_rows($result)) {
-        //echo"ada isinya";
         $no = 1;
         while ($row = mysqli_fetch_array($result)) {
             ?>
@@ -47,6 +47,7 @@
     <th>Nama Dokter</th>
     <th>Departemen</th>
     <th>Jadwal Praktik</th>
+    <th>Aksi</th>
     </tfoot>
 </table>
 
@@ -61,7 +62,6 @@
             </div>
             <div class="modal-body">
                 <form name="tambah_dokter" id="tambah_dokter" method="POST">
-
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-user"></i>
@@ -80,38 +80,30 @@
                         </span>
                         <input type="text" name="jadwal_praktik" placeholder="Jadwal Praktik" class="form-control input-lg" required autofocus  />
                     </div>
-
-
                 </form>
-
             </div>
             <div class="modal-footer">
                 <button type="reset" class="btn btn-inverse"><i class="glyphicon glyphicon-refresh"></i> Reset </button>
                 <button type="submit" class="btn btn-primary" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>
-
             </div>
-
         </div>
     </div><!-- /.modal-content -->
 </div><!-- /.modal -->
-<!------------------------- edit -------------------->
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $("button#submit").click(function () {
-            $.ajax({
-                type: "POST",
-                url: "front-office/aksi_tambah_dokter.php",
-                data: $('form#tambah_dokter').serialize(),
-                success: function (msg) {
-                    $("#tambahModal").modal('hide')
-                    location.href = 'front-office.php?view=tampil_dokter';
-                    ;
-                },
-                error: function () {
-                    alert("Gagal menambah dokter baru");
-                }
-            });
+    $("#submit").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "front-office/aksi_tambah_dokter.php",
+            data: $('form#tambah_dokter').serialize(),
+            success: function (msg) {
+                $("#tambahModal").modal('hide')
+                location.href = 'front-office.php?view=tampil_dokter';
+                ;
+            },
+            error: function () {
+                alert("Gagal menambah dokter baru");
+            }
         });
     });
 </script>
