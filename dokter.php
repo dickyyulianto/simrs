@@ -4,10 +4,6 @@
 | Header Dokter
 |--------------------------------------------------------------------------
 |
-|   Aplikasi Sistem Informasi Rumah Sakit Sederhana
-|   by Dendi Abdul Rohim 
-|   dendicious@gmail.com
-|   dendicous.com
 |
 */
 include 'konfig.php';
@@ -118,7 +114,7 @@ if ($_SESSION['hak_akses'] == 'Dokter') {
                     </div>
                 </div>
                 <footer align="center">
-                    Created by <a href="http://dendicious.com">dendicious</a>
+
                 </footer>
 
         </body>

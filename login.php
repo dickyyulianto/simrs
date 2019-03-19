@@ -29,6 +29,8 @@ if (mysqli_num_rows($result)) {
             header("location:front-office.php?view=tampil_pasien");
         } elseif ($row['hak_akses'] == "Departemen") {
             header("location:departemen.php?view=tampil_pasien");
+        } elseif ($_SESSION['hak_akses'] == "Admin") {
+            header("location:admin.php?view=tampil_dokter");
         } else {
             echo '<script>href.location</script>';
             session_destroy();

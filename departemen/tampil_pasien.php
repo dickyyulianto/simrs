@@ -22,9 +22,7 @@
                 <td class="nama_dokter"><?php echo $row['nama_dokter']; ?> </td>
                 <td><?php echo $row['diagnosa'] == null ? '<span class="label label-danger">BELUM</span>' : '<span class="label label-success">DIPERIKSA</span>'; ?> </td>
                 <td><?php echo '<button id="' . $row['no_rj'] . '" class="btn btn-success btn-sm edit_data" data-toggle="modal" data-target="#editModal">
-    <i class="glyphicon glyphicon-edit"></i> Pilih Dokter
-</button>';
-            ?></td>
+                <i class="glyphicon glyphicon-edit"></i> Pilih Dokter</button>'; ?></td>
             </tr>
             <?php
         }

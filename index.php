@@ -3,11 +3,6 @@
 |--------------------------------------------------------------------------
 | Halaman utama / login
 |--------------------------------------------------------------------------
-|   Sedotcode.blogspot.com
-|   Aplikasi Sistem Informasi Rumah Sakit Sederhana
-|   by Dendi Abdul Rohim 
-|   dendicious@gmail.com
-|   dendicous.com
 |
 */
 include './konfig.php';
@@ -83,6 +78,8 @@ if (isset($_SESSION['hak_akses']) == null) {
         header("location:apoteker.php");
     } elseif ($_SESSION['hak_akses'] == "perawat") {
         header("location:perawat.php");
+    } elseif ($_SESSION['hak_akses'] == "Admin") {
+        header("location:admin.php?view=tampil_dokter");
     } else {
         echo 'user tidak ditemukan';
         session_destroy();

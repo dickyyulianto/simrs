@@ -4,10 +4,6 @@
 | Header Front Office / Resepsionis
 |--------------------------------------------------------------------------
 |
-|   Aplikasi Sistem Informasi Rumah Sakit Sederhana
-|   by Dendi Abdul Rohim 
-|   dendicious@gmail.com
-|   dendicous.com
 |
 */
 include './konfig.php';
@@ -104,14 +100,7 @@ if ($_SESSION['hak_akses'] == 'Front Office') {
                                                 ?>
                                             </span></a>
                                     </li>
-                                        <li <?php if (isset($_GET['view'])) {
-                                            echo $_GET['view'] == 'tampil_dokter' || $_GET['view'] == 'tampil_ubah_dokter' ? 'class="active"' : '';} ?>><a href="front-office.php?view=tampil_dokter">Dokter &nbsp;
-                                                <span class="label label-success" style="border-radius: 50px;">
-                                                    <?php
-                                                    $hitung_dokter = mysqli_query($db_handle,"select * from tbl_dokter");
-                                                    echo mysqli_num_rows($hitung_dokter);
-                                                    ?></span></a>
-                                        </li>
+
                     </ul>
                                     <p class="navbar-text navbar-right"><?php echo $_SESSION['username']; ?> login sebagai <?php echo $_SESSION['hak_akses']; ?> | <a class="btn btn-default btn-xs" href="logout.php"><i class="glyphicon glyphicon-off"></i> Logout</a>  &nbsp;</p>
                                     </div>
@@ -143,10 +132,7 @@ if ($_SESSION['hak_akses'] == 'Front Office') {
                                         <?php
                                     } else {
                                         echo "<script>
-        alert('Forbidden access');
-	location.href='index.php';
-	</script>";
-                                        exit();
-                                    }
-                                    ?>
+                                        alert('Forbidden access');
+                                        location.href='index.php';
+                                        </script>"; exit();} ?>
 

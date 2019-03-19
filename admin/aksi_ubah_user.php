@@ -7,9 +7,9 @@
  */
 include '../konfig.php';
 extract($_POST);
-$query = "update tbl_dokter set nama_dokter='$nama', departemen='$departemen', jadwal_praktik = '$jadwal_praktik' where id_user='$id_user' ";
+$query = "update tbl_user set username='$username', password='$password', status = '$status', hak_akses = '$hak_akses', grup = '$grup' where id_user='$id_user' ";
 mysqli_query($db_handle, $query) or die(mysqli_error($db_handle));
 ?>
 <script type="text/javascript">
-    location.href = '../front-office.php?view=tampil_dokter';
+    location.href = '../admin.php?view=tampil_user';
 </script>

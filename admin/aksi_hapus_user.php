@@ -7,9 +7,9 @@
  */
 include 'konfig.php';
 $id_user = $_GET['id_user'];
-$query = "delete from tbl_dokter where id_user='$id_user'";
+$query = "delete from tbl_user where id_user='$id_user'";
 mysqli_query($db_handle, $query);
 ?>
 <script type="text/javascript">
-    location.href = 'front-office.php?view=tampil_dokter';
+    location.href = 'admin.php?view=tampil_user';
 </script>
