@@ -11,11 +11,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-
--- Dumping database structure for sirusak
-CREATE DATABASE IF NOT EXISTS `sirusak` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `sirusak`;
-
 -- Dumping structure for table sirusak.tbl_dokter
 CREATE TABLE IF NOT EXISTS `tbl_dokter` (
   `id_user` int(5) NOT NULL AUTO_INCREMENT,
@@ -37,7 +32,6 @@ INSERT INTO `tbl_dokter` (`id_user`, `nama_dokter`, `departemen`, `jadwal_prakti
 	(1007, 'Arifin Muhammad, dr.SpS.Mkes', 'Syaraf', 'Senin - Kamis | 08.00 - 15.00'),
 	(1008, 'Gyats Haitsam, Hj.dr.SpKK', 'Kulit dan Kelamin', 'Senin - Kamis | 08.00 - 15.00'),
 	(1009, 'Dono Aditia, .dr.SpTHT', 'THT', 'Senin - Kamis | 08.00 - 15.00'),
-	(1010, 'Zeffry Irwanto, dr.SpM', 'Kulit dan Kelamin', 'Senin - Kamis | 08.00 - 15.00'),
 	(1011, 'Gustian M, dr', 'Syaraf', 'Senin - Kamis | 08.00 - 15.00'),
 	(1012, 'Septianti Amalia, S.PSi', 'Umum', 'Senin - Kamis | 08.00 - 15.00'),
 	(1013, 'Setyaningsih D, dr.SpA', 'Anak', 'Senin - Kamis | 08.00 - 15.00'),
@@ -52,9 +46,9 @@ CREATE TABLE IF NOT EXISTS `tbl_pasien` (
   `jenis_kelamin` char(1) NOT NULL,
   `no_telepon` varchar(15) NOT NULL,
   PRIMARY KEY (`id_pasien`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sirusak.tbl_pasien: ~12 rows (approximately)
+-- Dumping data for table sirusak.tbl_pasien: ~11 rows (approximately)
 /*!40000 ALTER TABLE `tbl_pasien` DISABLE KEYS */;
 INSERT INTO `tbl_pasien` (`id_pasien`, `nama_pasien`, `alamat`, `jenis_kelamin`, `no_telepon`) VALUES
 	(11, 'Muhammad Ilyas Firdaus', 'alam kubur', 'P', '081264162'),
@@ -67,8 +61,7 @@ INSERT INTO `tbl_pasien` (`id_pasien`, `nama_pasien`, `alamat`, `jenis_kelamin`,
 	(22, 'Risa Tachibana', 'Jampang', 'P', '08124124412'),
 	(23, 'Sarah Ardelia', 'Bogor', 'P', '0812524124'),
 	(24, 'Jessica Mila', 'Madiun', 'P', '08235141212'),
-	(25, 'Ricky Harun', 'Lampung', 'L', '08235235235'),
-	(26, 'roni', 'sawahan', 'L', '09848487');
+	(25, 'Ricky Harun', 'Lampung', 'L', '08235235235');
 /*!40000 ALTER TABLE `tbl_pasien` ENABLE KEYS */;
 
 -- Dumping structure for table sirusak.tbl_pri
@@ -104,15 +97,15 @@ CREATE TABLE IF NOT EXISTS `tbl_prj` (
   PRIMARY KEY (`no_rj`),
   KEY `id_pasien` (`id_pasien`),
   CONSTRAINT `tbl_prj_ibfk_1` FOREIGN KEY (`id_pasien`) REFERENCES `tbl_pasien` (`id_pasien`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sirusak.tbl_prj: ~4 rows (approximately)
+-- Dumping data for table sirusak.tbl_prj: ~2 rows (approximately)
 /*!40000 ALTER TABLE `tbl_prj` DISABLE KEYS */;
 INSERT INTO `tbl_prj` (`no_rj`, `id_dokter`, `id_pasien`, `departemen`, `tanggal`, `keluhan`, `diagnosa`, `biaya`, `bayar`, `tindakan`, `resep`) VALUES
 	(14, '1004', 19, 'Kandungan', '2014-12-05 03:54:46', 'Mual-mual', ' aasasfsdfsdfsdf\r\nsdf\r\nsdf\r\nasdf\r\nasdf\r\n  ', 200000, 200000, 'Rawat Inap', NULL),
 	(15, '', 21, 'Syaraf', '2014-12-06 01:30:30', 'sasdfasdg', NULL, 180000, 34534535, NULL, NULL),
-	(16, '', 19, 'Gigi', '2019-03-11 15:02:50', 'asas', NULL, NULL, NULL, NULL, NULL),
-	(17, '', 22, 'Syaraf', '2019-03-11 15:03:07', 'asasa', NULL, NULL, NULL, NULL, NULL);
+	(19, '1001', 24, 'Umum', '2019-03-12 09:25:56', 'sssssss', 'www ', 10000, NULL, 'wwww ', 'obat mumet | 3x1'),
+	(20, '1001', 24, 'Umum', '2019-03-27 13:50:40', 'mumet', 'flu', 10000, NULL, '1. kasih obat flu', '1. obat flu | 3x1');
 /*!40000 ALTER TABLE `tbl_prj` ENABLE KEYS */;
 
 -- Dumping structure for table sirusak.tbl_resep
@@ -240,31 +233,33 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
   `id_user` int(5) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `status` int(1) NOT NULL,
+  `status` varchar(10) NOT NULL,
   `hak_akses` varchar(20) NOT NULL,
   `grup` varchar(30) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=1017 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1022 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sirusak.tbl_user: ~16 rows (approximately)
+-- Dumping data for table sirusak.tbl_user: ~18 rows (approximately)
 /*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
 INSERT INTO `tbl_user` (`id_user`, `username`, `password`, `status`, `hak_akses`, `grup`) VALUES
-	(2, 'ahmad', 'ahmad', 0, 'Departemen', 'Kandungan'),
-	(3, 'dendi', 'dendi', 0, 'Front Office', ''),
-	(5, 'tht', 'tht', 0, 'Departemen', 'THT'),
-	(6, 'umum', 'umum', 0, 'Departemen', 'Umum'),
-	(1001, 'irsyad', 'irsyad', 0, 'Dokter', 'Irsyad Muhammad, dr'),
-	(1002, 'vaksi', 'vaksi', 0, 'Dokter', 'Pranata Audy, dr.SpB'),
-	(1003, 'rafdi', 'rafdi', 0, 'Dokter', 'Jaidi, dr.SpA'),
-	(1004, 'adit', 'adit', 0, 'Dokter', 'Anugrah Pratama, dr.SpPD'),
-	(1007, 'ipin', 'ipin', 0, 'Dokter', 'Arifin Muhammad, dr.SpS.Mkes'),
-	(1010, 'zeffry', 'zeffry', 0, 'Dokter', 'Zeffry Irwanto, dr.SpM'),
-	(1011, 'kulitkelamin', 'kulitkelamin', 0, 'Departemen', 'Kulit dan Kelamin'),
-	(1012, 'syaraf', 'syaraf', 0, 'Departemen', 'Syaraf'),
-	(1013, 'gigi', 'gigi', 0, 'Departemen', 'Gigi'),
-	(1014, 'anak', 'anak', 0, 'Departemen', 'Anak'),
-	(1015, 'kandungan', 'kandungan', 0, 'Departemen', 'Kandungan'),
-	(1016, 'kandungan', 'kandungan', 0, 'Departemen', 'Kandungan');
+	(2, 'ahmad', 'ahmad', '0', 'Departemen', 'Kandungan'),
+	(3, 'dendi', 'dendi', '0', 'Front Office', ''),
+	(5, 'tht', 'tht', '0', 'Departemen', 'THT'),
+	(6, 'umum', 'umum', '0', 'Departemen', 'Umum'),
+	(1001, 'irsyad', 'irsyad', '0', 'Dokter', 'Irsyad Muhammad, dr'),
+	(1002, 'vaksi', 'vaksi', '0', 'Dokter', 'Pranata Audy, dr.SpB'),
+	(1003, 'rafdi', 'rafdi', '0', 'Dokter', 'Jaidi, dr.SpA'),
+	(1004, 'adit', 'adit', '0', 'Dokter', 'Anugrah Pratama, dr.SpPD'),
+	(1007, 'ipin', 'ipin', '0', 'Dokter', 'Arifin Muhammad, dr.SpS.Mkes'),
+	(1010, 'zeffry', 'zeffry', '0', 'Dokter', 'Zeffry Irwanto, dr.SpM'),
+	(1011, 'kulitkelamin', 'kulitkelamin', '0', 'Departemen', 'Kulit dan Kelamin'),
+	(1012, 'syaraf', 'syaraf', '0', 'Departemen', 'Syaraf'),
+	(1013, 'gigi', 'gigi', '0', 'Departemen', 'Gigi'),
+	(1014, 'anak', 'anak', '0', 'Departemen', 'Anak'),
+	(1015, 'kandungan', 'kandungan', '0', 'Departemen', 'Kandungan'),
+	(1016, 'kandungan', 'kandungan', '0', 'Departemen', 'Kandungan'),
+	(1020, 'Lala', 'Lali', 'Aktif', 'Admin', 'Admin'),
+	(1021, 'Dicky', 'dickyyulianto', 'Aktif', 'Front Office', 'FO');
 /*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
