@@ -82,6 +82,16 @@ if ($_SESSION['hak_akses'] == 'Dokter') {
                                     echo mysqli_num_rows($hitung_pasien);
                                     ?></span></a>
                         </li>
+                        <li <?php if (isset($_GET['view'])) {
+                            echo $_GET['view'] == 'tampil_pri' || $_GET['view'] == 'tampil_ubah_pri' ? 'class="active"' : '';
+                        } ?>><a href="?view=tampil_pri">Pasien Rawat Inap &nbsp;
+                                <span class="label label-warning" style="border-radius: 50px;">
+                                                <?php
+                                                $hitung_pri = mysqli_query($db_handle,"select * from tbl_pri");
+                                                echo mysqli_num_rows($hitung_pri);
+                                                ?>
+                                            </span></a>
+                        </li>
                         <!--<li <?php if (isset($_GET['view'])) {
                                         echo $_GET['view'] == 'tampil_resep' ? 'class="active"' : '';
                                     } ?>><a href="?view=tampil_resep">Resep &nbsp;
@@ -93,6 +103,7 @@ if ($_SESSION['hak_akses'] == 'Dokter') {
                         </li>-->
 
                     </ul>
+
 
                     <p class="navbar-text navbar-right"><?php echo $_SESSION['username']; ?> login sebagai dokter <?php echo $_SESSION['grup']; ?> | <a class="btn btn-default btn-xs" href="logout.php"><i class="glyphicon glyphicon-off"></i> Logout</a>  &nbsp;</p>
                 </div>
