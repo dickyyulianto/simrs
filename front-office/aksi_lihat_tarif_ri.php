@@ -1,11 +1,13 @@
 <?php
-$connection = mysqli_connect("localhost", "root", "", "sirusak_tek");
-$perawatan = mysqli_real_escape_string($connection, $_GET['perawatan']);
-$pelayanan = mysqli_real_escape_string($connection, $_GET['pelayanan']);
-$tipe_kamar = mysqli_real_escape_string($connection, $_GET['tipe_kamar']);
+//$connection = mysqli_connect("localhost", "root", "", "sirusak");
+include '../konfig.php';
 
-mysqli_select_db($connection, "sirusak_tek");
-$result = mysqli_query($connection, "SELECT * FROM tbl_tarif_ri WHERE perawatan = '$perawatan' and pelayanan = '$pelayanan' and tipe_kamar = '$tipe_kamar' ");
+$perawatan = mysqli_real_escape_string($db_handle, $_GET['perawatan']);
+$pelayanan = mysqli_real_escape_string($db_handle, $_GET['pelayanan']);
+$tipe_kamar = mysqli_real_escape_string($db_handle, $_GET['tipe_kamar']);
+
+//mysqli_select_db($db_handle, "sirusak_tek");
+$result = mysqli_query($db_handle, "SELECT * FROM tbl_tarif_ri WHERE perawatan = '$perawatan' and pelayanan = '$pelayanan' and tipe_kamar = '$tipe_kamar' ");
  
 while($row = mysqli_fetch_array($result))
   {
@@ -16,6 +18,6 @@ while($row = mysqli_fetch_array($result))
   }
  
 mysqli_free_result($result);
-mysqli_close($connection);
- 
+//mysqli_close($connection);
+
 ?>

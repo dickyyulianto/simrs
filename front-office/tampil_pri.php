@@ -39,8 +39,8 @@ if (mysqli_num_rows($resultselect)) {
                     echo "<span class='label label-danger'>BELUM</span>";
                 };
                 ?> </td>
-            <td><?php echo "<a class='btn btn-info btn-sm' href='front-office.php?view=tampil_ubah_pri&no_ri=" . $row['no_ri'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
-                    <a class='btn btn-danger btn-sm' href='front-office.php?view=aksi_hapus_pri&no_ri=" . $row['no_ri'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien rawat inap tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>";
+            <td><?php echo "<a class='btn btn-info btn-sm' href='front-office.php?view=tampil_ubah_pri&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
+                    <a class='btn btn-danger btn-sm' href='front-office.php?view=aksi_hapus_pri&id_ri=" . $row['id_ri'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien rawat inap tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>";
                 ?></td>
 
         </tr>
@@ -141,7 +141,7 @@ if (mysqli_num_rows($resultselect)) {
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-check"></i>
                         </span>
-                        <textarea name="diagnosa" placeholder="Diagnosa" class="form-control" rows="5" required></textarea>
+                        <textarea name="keluhan" placeholder="Keluhan" class="form-control" rows="5" required></textarea>
                     </div>
                     <div align="center">
                         <button type="button" id="btn_cek_tarif" class="btn btn-success"><i class="glyphicon glyphicon-eye-open"></i> &nbsp; Cari Ruangan</button>
@@ -202,12 +202,12 @@ if (mysqli_num_rows($resultselect)) {
                 url: "front-office/aksi_tambah_pri.php",
                 data: $('form#tambah_pri').serialize(),
                 success: function (msg) {
-                    if (msg.success == true) {
-                        $("#tambahModal").modal('hide');
-                        location.href = 'front-office.php?view=tampil_pri';
-                    }else{
-                        alert("Gagal menambah pasien rawat inap baru");
-                    }
+                    // alert("berhasil");
+                    $("#tambahModal").modal('hide');
+                    location.href = 'front-office.php?view=tampil_pri';
+                },
+                error: function(){
+                    alert('Gagal menambah pasien rawat inap baru');
                 }
             });
         });
@@ -294,10 +294,9 @@ if (mysqli_num_rows($resultselect)) {
                 url: 'front-office/aksi_lihat_tarif_ri.php?pelayanan=' + pelayanan +
                         '&perawatan=' + perawatan + '&tipe_kamar=' + tipe_kamar,
                 success: function (respon) {
+                    // console.log(respon);
                     var id = $(respon).find('#id_tarif').text();
                     var tarif = $(respon).find('#tarif').text();
-
-
 
                     function parseDate(str) {
                         var mdy = str.split('-')

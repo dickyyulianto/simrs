@@ -5,9 +5,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-include 'konfig.php';
+include '../konfig.php';
 $id = $_GET['no_ri'];
-$query = "delete from tbl_pri where no_ri='$id' ";
+$query = "delete from tbl_pri where id_ri='$id' ";
 mysqli_query($db_handle, $query);
 ?>
 <script type="text/javascript">

@@ -1,11 +1,11 @@
 <?php
 if (isset($_GET)) {
     include 'konfig.php';
-    $id_ubah = $_GET['no_ri'];
+    $id_ubah = $_GET['id_ri'];
     $query = "SELECT * FROM tbl_pri, tbl_pasien, tbl_tarif_ri where "
             . "tbl_pri.id_pasien = tbl_pasien.id_pasien and tbl_tarif_ri.id_tarif_ri = tbl_pri.id_ruang and "
-            . "tbl_pri.no_ri = '$id_ubah'";
-    $result = mysqli_query($db_handle, $query);
+            . "tbl_pri.id_ri = '$id_ubah'";
+    $result = mysqli_query($db_handle, $query) or die(mysqli_error($db_handle));
     if (mysqli_num_rows($result)) {
         while ($row = mysqli_fetch_array($result)) {
             ?>
@@ -19,7 +19,7 @@ if (isset($_GET)) {
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-user"></i>
                         </span>
-                        <input type="hidden" value="<?php echo $id_ubah; ?>" name="no_ri" />
+                        <input type="hidden" value="<?php echo $id_ubah; ?>" name="id_ri" />
                         <input type="hidden" value="<?php echo $row['id_pasien']; ?>" name="id_pasien" id="id_pasien_hidden" />
                         <input type="text" value="<?php echo $row['nama_pasien']; ?>" name="search" class="search form-control input-lg" id="searchid" placeholder="Masukan ID / Nama Pasien" required autofocus autocomplete="off" /> 
                         <div id="result"></div>
@@ -85,7 +85,7 @@ if (isset($_GET)) {
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-check"></i>
                         </span>
-                        <input type="text" name="diagnosa" placeholder="Diagnosa" value="<?php echo $row['diagnosa']?>" class="form-control input-lg" required />
+                        <input type="text" name="keluhan" placeholder="Keluhan" value="<?php echo $row['keluhan']?>" class="form-control input-lg" required />
                     </div>
                     <div align="center">
                         <button type="button" id="btn_cek_tarif" class="btn btn-success"><i class="glyphicon glyphicon-eye-open"></i> &nbsp; Cari Ruangan</button>
