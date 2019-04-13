@@ -12,7 +12,7 @@
     <th>Pasien</th>
     <th>Kamar</th>
     <th>Check in</th>
-    <th>Check out</th>
+    <th>Keluhan</th>
     <th>Pembayaran</th>
     <th>Aksi</th>
 </thead>
@@ -31,7 +31,7 @@ if (mysqli_num_rows($resultselect)) {
             <td><?php echo $row['nama_pasien']; ?> </td>
             <td><?php echo $row['id_ruang']; ?> </td>
             <td><?php echo $row['tanggal_checkin']; ?> </td>
-            <td><?php echo $row['tanggal_checkout']; ?> </td>
+            <td><?php echo $row['keluhan']; ?> </td>
             <td><?php
                 if ($row['bayar'] >= $row['biaya']) {
                     echo "<span class='label label-success'>SELESAI</span>";
@@ -39,9 +39,11 @@ if (mysqli_num_rows($resultselect)) {
                     echo "<span class='label label-danger'>BELUM</span>";
                 };
                 ?> </td>
-            <td><?php echo "<a class='btn btn-info btn-sm' href='front-office.php?view=tampil_ubah_pri&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
-                    <a class='btn btn-danger btn-sm' href='front-office.php?view=aksi_hapus_pri&id_ri=" . $row['id_ri'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien rawat inap tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>";
-                ?></td>
+            <td>
+                <?php echo "
+                <a class='btn btn-info btn-sm' href='dokter.php?view=tampil_tambah_tindakan&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i> Periksa</a> | 
+                "; ?>
+            </td>
 
         </tr>
         <?php
