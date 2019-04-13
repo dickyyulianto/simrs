@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `tbl_dokter` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1015 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table sirusak.tbl_dokter: ~13 rows (approximately)
+DELETE FROM `tbl_dokter`;
 /*!40000 ALTER TABLE `tbl_dokter` DISABLE KEYS */;
 INSERT INTO `tbl_dokter` (`id_user`, `nama_dokter`, `departemen`, `jadwal_praktik`) VALUES
 	(1001, 'Irsyad Muhammad, dr', 'Umum', 'Senin - Kamis | 08.00 - 15.00'),
@@ -54,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `tbl_pasien` (
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table sirusak.tbl_pasien: ~11 rows (approximately)
+DELETE FROM `tbl_pasien`;
 /*!40000 ALTER TABLE `tbl_pasien` DISABLE KEYS */;
 INSERT INTO `tbl_pasien` (`id_pasien`, `nama_pasien`, `alamat`, `jenis_kelamin`, `no_telepon`) VALUES
 	(11, 'Muhammad Ilyas Firdaus', 'alam kubur', 'P', '081264162'),
@@ -81,9 +83,10 @@ CREATE TABLE IF NOT EXISTS `tbl_pri` (
   `biaya` int(10) DEFAULT NULL,
   `bayar` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_ri`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sirusak.tbl_pri: ~15 rows (approximately)
+-- Dumping data for table sirusak.tbl_pri: ~18 rows (approximately)
+DELETE FROM `tbl_pri`;
 /*!40000 ALTER TABLE `tbl_pri` DISABLE KEYS */;
 INSERT INTO `tbl_pri` (`id_ri`, `id_pasien`, `id_ruang`, `keluhan`, `tanggal_checkin`, `tanggal_checkout`, `hari_menginap`, `biaya`, `bayar`) VALUES
 	(1, 16, 106, 'd', '2019-04-04', '2019-04-12', 8, 1600000, 3333333),
@@ -100,7 +103,10 @@ INSERT INTO `tbl_pri` (`id_ri`, `id_pasien`, `id_ruang`, `keluhan`, `tanggal_che
 	(12, 22, 106, 'as', '2019-04-02', '2019-04-16', 14, 2800000, 150000),
 	(13, 18, 105, 'qqqqq', '2019-04-03', '2019-04-17', 14, 4550000, 200000),
 	(14, 16, 105, 'zzz', '2019-04-16', '2019-04-23', 7, 2275000, 3333333),
-	(16, 18, 105, 'aaaa', '2019-04-02', '2019-04-09', 8, 2600000, 3333333);
+	(16, 18, 105, 'aaaa', '2019-04-02', '2019-04-09', 8, 2600000, 3333333),
+	(17, 19, 106, 'sdsd', '2019-04-02', '2019-04-03', 1, 200000, 200000),
+	(18, 22, 107, 's', '2019-04-02', '2019-04-08', 6, 882000, 3333333),
+	(19, 21, 106, 'gyugyugy', '2019-04-03', NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `tbl_pri` ENABLE KEYS */;
 
 -- Dumping structure for table sirusak.tbl_prj
@@ -113,21 +119,22 @@ CREATE TABLE IF NOT EXISTS `tbl_prj` (
   `keluhan` varchar(255) NOT NULL,
   `diagnosa` varchar(255) DEFAULT NULL,
   `biaya` int(10) DEFAULT NULL,
-  `bayar` int(12) DEFAULT NULL,
   `tindakan` varchar(20) DEFAULT NULL,
   `resep` text,
+  `bayar` int(12) DEFAULT NULL,
   PRIMARY KEY (`no_rj`),
   KEY `id_pasien` (`id_pasien`),
   CONSTRAINT `tbl_prj_ibfk_1` FOREIGN KEY (`id_pasien`) REFERENCES `tbl_pasien` (`id_pasien`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table sirusak.tbl_prj: ~4 rows (approximately)
+DELETE FROM `tbl_prj`;
 /*!40000 ALTER TABLE `tbl_prj` DISABLE KEYS */;
-INSERT INTO `tbl_prj` (`no_rj`, `id_dokter`, `id_pasien`, `departemen`, `tanggal`, `keluhan`, `diagnosa`, `biaya`, `bayar`, `tindakan`, `resep`) VALUES
-	(14, '1004', 19, 'Kandungan', '2014-12-05 03:54:46', 'Mual-mual', ' aasasfsdfsdfsdf\r\nsdf\r\nsdf\r\nasdf\r\nasdf\r\n  ', 200000, 200000, 'Rawat Inap', NULL),
-	(15, '', 21, 'Syaraf', '2014-12-06 01:30:30', 'sasdfasdg', NULL, 180000, 34534535, NULL, NULL),
-	(19, '1001', 24, 'Umum', '2019-03-12 09:25:56', 'sssssss', 'www ', 10000, NULL, 'wwww ', 'obat mumet | 3x1'),
-	(20, '1001', 24, 'Umum', '2019-03-27 13:50:40', 'mumet', 'flu', 10000, NULL, '1. kasih obat flu', '1. obat flu | 3x1');
+INSERT INTO `tbl_prj` (`no_rj`, `id_dokter`, `id_pasien`, `departemen`, `tanggal`, `keluhan`, `diagnosa`, `biaya`, `tindakan`, `resep`, `bayar`) VALUES
+	(14, '1004', 19, 'Kandungan', '2014-12-05 03:54:46', 'Mual-mual', ' aasasfsdfsdfsdf\r\nsdf\r\nsdf\r\nasdf\r\nasdf\r\n  ', 200000, 'Rawat Inap', NULL, 200000),
+	(15, '', 21, 'Syaraf', '2014-12-06 01:30:30', 'sasdfasdg', NULL, 180000, NULL, NULL, 34534535),
+	(19, '1001', 24, 'Umum', '2019-03-12 09:25:56', 'sssssss', 'www ', 10000, 'wwww ', 'obat mumet | 3x1', NULL),
+	(20, '1001', 24, 'Umum', '2019-03-27 13:50:40', 'mumet', 'flu', 10000, '1. kasih obat flu', '1. obat flu | 3x1', NULL);
 /*!40000 ALTER TABLE `tbl_prj` ENABLE KEYS */;
 
 -- Dumping structure for table sirusak.tbl_resep
@@ -142,6 +149,7 @@ CREATE TABLE IF NOT EXISTS `tbl_resep` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table sirusak.tbl_resep: ~2 rows (approximately)
+DELETE FROM `tbl_resep`;
 /*!40000 ALTER TABLE `tbl_resep` DISABLE KEYS */;
 INSERT INTO `tbl_resep` (`id_resep`, `id_dokter`, `id_pasien`, `nama_resep`, `rincian_resep`, `tanggal`) VALUES
 	(1, 1004, '16', 'asdasdasd ', 'asdasdasd \r\nfgdsfgsdf\r\ngsdfg\r\nsdfg\r\nsdfg\r\ndsfg\r\nsdfg\r\nsdfg\r\ndsfg\r\ndsfg', '2014-12-05 15:19:00'),
@@ -162,6 +170,7 @@ CREATE TABLE IF NOT EXISTS `tbl_tagihan_ri` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table sirusak.tbl_tagihan_ri: ~0 rows (approximately)
+DELETE FROM `tbl_tagihan_ri`;
 /*!40000 ALTER TABLE `tbl_tagihan_ri` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbl_tagihan_ri` ENABLE KEYS */;
 
@@ -177,6 +186,7 @@ CREATE TABLE IF NOT EXISTS `tbl_tarif_ri` (
 ) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table sirusak.tbl_tarif_ri: ~37 rows (approximately)
+DELETE FROM `tbl_tarif_ri`;
 /*!40000 ALTER TABLE `tbl_tarif_ri` DISABLE KEYS */;
 INSERT INTO `tbl_tarif_ri` (`id_tarif_ri`, `perawatan`, `pelayanan`, `tipe_kamar`, `tarif`, `kapasitas`) VALUES
 	(101, 'Rawat Inap per hari', 'Dokter Spesials dan Umum', 'Kelas VIP', 375000, 1),
@@ -227,6 +237,7 @@ CREATE TABLE IF NOT EXISTS `tbl_tarif_rj` (
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table sirusak.tbl_tarif_rj: ~7 rows (approximately)
+DELETE FROM `tbl_tarif_rj`;
 /*!40000 ALTER TABLE `tbl_tarif_rj` DISABLE KEYS */;
 INSERT INTO `tbl_tarif_rj` (`id_tarif_rj`, `departemen`, `tarif`) VALUES
 	(5, 'Umum', 150000),
@@ -245,11 +256,19 @@ CREATE TABLE IF NOT EXISTS `tbl_tindakan` (
   `id_dokter` int(5) NOT NULL DEFAULT '0',
   `tanggal` date NOT NULL,
   `tindakan` text NOT NULL,
+  `hasil` text,
   PRIMARY KEY (`id_tindakan`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sirusak.tbl_tindakan: ~0 rows (approximately)
+-- Dumping data for table sirusak.tbl_tindakan: ~5 rows (approximately)
+DELETE FROM `tbl_tindakan`;
 /*!40000 ALTER TABLE `tbl_tindakan` DISABLE KEYS */;
+INSERT INTO `tbl_tindakan` (`id_tindakan`, `id_pri`, `id_dokter`, `tanggal`, `tindakan`, `hasil`) VALUES
+	(2, 18, 1001, '2019-04-14', 'dsfsdf', 'sdfsdf'),
+	(3, 18, 1001, '2019-04-12', 'weada', 'wfsefs'),
+	(4, 18, 1001, '2019-04-17', 'sdgsdgs', 'sdgsdgsdgf'),
+	(5, 18, 1002, '2019-04-19', 'sasad', 'asdasd'),
+	(6, 17, 1010, '2019-05-03', 'sad', 'asds');
 /*!40000 ALTER TABLE `tbl_tindakan` ENABLE KEYS */;
 
 -- Dumping structure for table sirusak.tbl_user
@@ -264,6 +283,7 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1022 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table sirusak.tbl_user: ~18 rows (approximately)
+DELETE FROM `tbl_user`;
 /*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
 INSERT INTO `tbl_user` (`id_user`, `username`, `password`, `status`, `hak_akses`, `grup`) VALUES
 	(2, 'ahmad', 'ahmad', '0', 'Departemen', 'Kandungan'),
