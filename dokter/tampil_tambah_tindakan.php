@@ -169,14 +169,14 @@ if (isset($_GET)) {
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-calendar"></i>
                         </span>
-                        <input type="date" id="tanggal" name="tanggal" placeholder="Tanggal Periksa" value="" class="form-control input-lg" required style="width: 50%;" />
+                        <input type="date" id="tanggal" name="tanggal" placeholder="Tanggal Periksa" class="form-control input-lg" required style="width: 50%;" />
                     </div>
 
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-check"></i>
                         </span>
-                        <textarea name="tindakan" class="form-control input-lg" placeholder="Tindakan" id="" cols="30" rows="5"></textarea>
+                        <textarea name="tindakan"  class="form-control input-lg" placeholder="Tindakan" id="" cols="30" rows="5"></textarea>
                     </div>
 
                     <div class="input-group input-lg">

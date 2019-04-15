@@ -74,8 +74,8 @@ if ($_SESSION['hak_akses'] == 'Dokter') {
                 <div>
                     <ul class="nav navbar-nav">
                         <li <?php if (isset($_GET['view'])) {
-        echo $_GET['view'] == 'tampil_pasien_dokter' || $_GET['view'] == 'ubah_pasien_dokter' ? 'class="active"' : '';
-    } ?>><a href="?view=tampil_pasien_dokter">Pasien &nbsp;
+                           echo $_GET['view'] == 'tampil_pasien_dokter' || $_GET['view'] == 'ubah_pasien_dokter' ? 'class="active"' : '';
+                        } ?>><a href="?view=tampil_pasien_dokter">Pasien Rawat Jalan &nbsp;
                                 <span class="label label-warning" style="border-radius: 50px;"> 
                                     <?php
                                     $hitung_pasien = mysqli_query($db_handle,"select rj.no_rj from tbl_prj rj left join tbl_dokter d on rj.id_dokter = d.id_user where d.nama_dokter='" . $_SESSION['grup'] . "'");
