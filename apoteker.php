@@ -12,7 +12,7 @@ if ($_SESSION['hak_akses'] == 'Apoteker') {
     ?>
     <html>
     <head>
-        <title>Halaman Front Office</title>
+        <title>Halaman Apotek </title>
         <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
         <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>

@@ -8,14 +8,14 @@
 <br>
 <table id="datatable" class="display stripe">
     <thead>
-    <th>No</th>
-    <th>Pasien</th>
-    <th>Kamar</th>
-    <th>Check in</th>
-    <th>Keluhan</th>
-    <th>Pembayaran</th>
-    <th>Aksi</th>
-</thead>
+        <th>No</th>
+        <th>Pasien</th>
+        <th>Kamar</th>
+        <th>Check in</th>
+        <th>Keluhan</th>
+        <th>Pembayaran</th>
+        <th>Aksi</th>
+    </thead>
 <?php
 $queryselect = "SELECT * FROM tbl_pri, tbl_pasien where
             tbl_pri.id_pasien = tbl_pasien.id_pasien order by 

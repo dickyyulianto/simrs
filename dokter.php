@@ -12,7 +12,7 @@ if ($_SESSION['hak_akses'] == 'Dokter') {
     ?>
     <html>
         <head>
-            <title>Halaman Departemen</title>
+            <title>Halaman Dokter</title>
             <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
             <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
             <script type="text/javascript" src="js/bootstrap.min.js"></script>

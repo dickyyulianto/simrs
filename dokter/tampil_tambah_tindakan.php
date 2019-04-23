@@ -24,58 +24,78 @@ if (isset($_GET)) {
                         <input type="text" value="<?php echo $row['nama_pasien']; ?>" name="search" readonly class="search form-control input-lg" id="searchid" placeholder="Masukan ID / Nama Pasien" required autocomplete="off" />
                         <div id="result"></div>
                     </div>
-
-                    <div align="center">
-                        Jenis Perawatan<br>
-                        <div id="perawatan" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-info <?php echo $row['perawatan'] == 'Rawat Inap per hari' ? 'active':''; ?>">
-                                <input type="radio" id="perawatan1" name="perawatan" value="Rawat Inap per hari"  <?php echo $row['perawatan'] == 'Rawat Inap per hari' ? 'checked':''; ?>> Rawat Inap per hari
-                            </label>
-                            <label class="btn btn-info <?php echo $row['perawatan'] == 'Ruang ICU' ? 'active':''; ?>">
-                                <input type="radio" id="perawatan2" name="perawatan" value="Ruang ICU" <?php echo $row['perawatan'] == 'Ruang ICU' ? 'checked':''; ?>> Ruang ICU
-                            </label>
-                            <label class="btn btn-info <?php echo $row['perawatan'] == 'Perinatologi' ? 'active':''; ?>">
-                                <input type="radio" id="perawatan3" name="perawatan" value="Perinatologi" <?php echo $row['perawatan'] == 'Perinatologi' ? 'checked':''; ?>> Perinatologi 
-                            </label> 
-                        </div>
-                        <br>Jenis Pelayanan<br>
-                        <div class="btn-group" data-toggle="buttons">
-
-                            <label class="btn btn-info <?php echo $row['pelayanan'] == 'Dokter Spesials dan Umum' ? 'active':''; ?>">
-                                <input type="radio" id="pelayanan1" name="pelayanan" value="Dokter Spesials dan Umum" <?php echo $row['pelayanan'] == 'Perinatologi' ? 'checked':''; ?>> Dokter Spesials dan Umum
-                            </label>
-                            <label class="btn btn-info <?php echo $row['pelayanan'] == 'Dokter Umum' ? 'active':''; ?>">
-                                <input type="radio" id="pelayanan2" name="pelayanan" value="Dokter Umum" <?php echo $row['pelayanan'] == 'Dokter Umum' ? 'checked':''; ?>> Dokter Umum
-                            </label>
-                            <label class="btn btn-info <?php echo $row['pelayanan'] == 'Instalasi  Anestesi' ? 'active':''; ?>">
-                                <input type="radio" id="pelayanan3" name="pelayanan" value="Instalasi  Anestesi" <?php echo $row['pelayanan'] == 'Instalasi  Anestesi' ? 'checked':''; ?>> Instalasi  Anestesi
-                            </label> 
-                            <label class="btn btn-info <?php echo $row['pelayanan'] == 'Gizi Rawat Inap' ? 'active':''; ?>">
-                                <input type="radio" id="pelayanan4" name="pelayanan" value="Gizi Rawat Inap" <?php echo $row['pelayanan'] == 'Gizi Rawat Inap' ? 'checked':''; ?>> Gizi Rawat Inap
-                            </label> 
-                        </div>
-                        <br>Fasilitas<br>
-                        <div class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-info <?php echo $row['tipe_kamar'] == 'Kelas VIP' ? 'active':''; ?>">
-                                <input type="radio" id="tipe_kamar1" name="tipe_kamar" value="Kelas VIP" <?php echo $row['tipe_kamar'] == 'Kelas VIP' ? 'checked':''; ?>> Kelas VIP
-                            </label>
-                            <label class="btn btn-info <?php echo $row['tipe_kamar'] == 'Kelas I' ? 'active':''; ?>">
-                                <input type="radio" id="tipe_kamar2" name="tipe_kamar" value="Kelas I" <?php echo $row['tipe_kamar'] == 'Kelas I' ? 'checked':''; ?>> Kelas I
-                            </label>
-                            <label class="btn btn-info <?php echo $row['tipe_kamar'] == 'Kelas II' ? 'active':''; ?>">
-                                <input type="radio" id="tipe_kamar3" name="tipe_kamar" value="Kelas II" <?php echo $row['tipe_kamar'] == 'Kelas II' ? 'checked':''; ?>> Kelas II
-                            </label> 
-                            <label class="btn btn-info <?php echo $row['tipe_kamar'] == 'Kelas III' ? 'active':''; ?>">
-                                <input type="radio" id="tipe_kamar4" name="tipe_kamar" value="Kelas III" <?php echo $row['tipe_kamar'] == 'Kelas III' ? 'checked':''; ?>> Kelas III
-                            </label> 
-                        </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                        </span>
+                        <input type="text" id="perawatan" readonly name="perawatan" placeholder="Perawatan" value="<?php echo $row['perawatan']?>" class="form-control input-lg" required style="width: 33.3%;" />
+                        <input type="text" id="pelayanan" readonly name="pelayanan" placeholder="Pelayanan" value="<?php echo $row['pelayanan']?>" class="form-control input-lg" required style="width: 33.3%;"/>
+                        <input type="text" id="tipe_kamar" readonly name="tipe_kamar" placeholder="Tipe Kamar" value="<?php echo $row['tipe_kamar']?>" class="form-control input-lg" required style="width: 33.3%;"/>
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                        </span>
                     </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </span>
+                        <input type="text" id="tipe_kamar" readonly name="tipe_kamar" placeholder="Tipe Kamar" value="<?php echo $row['tipe_kamar']?>" class="form-control input-lg" required style="width: 50%;"/>
+                        <input type="text" id="tipe_kamar" readonly name="tipe_kamar" placeholder="Tipe Kamar" value="<?php echo $row['tipe_kamar']?>" class="form-control input-lg" required style="width: 50%;"/>
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </span>
+                    </div>
+<!--                    <div align="center">-->
+<!--                        Jenis Perawatan<br>-->
+<!--                        <div id="perawatan" class="btn-group" data-toggle="buttons">-->
+<!--                            <label class="btn btn-info --><?php //echo $row['perawatan'] == 'Rawat Inap per hari' ? 'active':''; ?><!--">-->
+<!--                                <input type="radio" id="perawatan1" name="perawatan" value="Rawat Inap per hari"  --><?php //echo $row['perawatan'] == 'Rawat Inap per hari' ? 'checked':''; ?><!-->
+<!--                            </label>-->
+<!--                            <label class="btn btn-info --><?php //echo $row['perawatan'] == 'Ruang ICU' ? 'active':''; ?><!--">-->
+<!--                                <input type="radio" id="perawatan2" name="perawatan" value="Ruang ICU" --><?php //echo $row['perawatan'] == 'Ruang ICU' ? 'checked':''; ?><!-->
+<!--                            </label>-->
+<!--                            <label class="btn btn-info --><?php //echo $row['perawatan'] == 'Perinatologi' ? 'active':''; ?><!--">-->
+<!--                                <input type="radio" id="perawatan3" name="perawatan" value="Perinatologi" --><?php //echo $row['perawatan'] == 'Perinatologi' ? 'checked':''; ?><!-->
+<!--                            </label> -->
+<!--                        </div>-->
+<!--                        <br>Jenis Pelayanan<br>-->
+<!--                        <div class="btn-group" data-toggle="buttons">-->
+<!---->
+<!--                            <label class="btn btn-info --><?php //echo $row['pelayanan'] == 'Dokter Spesials dan Umum' ? 'active':''; ?><!--">-->
+<!--                                <input type="radio" id="pelayanan1" name="pelayanan" value="Dokter Spesials dan Umum" --><?php //echo $row['pelayanan'] == 'Perinatologi' ? 'checked':''; ?><!-->
+<!--                            </label>-->
+<!--                            <label class="btn btn-info --><?php //echo $row['pelayanan'] == 'Dokter Umum' ? 'active':''; ?><!--">-->
+<!--                                <input type="radio" id="pelayanan2" name="pelayanan" value="Dokter Umum" --><?php //echo $row['pelayanan'] == 'Dokter Umum' ? 'checked':''; ?><!-->
+<!--                            </label>-->
+<!--                            <label class="btn btn-info --><?php //echo $row['pelayanan'] == 'Instalasi  Anestesi' ? 'active':''; ?><!--">-->
+<!--                                <input type="radio" id="pelayanan3" name="pelayanan" value="Instalasi  Anestesi" --><?php //echo $row['pelayanan'] == 'Instalasi  Anestesi' ? 'checked':''; ?><!-->
+<!--                            </label> -->
+<!--                            <label class="btn btn-info --><?php //echo $row['pelayanan'] == 'Gizi Rawat Inap' ? 'active':''; ?><!--">-->
+<!--                                <input type="radio" id="pelayanan4" name="pelayanan" value="Gizi Rawat Inap" --><?php //echo $row['pelayanan'] == 'Gizi Rawat Inap' ? 'checked':''; ?><!-->
+<!--                            </label> -->
+<!--                        </div>-->
+<!--                        <br>Fasilitas<br>-->
+<!--                        <div class="btn-group" data-toggle="buttons">-->
+<!--                            <label class="btn btn-info --><?php //echo $row['tipe_kamar'] == 'Kelas VIP' ? 'active':''; ?><!--">-->
+<!--                                <input type="radio" id="tipe_kamar1" name="tipe_kamar" value="Kelas VIP" --><?php //echo $row['tipe_kamar'] == 'Kelas VIP' ? 'checked':''; ?><!-->
+<!--                            </label>-->
+<!--                            <label class="btn btn-info --><?php //echo $row['tipe_kamar'] == 'Kelas I' ? 'active':''; ?><!--">-->
+<!--                                <input type="radio" id="tipe_kamar2" name="tipe_kamar" value="Kelas I" --><?php //echo $row['tipe_kamar'] == 'Kelas I' ? 'checked':''; ?><!-->
+<!--                            </label>-->
+<!--                            <label class="btn btn-info --><?php //echo $row['tipe_kamar'] == 'Kelas II' ? 'active':''; ?><!--">-->
+<!--                                <input type="radio" id="tipe_kamar3" name="tipe_kamar" value="Kelas II" --><?php //echo $row['tipe_kamar'] == 'Kelas II' ? 'checked':''; ?><!-->
+<!--                            </label> -->
+<!--                            <label class="btn btn-info --><?php //echo $row['tipe_kamar'] == 'Kelas III' ? 'active':''; ?><!--">-->
+<!--                                <input type="radio" id="tipe_kamar4" name="tipe_kamar" value="Kelas III" --><?php //echo $row['tipe_kamar'] == 'Kelas III' ? 'checked':''; ?><!-->
+<!--                            </label> -->
+<!--                        </div>-->
+<!--                    </div>-->
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-calendar"></i>
                         </span>
                         <input type="date" id="tanggal_checkin" readonly name="tanggal_checkin" placeholder="Tanggal Check In" value="<?php echo $row['tanggal_checkin']?>" class="form-control input-lg" required style="width: 50%;" />
-                        <input type="date" id="tanggal_checkout" readonly name="tanggal_checkout" placeholder="Tanggal Check Out" value="<?php echo $row['tanggal_checkout']?>" class="form-control input-lg" required style="width: 50%;"/>
+                        <input type="date" id="tanggal_checkout"  name="tanggal_checkout" placeholder="Tanggal Check Out" value="<?php echo $row['tanggal_checkout']?>" class="form-control input-lg" required style="width: 50%;"/>
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-calendar"></i>
                         </span>
@@ -83,7 +103,7 @@ if (isset($_GET)) {
 
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-check"></i>
+                            <i >Keluhan</i>
                         </span>
                         <input type="text" name="keluhan" readonly placeholder="Keluhan" value="<?php echo $row['keluhan']?>" class="form-control input-lg" required />
                     </div>
@@ -111,13 +131,13 @@ if (isset($_GET)) {
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <table class="tabel table-bordered table-responsive">
+                    <table id="datatable" class="display stripe">
                         <thead>
-                        <th>No</th>
-                        <th>Dokter</th>
-                        <th>Tanggal</th>
-                        <th>Tindakan</th>
-                        <th>Hasil</th>
+                            <th>No</th>
+                            <th>Dokter</th>
+                            <th>Tanggal</th>
+                            <th>Tindakan</th>
+                            <th>Hasil</th>
                         </thead>
                         <tbody>
                         <?php
@@ -156,12 +176,12 @@ if (isset($_GET)) {
                 <form name="ubah_pri" id="ubah_pri" method="POST" action="dokter/aksi_tambah_tindakan.php ">
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-user"></i>
+                            <i class="glyphicon glyphicon-pencil"></i>
                         </span>
                         <input type="hidden" value="<?php echo $id_ubah; ?>" name="id_ri" />
                         <input type="hidden" value="<?php echo $row['id_ri']; ?>" name="id_ri" readonly id="id_pasien_hidden" />
                         <input type="hidden" value="<?php echo $row['id_pasien']; ?>" name="id_pasien" readonly id="id_pasien_hidden" />
-                        <input type="text" value="<?php echo $row['nama_pasien']; ?>" readonly class="form-control input-lg" placeholder="Masukan ID / Nama Pasien" required autocomplete="off" />
+                        <input type="hidden" value="<?php echo $row['nama_pasien']; ?>" readonly class="form-control input-lg" placeholder="Masukan ID / Nama Pasien" required autocomplete="off" />
                         <input type="hidden" value="<?php echo $_SESSION['id_user']; ?>" name="id_dokter" readonly class="form-control input-lg" placeholder="Masukan ID / Nama Pasien" required autocomplete="off" />
                     </div>
 
