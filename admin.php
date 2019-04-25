@@ -92,6 +92,14 @@ if ($_SESSION['hak_akses'] == 'Admin') {
                                                     echo mysqli_num_rows($hitung_user);
                                                     ?></span></a>
                 </li>
+                <li <?php if (isset($_GET['view'])) {
+                    echo $_GET['view'] == 'tampil_laporan' || $_GET['view'] == 'tampil_ubah_laporan' ? 'class="active"' : '';} ?>><a href="admin.php?view=tampil_laporan">Laporan &nbsp;
+<!--                        <span class="label label-success" style="border-radius: 50px;">-->
+<!--                                                    --><?php
+//                                                    $hitung_user = mysqli_query($db_handle,"select * from tbl_user");
+//                                                    echo mysqli_num_rows($hitung_user);
+//                                                    ?><!--</span></a>-->
+                </li>
             </ul>
             <p class="navbar-text navbar-right"><?php echo $_SESSION['username']; ?> login sebagai <?php echo $_SESSION['hak_akses']; ?> | <a class="btn btn-default btn-xs" href="logout.php"><i class="glyphicon glyphicon-off"></i> Logout</a>  &nbsp;</p>
         </div>

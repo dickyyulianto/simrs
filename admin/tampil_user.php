@@ -4,6 +4,11 @@
     <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#tambahModal">
         <i class="glyphicon glyphicon-plus-sign"></i> Tambah Data User
     </button>
+
+    <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#cetakModal">
+        <i class="glyphicon glyphicon-plus-sign"></i> Cetak Data User
+    </button>
+
 </div>
 <br>
 <table id="datatable" class="display stripe">
@@ -125,4 +130,75 @@
         });
     });
 </script>
+
+
+<!---------------------------- cetak ------------------------->
+<div class="modal fade" id="cetakModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
+                <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Cetak Data User</h4>
+            </div>
+            <table border="1" style="width: 100%">
+                <tr>
+                    <th>No</th>
+                    <th>ID User</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Status</th>
+                    <th>Hak Akses</th>
+                    <th>Grup</th>
+                </tr>
+                <tbody>
+                <?php
+                $query = "SELECT * FROM tbl_user order by id_user desc";
+                $result = mysqli_query($db_handle, $query);
+                if (mysqli_num_rows($result)) {
+                    $no = 1;
+                    while ($row = mysqli_fetch_array($result)) {
+                        ?>
+                        <tr>
+                            <td><?php echo $no; ?> </td>
+                            <td><?php echo $row['id_user']; ?> </td>
+                            <td><?php echo $row['username']; ?> </td>
+                            <td><?php echo $row['password']; ?> </td>
+                            <td><?php echo $row['status']; ?> </td>
+                            <td><?php echo $row['hak_akses']; ?> </td>
+                            <td><?php echo $row['grup']; ?> </td>
+                        </tr>
+                        <?php
+                        $no ++;
+                    }
+                } else {
+                    echo"kosong";
+                }
+                ?>
+                </tbody>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="cetak"><i class="glyphicon glyphicon-print"></i>  Cetak </button>
+            </div>
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    $("#cetak").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "admin/aksi_cetak_user.php",
+            data: $('form#cetak_user').serialize(),
+            success: function (msg) {
+                $("#cetakModal").modal('hide');
+                location.href = 'admin.php?view=tampil_user';
+
+            },
+            error: function () {
+                alert("Gagal mencetak data user ");
+            }
+        });
+    });
+</script>
+
 

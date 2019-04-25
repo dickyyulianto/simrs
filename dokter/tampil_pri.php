@@ -19,7 +19,7 @@
 <?php
 $queryselect = "SELECT * FROM tbl_pri, tbl_pasien where
             tbl_pri.id_pasien = tbl_pasien.id_pasien order by 
-            tbl_pri.id_ri desc";
+            tbl_pri.id_ri desc ";
 $resultselect = mysqli_query($db_handle, $queryselect);
 if (mysqli_num_rows($resultselect)) {
     //echo "ada isinya";	
@@ -41,7 +41,7 @@ if (mysqli_num_rows($resultselect)) {
                 ?> </td>
             <td>
                 <?php echo "
-                <a class='btn btn-info btn-sm' href='dokter.php?view=tampil_tambah_tindakan&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i> Periksa</a> | 
+                <a class='btn btn-info btn-sm' href='dokter.php?view=tampil_tambah_tindakan&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i> Periksa</a> 
                 "; ?>
             </td>
 

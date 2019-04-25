@@ -4,6 +4,10 @@
     <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#tambahModal">
         <i class="glyphicon glyphicon-plus-sign"></i> Tambah Data Dokter
     </button>
+    <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#cetakModal">
+        <i class="glyphicon glyphicon-plus-sign"></i> Cetak Data Dokter
+    </button>
+
 </div>
 <br>
 <table id="datatable" class="display stripe">
@@ -103,6 +107,70 @@
             },
             error: function () {
                 alert("Gagal menambah dokter baru");
+            }
+        });
+    });
+</script>
+<!---------------------------- cetak ------------------------->
+<div class="modal fade" id="cetakModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
+                <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Cetak Data User</h4>
+            </div>
+            <table border="1" style="width: 100%">
+                <tr>
+                    <th>No</th>
+                    <th>ID Dokter</th>
+                    <th>Nama Dokter</th>
+                    <th>Departemen</th>
+                    <th>Jadwal Praktik</th>
+                </tr>
+                <tbody>
+                <?php
+                $query = "SELECT * FROM tbl_dokter order by id_user desc";
+                $result = mysqli_query($db_handle, $query);
+                if (mysqli_num_rows($result)) {
+                    $no = 1;
+                    while ($row = mysqli_fetch_array($result)) {
+                        ?>
+                        <tr>
+                            <td><?php echo $no; ?> </td>
+                            <td><?php echo $row['id_user']; ?> </td>
+                            <td><?php echo $row['nama_dokter']; ?> </td>
+                            <td><?php echo $row['departemen']; ?> </td>
+                            <td><?php echo $row['jadwal_praktik']; ?> </td>
+                        </tr>
+                        <?php
+                        $no ++;
+                    }
+                } else {
+                    echo"kosong";
+                }
+                ?>
+                </tbody>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" id="cetak"><i class="glyphicon glyphicon-print"></i>  Cetak </button>
+                </div>
+        </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    $("#cetak").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "admin/aksi_cetak_dokter.php",
+            data: $('form#cetak_dokter').serialize(),
+            success: function (msg) {
+                $("#cetakModal").modal('hide')
+                location.href = 'admin.php?view=tampil_dokter';
+                ;
+            },
+            error: function () {
+                alert("Gagal mencetak data dokter ");
             }
         });
     });
