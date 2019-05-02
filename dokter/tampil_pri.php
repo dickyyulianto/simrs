@@ -17,7 +17,7 @@
         <th>Aksi</th>
     </thead>
 <?php
-$queryselect = "SELECT * FROM tbl_pri, tbl_pasien where
+$queryselect = "SELECT * FROM tbl_pri inner join tbl_tarif_ri on tbl_pri.id_tarif_ri = tbl_tarif_ri.id_tarif_ri, tbl_pasien where
             tbl_pri.id_pasien = tbl_pasien.id_pasien order by 
             tbl_pri.id_ri desc ";
 $resultselect = mysqli_query($db_handle, $queryselect);
@@ -29,7 +29,7 @@ if (mysqli_num_rows($resultselect)) {
         <tr>
             <td><?php echo $no; ?> </td>
             <td><?php echo $row['nama_pasien']; ?> </td>
-            <td><?php echo $row['id_ruang']; ?> </td>
+            <td><?php echo $row['tipe_kamar']; ?> </td>
             <td><?php echo $row['tanggal_checkin']; ?> </td>
             <td><?php echo $row['keluhan']; ?> </td>
             <td><?php
