@@ -1,9 +1,6 @@
 <div align="center">
     <h1><label class="label label-info">Data Pasien Rawat Jalan</label></h1>
-    <br>
-    <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#tambahModal">
-        <i class="glyphicon glyphicon-plus-sign"></i> Tambah Pasien Rawat Jalan
-    </button>
+
 </div>
 <br>
 <table id="datatable" class="display stripe">
@@ -12,7 +9,10 @@
     <th>Pasien</th>
     <th>Departemen</th>
     <th>Tanggal</th>
-    <!--<th>Pembayaran</th>-->
+    <th>Biaya</th>
+    <th>Harga Obat</th>
+    <th>Total</th>
+    <th>Pembayaran</th>
     <th>Aksi</th>
 </thead>
 <?php
@@ -30,15 +30,17 @@ if (mysqli_num_rows($resultselect)) {
             <td><?php echo $row['nama_pasien']; ?> </td>
             <td><?php echo $row['departemen']; ?> </td>
             <td><?php echo $row['tanggal']; ?> </td>
-            <!--<td><?php
+            <td><?php echo $row['biaya']; ?> </td>
+            <td><?php echo $row['harga_resep']; ?> </td>
+            <td><?php echo $row['biaya'] + $row['harga_resep']; ?> </td>
+            <td><?php
                 if ($row['bayar'] >= $row['biaya']) {
                     echo "<span class='label label-success'>SELESAI</span>";
                 } else {
                     echo "<span class='label label-danger'>BELUM</span>";
                 };
-                ?></td>-->
-            <td><?php echo "<a class='btn btn-info btn-sm' href='front-office.php?view=tampil_ubah_prj&no_rj=" . $row['no_rj'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
-                    <a class='btn btn-danger btn-sm' href='front-office.php?view=aksi_hapus_prj&no_rj=" . $row['no_rj'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien rawat jalan tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>";
+                ?></td>
+            <td><?php echo "<a class='btn btn-info btn-sm' href='kasir.php?view=tampil_ubah_prj&no_rj=" . $row['no_rj'] . "'><i class='glyphicon glyphicon-edit'></i></a>";
                 ?></td>
 
         </tr>
@@ -54,10 +56,20 @@ if (mysqli_num_rows($resultselect)) {
 <th>Pasien</th>
 <th>Departemen</th>
 <th>Tanggal</th>
-<!--<th>Pembayaran</th>-->
+<th>Biaya</th>
+<th>Harga Obat</th>
+<th>Total</th>
+<th>Pembayaran</th>
 <th>Aksi</th>
 </tfoot>
 </table>
+
+<div>
+    <br>
+    <a class="btn btn-primary btn-large" href="kasir.php?view=tampil_arsip_prj">
+        <i class="glyphicon glyphicon-eye-open"></i> Arsip Pasien Rawat Jalan
+    </a>
+</div>
 
 <!---------------------------- tambah ------------------------->
 <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -67,7 +79,7 @@ if (mysqli_num_rows($resultselect)) {
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
                 <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Tambah Pasien Rawat Jalan</h4>
-            </div> 
+            </div>
             <div class="modal-body">
                 <form name="tambah_prj" id="tambah_prj" method="POST">
 

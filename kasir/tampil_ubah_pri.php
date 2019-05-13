@@ -3,7 +3,7 @@ if (isset($_GET)) {
     include 'konfig.php';
     $id_ubah = $_GET['id_ri'];
     $query = "SELECT * FROM tbl_pri, tbl_pasien, tbl_tarif_ri where "
-            . "tbl_pri.id_pasien = tbl_pasien.id_pasien and tbl_tarif_ri.id_tarif_ri = tbl_pri.id_tarif_ri and "
+            . "tbl_pri.id_pasien = tbl_pasien.id_pasien and tbl_tarif_ri.id_tarif_ri = tbl_pri.id_ruang and "
             . "tbl_pri.id_ri = '$id_ubah'";
     $result = mysqli_query($db_handle, $query) or die(mysqli_error($db_handle));
     if (mysqli_num_rows($result)) {
@@ -74,8 +74,8 @@ if (isset($_GET)) {
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-calendar"></i>
                         </span>
-                        <input type="date" id="tanggal_checkin" name="tanggal_checkin" placeholder="Tanggal Check In" value="<?php echo $row['tanggal_checkin']?>" class="form-control input-lg" required style="width: 100%;" />
-                        <input type="hidden" id="tanggal_checkout" name="tanggal_checkout" placeholder="Tanggal Check Out" value="<?php echo $row['tanggal_checkout']?>" class="form-control input-lg" required style="width: 50%;"/>
+                        <input type="date" id="tanggal_checkin" name="tanggal_checkin" placeholder="Tanggal Check In" value="<?php echo $row['tanggal_checkin']?>" class="form-control input-lg" required style="width: 50%;" />
+                        <input type="date" id="tanggal_checkout" name="tanggal_checkout" placeholder="Tanggal Check Out" value="<?php echo $row['tanggal_checkout']?>" class="form-control input-lg" required style="width: 50%;"/>
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-calendar"></i>
                         </span>
@@ -93,10 +93,20 @@ if (isset($_GET)) {
                     <div class="input-group input-lg" align="center">
 
                         <span class="input-group-addon">Ruang</span>
-                        <input type="text" value="<?php echo $row['id_tarif_ri']?>" name="id_ruang" id="id_ruang" class="form-control input-lg" readonly="" required="" style="width: 100%;text-align:center;font-size: 30;"   />
-
+                        <input type="text" value="<?php echo $row['id_ruang']?>" name="id_ruang" id="id_ruang" class="form-control input-lg" readonly="" required="" style="width: 50%;text-align:center;font-size: 30;"   />
+                        <input type="text" value="<?php echo $row['hari_menginap']?>" name="hari_menginap" id="hari_menginap" class="form-control input-lg" readonly="" required="" style="width: 50%;text-align:center;font-size: 30;"/> 
+                        <span class="input-group-addon">hari</span>
                     </div>
-
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">Rp</span>
+                        <input type="text" id="biaya" name="biaya" placeholder="Biaya" class="form-control input-lg" value="<?php echo $row['biaya']?>" readonly required style="font-size: 25px;" />
+                        <span class="input-group-addon">,-</span>
+                    </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">Rp</span>
+                        <input type="text" name="bayar" placeholder="Bayar" class="form-control input-lg" value="<?php echo $row['bayar']?>" required style="font-size: 25px;" />
+                        <span class="input-group-addon">,-</span>
+                    </div>  
                     <div align="center">
                         <button type="reset" class="btn btn-inverse btn-lg"><i class="glyphicon glyphicon-refresh"></i> Reset </button>
                         <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>

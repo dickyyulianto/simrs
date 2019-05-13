@@ -12,12 +12,15 @@
     <th>Pasien</th>
     <th>Departemen</th>
     <th>Tanggal</th>
-    <!--<th>Pembayaran</th>-->
+    <th>Biaya</th>
+    <th>Harga Obat</th>
+    <th>Total</th>
+    <th>Pembayaran</th>
     <th>Aksi</th>
 </thead>
 <?php
 $queryselect = "SELECT * FROM tbl_prj, tbl_pasien where
-            tbl_prj.id_pasien = tbl_pasien.id_pasien and tbl_prj.bayar IS NULL order by 
+            tbl_prj.id_pasien = tbl_pasien.id_pasien and tbl_prj.bayar > 0 order by 
             tbl_prj.no_rj desc";
 $resultselect = mysqli_query($db_handle, $queryselect);
 if (mysqli_num_rows($resultselect)) {
@@ -30,13 +33,16 @@ if (mysqli_num_rows($resultselect)) {
             <td><?php echo $row['nama_pasien']; ?> </td>
             <td><?php echo $row['departemen']; ?> </td>
             <td><?php echo $row['tanggal']; ?> </td>
-            <!--<td><?php
+            <td><?php echo $row['biaya']; ?> </td>
+            <td><?php echo $row['harga_resep']; ?> </td>
+            <td><?php echo $row['biaya'] + $row['harga_resep']; ?> </td>
+            <td><?php
                 if ($row['bayar'] >= $row['biaya']) {
                     echo "<span class='label label-success'>SELESAI</span>";
                 } else {
                     echo "<span class='label label-danger'>BELUM</span>";
                 };
-                ?></td>-->
+                ?></td>
             <td><?php echo "<a class='btn btn-info btn-sm' href='front-office.php?view=tampil_ubah_prj&no_rj=" . $row['no_rj'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
                     <a class='btn btn-danger btn-sm' href='front-office.php?view=aksi_hapus_prj&no_rj=" . $row['no_rj'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien rawat jalan tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>";
                 ?></td>
@@ -54,7 +60,10 @@ if (mysqli_num_rows($resultselect)) {
 <th>Pasien</th>
 <th>Departemen</th>
 <th>Tanggal</th>
-<!--<th>Pembayaran</th>-->
+<th>Biaya</th>
+<th>Harga Obat</th>
+<th>Total</th>
+<th>Pembayaran</th>
 <th>Aksi</th>
 </tfoot>
 </table>
