@@ -33,6 +33,8 @@ if (mysqli_num_rows($result)) {
             header("location:admin.php?view=tampil_dokter");
         } elseif ($_SESSION['hak_akses'] == "Apoteker") {
             header("location:apoteker.php?view=tampil_prj");
+        elseif ($_SESSION['hak_akses'] == "Kasir") {
+            header("location:kasir.php?view=tampil_kasir");
         } else {
             echo '<script>href.location</script>';
             session_destroy();
