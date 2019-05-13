@@ -8,36 +8,17 @@
 
 <ul class="thumbnails">
     <li class="span3">
-        <a data-toggle="modal" href="#lapPenyakit" class="thumbnail">
-            <img src="images/lap_1.png" alt="">
+        <a  href="" class="thumbnail">
+            <h1 align="center">Laporan Data Pasien</h1>
         </a>
     </li>
     <li class="span3">
-        <a data-toggle="modal" href="#lapKonsep" class="thumbnail">
-            <img src="images/lap_2.png" alt="">
-        </a>
-    </li>
-    <li class="span3">
-        <a data-toggle="modal" href="#lapPeriksa" class="thumbnail">
-            <img src="images/lap_6.png" alt="">
-        </a>
-    </li>
-
-    <li class="span3">
-        <a data-toggle="modal" href="#lapObat" class="thumbnail">
-            <img src="images/lap_4.png" alt="">
+        <a href="" class="thumbnail">
+            <h1 align="center">Laporan Data Rawat Jalan</h1>
         </a>
     </li>
 
 </ul>
-<ul class="thumbnails">
 
-    <li class="span3">
-        <a data-toggle="modal" href="#lapRm" class="thumbnail">
-            <img src="images/lap_5.png" alt="">
-        </a>
-    </li>
-</ul>
-<br>
 
 

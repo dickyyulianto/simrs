@@ -21,13 +21,14 @@ if (isset($_SESSION['hak_akses']) == null) {
                 }
 
             </style>
-            <title>Login Sistem Informasi Rumah Sakit ( Sirusak )</title>
+            <title>Login Sistem Informasi Rekam Medis RSUD NAS </title>
         </head>
         <body>
             <div align="center">
                 <br>
-                <h1><label class="label label-info">Sistem Informasi Rumah Sakit ( SIRUSAK )</label></h1>
-                
+                <h1><label class="label label-info">Sistem Informasi Rekam Medis </label></h1>
+                <h1><label class="label label-info">RSUD </label></h1>
+                <h1><label class="label label-info">Nyi Ageng Serang </label></h1>
 
                 <div align="center" style="width:320px;margin-top:5%;">
                     <form name="login_form" method="post" class="well well-lg" action="login.php" style="-webkit-box-shadow: 0px 0px 20px #888888;">

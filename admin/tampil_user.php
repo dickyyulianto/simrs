@@ -84,6 +84,8 @@
                             <i class="fa fa-sign-in"></i>
                         </span>
                         <input type="text" name="password" placeholder="Password" class="form-control input-lg" required autofocus  />
+<!--                        <input name="password" id="password" class="form-control input-lg" type="password" placeholder="Password" autocomplete="off" required autofocus />-->
+
                     </div>
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
