@@ -1,26 +1,29 @@
 <?php
 /*
 |--------------------------------------------------------------------------
-| Header Kasir
+| Header Dokter
 |--------------------------------------------------------------------------
 |
 |
 */
-include './konfig.php';
+include 'konfig.php';
 session_start();
 if ($_SESSION['hak_akses'] == 'Kasir') {
     ?>
     <html>
     <head>
-        <title>Halaman Kasir </title>
+        <title>Halaman Kasir</title>
         <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
         <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="font-awesome-4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/jquery.dataTables.min.css">
-        <link rel="stylesheet" type="text/css" media="all" href="jsdatepick-calendar/jsDatePick_ltr.min.css" />
-        <script type="text/javascript" src="jsdatepick-calendar/jsDatePick.jquery.min.1.3.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#datatable').dataTable();
+            });
+        </script>
         <style type="text/css">
             /*	#searchid
                     {
@@ -60,63 +63,71 @@ if ($_SESSION['hak_akses'] == 'Kasir') {
                 cursor:pointer;
             }
         </style>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#datatable').dataTable();
-            });
-        </script>
     </head>
 
     <body>
-    <nav class="navbar navbar-default navbar-static-top" role="navigation"  style="-webkit-box-shadow: 0px 0px 10px #888888;">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="-webkit-box-shadow: 0px 0px 10px #888888;">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Sistem Informasi Rumah Sakit</a>
         </div>
+        <p class="navbar-text"><label class="label label-info" style="font-size: 14px;">Kasir <?php echo $_SESSION['grup']; ?></label></p>
         <div>
             <ul class="nav navbar-nav">
-
                 <li <?php if (isset($_GET['view'])) {
-                    echo $_GET['view'] == 'tampil_prj' || $_GET['view'] == 'tampil_ubah_prj' ? 'class="active"' : '';
-                } ?>><a href="apoteker.php?view=tampil_prj">Pasien Rawat Jalan &nbsp;
-                        <span class="label label-info" style="border-radius: 50px;">
+                    echo $_GET['view'] == 'tampil_prj' || $_GET['view'] == 'ubah_prj' ? 'class="active"' : '';
+                } ?>><a href="?view=tampil_prj">Pasien Rawat Jalan &nbsp;
+                        <span class="label label-warning" style="border-radius: 50px;">
                                     <?php
                                     $hitung_pri = mysqli_query($db_handle,"select * from tbl_prj");
                                     echo mysqli_num_rows($hitung_pri);
-                                    ?>
+                                    ?></span></a>
                 </li>
-
+                <li <?php if (isset($_GET['view'])) {
+                    echo $_GET['view'] == 'tampil_pri' || $_GET['view'] == 'tampil_ubah_pri' ? 'class="active"' : '';
+                } ?>><a href="?view=tampil_pri">Pasien Rawat Inap &nbsp;
+                        <span class="label label-warning" style="border-radius: 50px;">
+                                                <?php
+                                                $hitung_pri = mysqli_query($db_handle,"select * from tbl_pri");
+                                                echo mysqli_num_rows($hitung_pri);
+                                                ?>
+                                            </span></a>
+                </li>
             </ul>
-            <p class="navbar-text navbar-right"><?php echo $_SESSION['username']; ?> login sebagai <?php echo $_SESSION['hak_akses']; ?> | <a class="btn btn-default btn-xs" href="logout.php"><i class="glyphicon glyphicon-off"></i> Logout</a>  &nbsp;</p>
-        </div>
 
+
+            <p class="navbar-text navbar-right"><?php echo $_SESSION['username']; ?> login sebagai Kasir <?php echo $_SESSION['grup']; ?> | <a class="btn btn-default btn-xs" href="logout.php"><i class="glyphicon glyphicon-off"></i> Logout</a>  &nbsp;</p>
+        </div>
 
     </nav>
     <div class="container">
-        <div class="col-lg-12">
+        <div class="col-sm-12">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <?php
                     if (isset($_GET['view'])) {
                         $view = $_GET['view'];
-                        include 'apoteker/' . $view . '.php';
+                        include 'kasir/' . $view . '.php';
                     } else {
-                        header("location:apoteker.php?view=tampil_prj");
+                        $_GET['view'] = 'tampil_prj';
                     }
                     ?>
                 </div>
             </div>
         </div>
-
         <footer align="center">
 
         </footer>
+
     </body>
 
     </html>
     <?php
 } else {
     echo "<script>
-                                        alert('Forbidden access');
-                                        location.href='index.php';
-                                        </script>"; exit();} ?>
+        alert('Forbidden access');
+	location.href='index.php';
+	</script>";
+    exit();
+}
+?>
 

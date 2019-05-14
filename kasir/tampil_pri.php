@@ -8,18 +8,18 @@
 <br>
 <table id="datatable" class="display stripe">
     <thead>
-    <th>No</th>
-    <th>Pasien</th>
-    <th>Kamar</th>
-    <th>Check in</th>
-<!--    <th>Check out</th>-->
-    <th>Keluhan</th>
-    <th>Aksi</th>
-</thead>
+        <th>No</th>
+        <th>Pasien</th>
+        <th>Kamar</th>
+        <th>Check in</th>
+        <th>Keluhan</th>
+        <th>Pembayaran</th>
+        <th>Aksi</th>
+    </thead>
 <?php
 $queryselect = "SELECT * FROM tbl_pri inner join tbl_tarif_ri on tbl_pri.id_tarif_ri = tbl_tarif_ri.id_tarif_ri, tbl_pasien where
             tbl_pri.id_pasien = tbl_pasien.id_pasien order by 
-            tbl_pri.id_ri desc";
+            tbl_pri.id_ri desc ";
 $resultselect = mysqli_query($db_handle, $queryselect);
 if (mysqli_num_rows($resultselect)) {
     //echo "ada isinya";	
@@ -32,16 +32,18 @@ if (mysqli_num_rows($resultselect)) {
             <td><?php echo $row['tipe_kamar']; ?> </td>
             <td><?php echo $row['tanggal_checkin']; ?> </td>
             <td><?php echo $row['keluhan']; ?> </td>
-<!--            <td>--><?php
-//                if ($row['bayar'] >= $row['biaya']) {
-//                    echo "<span class='label label-success'>SELESAI</span>";
-//                } else {
-//                    echo "<span class='label label-danger'>BELUM</span>";
-//                };
-//                ?><!-- </td>-->
-            <td><?php echo "<a class='btn btn-info btn-sm' href='front-office.php?view=tampil_ubah_pri&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
-                            <a class='btn btn-danger btn-sm' href='front-office.php?view=aksi_hapus_pri&id_ri=" . $row['id_ri'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien rawat inap tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>";
-                ?></td>
+            <td><?php
+                if ($row['bayar'] >= $row['biaya']) {
+                    echo "<span class='label label-success'>SELESAI</span>";
+                } else {
+                    echo "<span class='label label-danger'>BELUM</span>";
+                };
+                ?> </td>
+            <td>
+                <?php echo "
+                <a class='btn btn-info btn-sm' href='dokter.php?view=tampil_tambah_tindakan&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i> Periksa</a> 
+                "; ?>
+            </td>
 
         </tr>
         <?php
@@ -56,8 +58,8 @@ if (mysqli_num_rows($resultselect)) {
 <th>Pasien</th>
 <th>Kamar</th>
 <th>Check in</th>
-<!--<th>Check out</th>-->
-<th>Keluhan</th>
+<th>Check out</th>
+<th>Pembayaran</th>
 <th>Aksi</th>
 </tfoot>
 </table>
@@ -130,8 +132,8 @@ if (mysqli_num_rows($resultselect)) {
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-calendar"></i>
                         </span>
-                        <input type="date" id="tanggal_checkin" name="tanggal_checkin" placeholder="Tanggal Check In" class="form-control input-lg" required style="width: 100%;" />
-                        <input type="hidden" id="tanggal_checkout" name="tanggal_checkout" placeholder="Tanggal Check Out" class="form-control input-lg" required style="width: 50%;"/>
+                        <input type="date" id="tanggal_checkin" name="tanggal_checkin" placeholder="Tanggal Check In" class="form-control input-lg" required style="width: 50%;" />
+                        <input type="date" id="tanggal_checkout" name="tanggal_checkout" placeholder="Tanggal Check Out" class="form-control input-lg" required style="width: 50%;"/>
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-calendar"></i>
                         </span>
@@ -149,20 +151,20 @@ if (mysqli_num_rows($resultselect)) {
                     <div class="input-group input-lg" align="center">
 
                         <span class="input-group-addon">Ruang</span>
-                        <input type="text" value="" name="id_ruang" id="id_ruang" class="form-control input-lg" readonly="" required="" style="width: 100%;text-align:center;font-size: 30;"   />
-<!--                        <input type="text" value="" name="hari_menginap" id="hari_menginap" class="form-control input-lg" readonly="" required="" style="width: 50%;text-align:center;font-size: 30;"/> -->
-<!--                        <span class="input-group-addon">hari</span>-->
+                        <input type="text" value="" name="id_ruang" id="id_ruang" class="form-control input-lg" readonly="" required="" style="width: 50%;text-align:center;font-size: 30;"   />
+                        <input type="text" value="" name="hari_menginap" id="hari_menginap" class="form-control input-lg" readonly="" required="" style="width: 50%;text-align:center;font-size: 30;"/> 
+                        <span class="input-group-addon">hari</span>
                     </div>
-<!--                    <div class="input-group input-lg">-->
-<!--                        <span class="input-group-addon">Rp</span>-->
-<!--                        <input type="text" id="biaya" name="biaya" placeholder="Biaya" class="form-control input-lg" value="" readonly required style="font-size: 25px;" />-->
-<!--                        <span class="input-group-addon">,-</span>-->
-<!--                    </div>-->
-<!--                    <div class="input-group input-lg">-->
-<!--                        <span class="input-group-addon">Rp</span>-->
-<!--                        <input type="text" name="bayar" placeholder="Bayar" class="form-control input-lg" value="" required style="font-size: 25px;" />-->
-<!--                        <span class="input-group-addon">,-</span>-->
-<!--                    </div>  -->
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">Rp</span>
+                        <input type="text" id="biaya" name="biaya" placeholder="Biaya" class="form-control input-lg" value="" readonly required style="font-size: 25px;" />
+                        <span class="input-group-addon">,-</span>
+                    </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">Rp</span>
+                        <input type="text" name="bayar" placeholder="Bayar" class="form-control input-lg" value="" required style="font-size: 25px;" />
+                        <span class="input-group-addon">,-</span>
+                    </div>  
                     <div align="center">
                         <button type="reset" class="btn btn-inverse btn-lg"><i class="glyphicon glyphicon-refresh"></i> Reset </button>
                         <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>
@@ -294,7 +296,7 @@ if (mysqli_num_rows($resultselect)) {
                 url: 'front-office/aksi_lihat_tarif_ri.php?pelayanan=' + pelayanan +
                         '&perawatan=' + perawatan + '&tipe_kamar=' + tipe_kamar,
                 success: function (respon) {
-                    console.log(respon);
+                    // console.log(respon);
                     var id = $(respon).find('#id_tarif').text();
                     var tarif = $(respon).find('#tarif').text();
 

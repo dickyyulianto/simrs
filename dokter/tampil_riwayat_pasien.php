@@ -5,17 +5,17 @@
 <table id="datatable" class="display stripe">
     <thead>
     <th>No RJ</th>
-    <th>Nama Pasien</th>
+    <th>Tanggal</th>
+    <th>Departement</th>
     <th>Keluhan</th>
     <th>Diagnosa</th>
-    <th>Tindakan</th>
-    <th>Resep</th>
-    <th>Biaya</th>
     <th>Aksi</th>
 </thead>
 <tbody>
     <?php
-    $query = "SELECT p.nama_pasien, rj.* FROM tbl_prj rj left join tbl_pasien p on rj.id_pasien=p.id_pasien left join tbl_dokter d on d.id_user = rj.id_dokter where d.nama_dokter = '" . $_SESSION['grup'] . "' order by rj.tanggal desc";
+    $id_p = $_GET['id_p'];
+    $query = "SELECT * FROM tbl_prj where id_pasien = $id_p order by tanggal desc";
+//    $query = "SELECT p.nama_pasien, rj.* FROM tbl_prj rj left join tbl_pasien p on rj.id_pasien=p.id_pasien left join tbl_dokter d on d.id_user = rj.id_dokter where d.nama_dokter = '" . $_SESSION['grup'] . "' order by rj.tanggal desc";
     $result = mysqli_query($db_handle, $query);
     if (mysqli_num_rows($result)) {
         //echo"ada isinya";	
@@ -23,16 +23,10 @@
             ?>
             <tr>
                 <td class="no_rj"><?php echo $row['no_rj']; ?> </td>
-                <td class="nama_pasien">
-                    <?php echo "
-                    <a href='dokter.php?view=tampil_riwayat_pasien&id_p=". $row['id_pasien']."'>". $row['nama_pasien']."</a>
-                    " ?>
-                </td>
+                <td class="tanggal"><?php echo $row['tanggal']; ?> </td>
+                <td class="departemen"><?php echo $row['departemen']; ?> </td>
                 <td class="keluhan"><?php echo $row['keluhan']; ?> </td>
                 <td class="diagnosa"><?php echo $row['diagnosa']; ?> </td>
-                <td class="tindakan"><?php echo $row['tindakan']; ?> </td>
-                <td class="resep"><?php echo $row['resep']; ?> </td>
-                <td class="biaya"><?php echo $row['biaya']; ?> </td>
                 <td><?php echo '<button id="' . $row['no_rj'] . '" class="btn btn-info btn-sm edit_data" data-toggle="modal" data-target="#editModal">
                 <i class="glyphicon glyphicon-edit"></i>Periksa</button>'; ?></td>
             </tr>
@@ -43,15 +37,13 @@
     }
     ?>
 </tbody>
-<tfoot>    
-    <th>No RJ</th>
-    <th>Nama Pasien</th>
-    <th>Keluhan</th>
-    <th>Diagnosa</th>
-    <th>Tindakan</th>
-    <th>Resep</th>
-    <th>Biaya</th>
-    <th>Aksi</th>
+<tfoot>
+<th>No RJ</th>
+<th>Tanggal</th>
+<th>Departement</th>
+<th>Keluhan</th>
+<th>Diagnosa</th>
+<th>Aksi</th>
 </tfoot>
 </table>
 
@@ -148,7 +140,7 @@
             var myModal = $('#editModal');
             // now get the values from the table
             var no_rj = $(this).closest('tr').find('td.no_rj').html();
-            var nama_pasien = $(this).closest('tr').find('td.nama_pasien>a').html();
+            var nama_pasien = $(this).closest('tr').find('td.nama_pasien').html();
             var keluhan = $(this).closest('tr').find('td.keluhan').html();
            //var diagnosa = $(this).closest('tr').find('td.diagnosa').html();
             //var tindakan = $(this).closest('tr').find('td.tindakan').html();

@@ -23,11 +23,7 @@
             ?>
             <tr>
                 <td class="no_rj"><?php echo $row['no_rj']; ?> </td>
-                <td class="nama_pasien">
-                    <?php echo "
-                    <a href='dokter.php?view=tampil_riwayat_pasien&id_p=". $row['id_pasien']."'>". $row['nama_pasien']."</a>
-                    " ?>
-                </td>
+                <td class="nama_pasien"><?php echo $row['nama_pasien']; ?> </td>
                 <td class="keluhan"><?php echo $row['keluhan']; ?> </td>
                 <td class="diagnosa"><?php echo $row['diagnosa']; ?> </td>
                 <td class="tindakan"><?php echo $row['tindakan']; ?> </td>
@@ -148,7 +144,7 @@
             var myModal = $('#editModal');
             // now get the values from the table
             var no_rj = $(this).closest('tr').find('td.no_rj').html();
-            var nama_pasien = $(this).closest('tr').find('td.nama_pasien>a').html();
+            var nama_pasien = $(this).closest('tr').find('td.nama_pasien').html();
             var keluhan = $(this).closest('tr').find('td.keluhan').html();
            //var diagnosa = $(this).closest('tr').find('td.diagnosa').html();
             //var tindakan = $(this).closest('tr').find('td.tindakan').html();
