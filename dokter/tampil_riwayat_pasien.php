@@ -1,5 +1,5 @@
 <div align="center">
-    <h1><label class="label label-warning">Kelola Pasien Dokter</label></h1>
+    <h1><label class="label label-warning">Riwayat Periksa Pasien </label></h1>
     <br>
 </div>
 <table id="datatable" class="display stripe">
@@ -9,7 +9,8 @@
     <th>Departement</th>
     <th>Keluhan</th>
     <th>Diagnosa</th>
-    <th>Aksi</th>
+    <th>Tindakan</th>
+    <th>Resep</th>
 </thead>
 <tbody>
     <?php
@@ -27,8 +28,9 @@
                 <td class="departemen"><?php echo $row['departemen']; ?> </td>
                 <td class="keluhan"><?php echo $row['keluhan']; ?> </td>
                 <td class="diagnosa"><?php echo $row['diagnosa']; ?> </td>
-                <td><?php echo '<button id="' . $row['no_rj'] . '" class="btn btn-info btn-sm edit_data" data-toggle="modal" data-target="#editModal">
-                <i class="glyphicon glyphicon-edit"></i>Periksa</button>'; ?></td>
+                <td class="tindakan"><?php echo $row['tindakan']; ?> </td>
+                <td class="resep"><?php echo $row['resep']; ?> </td>
+
             </tr>
             <?php
         }
@@ -43,7 +45,8 @@
 <th>Departement</th>
 <th>Keluhan</th>
 <th>Diagnosa</th>
-<th>Aksi</th>
+<th>Tindakan</th>
+<th>Resep</th>
 </tfoot>
 </table>
 

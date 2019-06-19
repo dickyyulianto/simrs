@@ -93,6 +93,14 @@ if ($_SESSION['hak_akses'] == 'Admin') {
                                                     ?></span></a>
                 </li>
                 <li <?php if (isset($_GET['view'])) {
+                    echo $_GET['view'] == 'tampil_tarif_ri' || $_GET['view'] == 'tampil_ubah_tarif_ri' ? 'class="active"' : '';} ?>><a href="admin.php?view=tampil_tarif_ri">Tarif RI &nbsp;
+                        <span class="label label-success" style="border-radius: 50px;">
+                                                    <?php
+                                                    $hitung_tarif = mysqli_query($db_handle,"select * from tbl_tarif_ri");
+                                                    echo mysqli_num_rows($hitung_tarif);
+                                                    ?></span></a>
+                </li>
+                <li <?php if (isset($_GET['view'])) {
                     echo $_GET['view'] == 'tampil_laporan' || $_GET['view'] == 'tampil_ubah_laporan' ? 'class="active"' : '';} ?>><a href="admin.php?view=tampil_laporan">Laporan &nbsp;
 <!--                        <span class="label label-success" style="border-radius: 50px;">-->
 <!--                                                    --><?php

@@ -91,8 +91,8 @@ if (mysqli_num_rows($resultselect)) {
                                 <input type="radio" id="perawatan2" name="perawatan" value="Ruang ICU"> Ruang ICU
                             </label>
                             <label class="btn btn-info">
-                                <input type="radio" id="perawatan3" name="perawatan" value="Perinatologi"> Perinatologi 
-                            </label> 
+                                <input type="radio" id="perawatan3" name="perawatan" value="Perinatologi"> Perinatologi
+                            </label>
                         </div>
                         <br>Jenis Pelayanan<br>
                         <div class="btn-group" data-toggle="buttons">

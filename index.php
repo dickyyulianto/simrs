@@ -82,7 +82,7 @@ if (isset($_SESSION['hak_akses']) == null) {
     } elseif ($_SESSION['hak_akses'] == "Admin") {
         header("location:admin.php?view=tampil_dokter");
     } elseif ($_SESSION['hak_akses'] == "Kasir") {
-        header("location:kasir.php?view=tampil_kasir");
+        header("location:kasir.php?view=tampil_prj");
     } else {
         echo 'user tidak ditemukan';
         session_destroy();

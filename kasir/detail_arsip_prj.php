@@ -3,8 +3,8 @@ if (isset($_GET)) {
     include 'konfig.php';
     $id_ubah = $_GET['no_rj'];
     $query = "SELECT * FROM tbl_prj, tbl_pasien where "
-            . "tbl_prj.id_pasien = tbl_pasien.id_pasien and "
-            . "no_rj = '$id_ubah'";
+        . "tbl_prj.id_pasien = tbl_pasien.id_pasien and "
+        . "no_rj = '$id_ubah'";
     $result = mysqli_query($db_handle, $query);
     if (mysqli_num_rows($result)) {
         while ($row = mysqli_fetch_array($result)) {
@@ -53,7 +53,7 @@ if (isset($_GET)) {
                     </div>
                     <div class="input-group input-lg">
                         <span class="input-group-addon"style="width: 20%">Pembayaran (Rp)</span>
-                        <input type="text" name="bayar" value="<?php echo $row['bayar']; ?>" placeholder="Bayar" class="form-control input-lg" value="" required />
+                        <input type="text" name="bayar" value="<?php echo $row['bayar']; ?>" placeholder="Bayar" class="form-control input-lg" value="" readonly required />
                         <span class="input-group-addon">,-</span>
                     </div>
                     <div align="center">

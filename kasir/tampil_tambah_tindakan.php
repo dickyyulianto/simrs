@@ -120,6 +120,9 @@ if (isset($_GET)) {
 <!--                        <input type="text" id="biaya" name="biaya" placeholder="Biaya" class="form-control input-lg" value="--><?php //echo $row['biaya']?><!--" readonly required style="font-size: 25px;" />-->
 <!--                        <span class="input-group-addon">,-</span>-->
 <!--                    </div>-->
+<!--                    <div align="right">-->
+<!--                        <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-check"></i> Selesai </button>-->
+<!--                    </div>-->
                 </form>
 
             </div>
@@ -138,12 +141,13 @@ if (isset($_GET)) {
                             <th>Tanggal</th>
                             <th>Tindakan</th>
                             <th>Hasil</th>
+                            <th>Biaya Tindakan</th>
                         </thead>
                         <tbody>
                         <?php
 //                        $queryselect = "SELECT * FROM tbl_tindakan WHERE id_pri = $id_ubah  ";
                         $queryselect = "select * from tbl_tindakan 
-                                         inner join tbl_dokter on tbl_tindakan.id_user=tbl_dokter.id_user";
+                                         inner join tbl_dokter on tbl_tindakan.id_user=tbl_dokter.id_user where id_pri = $id_ubah";
                         $resultselect = mysqli_query($db_handle, $queryselect );
                         if (mysqli_num_rows($resultselect)) {
                         //echo "ada isinya";
@@ -156,6 +160,7 @@ if (isset($_GET)) {
                                 <td><?php echo $tindakan['tanggal']; ?> </td>
                                 <td><?php echo $tindakan['tindakan']; ?> </td>
                                 <td><?php echo $tindakan['hasil']; ?> </td>
+                                <td><?php echo $tindakan['biaya_tindakan']; ?> </td>
                             </tr>
                             <?php
                             $no ++;
@@ -169,51 +174,58 @@ if (isset($_GET)) {
                 </div>
             </div>
 
-            <div class="row"></div>
-
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Tambah Tindakan</h4>
-            </div>
-            <div class="modal-body">
-                <form name="ubah_pri" id="ubah_pri" method="POST" action="dokter/aksi_tambah_tindakan.php ">
-                    <div class="input-group input-lg">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-pencil"></i>
-                        </span>
-                        <input type="hidden" value="<?php echo $id_ubah; ?>" name="id_ri" />
-                        <input type="hidden" value="<?php echo $row['id_ri']; ?>" name="id_ri" readonly id="id_pasien_hidden" />
-                        <input type="hidden" value="<?php echo $row['id_pasien']; ?>" name="id_pasien" readonly id="id_pasien_hidden" />
-                        <input type="hidden" value="<?php echo $row['nama_pasien']; ?>" readonly class="form-control input-lg" placeholder="Masukan ID / Nama Pasien" required autocomplete="off" />
-                        <input type="hidden" value="<?php echo $_SESSION['id_user']; ?>" name="id_dokter" readonly class="form-control input-lg" placeholder="Masukan ID / Nama Pasien" required autocomplete="off" />
-                    </div>
-
-                    <div class="input-group input-lg">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-calendar"></i>
-                        </span>
-                        <input type="date" id="tanggal" name="tanggal" placeholder="Tanggal Periksa" class="form-control input-lg" required style="width: 50%;" />
-                    </div>
-
-                    <div class="input-group input-lg">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-check"></i>
-                        </span>
-                        <textarea name="tindakan"  class="form-control input-lg" placeholder="Tindakan" id="" cols="30" rows="5"></textarea>
-                    </div>
-
-                    <div class="input-group input-lg">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-check"></i>
-                        </span>
-                        <textarea name="hasil" class="form-control input-lg" placeholder="Hasil Tindakan" id="" cols="30" rows="5"></textarea>
-                    </div>
-
-                    <div align="center">
-                        <button type="reset" class="btn btn-inverse btn-lg"><i class="glyphicon glyphicon-refresh"></i> Reset </button>
-                        <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>
-                    </div>
-                </form>
-            </div>
+<!--            <div class="row"></div>-->
+<!---->
+<!--            <div class="modal-header">-->
+<!--                <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Tambah Tindakan</h4>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <form name="ubah_pri" id="ubah_pri" method="POST" action="dokter/aksi_tambah_tindakan.php ">-->
+<!--                    <div class="input-group input-lg">-->
+<!--                        <span class="input-group-addon">-->
+<!--                            <i class="glyphicon glyphicon-pencil"></i>-->
+<!--                        </span>-->
+<!--                        <input type="hidden" value="--><?php //echo $id_ubah; ?><!--" name="id_ri" />-->
+<!--                        <input type="hidden" value="--><?php //echo $row['id_ri']; ?><!--" name="id_ri" readonly id="id_pasien_hidden" />-->
+<!--                        <input type="hidden" value="--><?php //echo $row['id_pasien']; ?><!--" name="id_pasien" readonly id="id_pasien_hidden" />-->
+<!--                        <input type="hidden" value="--><?php //echo $row['nama_pasien']; ?><!--" readonly class="form-control input-lg" placeholder="Masukan ID / Nama Pasien" required autocomplete="off" />-->
+<!--                        <input type="hidden" value="--><?php //echo $_SESSION['id_user']; ?><!--" name="id_dokter" readonly class="form-control input-lg" placeholder="Masukan ID / Nama Pasien" required autocomplete="off" />-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="input-group input-lg">-->
+<!--                        <span class="input-group-addon">-->
+<!--                            <i class="glyphicon glyphicon-calendar"></i>-->
+<!--                        </span>-->
+<!--                        <input type="date" id="tanggal" name="tanggal" placeholder="Tanggal Periksa" class="form-control input-lg" required style="width: 50%;" />-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="input-group input-lg">-->
+<!--                        <span class="input-group-addon">-->
+<!--                            <i class="glyphicon glyphicon-check"></i>-->
+<!--                        </span>-->
+<!--                        <textarea name="tindakan"  class="form-control input-lg" placeholder="Tindakan" id="" cols="30" rows="5"></textarea>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="input-group input-lg">-->
+<!--                        <span class="input-group-addon">-->
+<!--                            <i class="glyphicon glyphicon-check"></i>-->
+<!--                        </span>-->
+<!--                        <textarea name="hasil" class="form-control input-lg" placeholder="Hasil Tindakan" id="" cols="30" rows="5"></textarea>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="input-group input-lg">-->
+<!--                        <span class="input-group-addon">-->
+<!--                            <i>Rp</i>-->
+<!--                        </span>-->
+<!--                        <textarea name="biaya_tindakan" class="form-control input-lg" placeholder="Biaya Tindakan" id="" cols="30" rows="1"></textarea>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div align="center">-->
+<!--                        <button type="reset" class="btn btn-inverse btn-lg"><i class="glyphicon glyphicon-refresh"></i> Reset </button>-->
+<!--                        <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
 
             
             <script type="text/javascript">

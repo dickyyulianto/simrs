@@ -45,10 +45,29 @@ if (isset($_GET)) {
                     </div>
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-tower"></i>
+                        </span>
+                        <input type="text" name="pekerjaan" value="<?php echo $row['pekerjaan']; ?>" placeholder="Pekerjaan" class="form-control input-lg" required />
+                    </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input type="text" name="nama_pj" value="<?php echo $row['nama_pj']; ?>" placeholder="Nama Penanggung Jawab" class="form-control input-lg" required autofocus  />
+                    </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-home"></i>
+                        </span>
+                        <input type="text" name="alamat_pj" value="<?php echo $row['alamat_pj']; ?>" placeholder="Alamat Penanggung Jawab" class="form-control input-lg" required />
+                    </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
                             <i class="glyphicon glyphicon-phone"></i>
                         </span>
                         <input type="text" name="no_telepon" value="<?php echo $row['no_telepon']; ?>" placeholder="Nomor Telepon" class="form-control input-lg" required />
-                    </div>   
+                    </div>
+
                     <div align="center">
                         <button type="reset" class="btn btn-inverse btn-lg"><i class="glyphicon glyphicon-refresh"></i> Reset </button>
                         <button type="submit" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>

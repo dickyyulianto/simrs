@@ -60,7 +60,7 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
-                <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Biodata Pasien Baru</h4>
+                <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Data Pasien Baru</h4>
             </div> 
             <div class="modal-body">
                 <form name="tambah_pasien" id="tambah_pasien" method="POST">
@@ -91,14 +91,33 @@
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-home"></i>
                         </span>
-                        <input type="text" name="alamat" value="" placeholder="Alamat" class="form-control input-lg" required />
+                        <input type="text" name="alamat"  placeholder="Alamat" class="form-control input-lg" required />
+                    </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-tower"></i>
+                        </span>
+                        <input type="text" name="pekerjaan"  placeholder="Pekerjaan" class="form-control input-lg" required />
+                    </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+                        <input type="text" name="nama_pj" placeholder="Nama Penanggung Jawab" class="form-control input-lg" required autofocus  />
+                    </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-home"></i>
+                        </span>
+                        <input type="text" name="alamat_pj"  placeholder="Alamat Penanggung Jawab" class="form-control input-lg" required />
                     </div>
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-phone"></i>
                         </span>
-                        <input type="text" name="no_telepon" value="" placeholder="Nomor Telepon" class="form-control input-lg" required />
-                    </div>   
+                        <input type="text" name="no_telepon"  placeholder="Nomor Telepon" class="form-control input-lg" required />
+                    </div>
+
 
                 </form>
 

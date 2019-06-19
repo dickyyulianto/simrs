@@ -120,6 +120,9 @@ if (isset($_GET)) {
 <!--                        <input type="text" id="biaya" name="biaya" placeholder="Biaya" class="form-control input-lg" value="--><?php //echo $row['biaya']?><!--" readonly required style="font-size: 25px;" />-->
 <!--                        <span class="input-group-addon">,-</span>-->
 <!--                    </div>-->
+                    <div align="right">
+                        <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-check"></i> Selesai </button>
+                    </div>
                 </form>
 
             </div>
@@ -138,12 +141,13 @@ if (isset($_GET)) {
                             <th>Tanggal</th>
                             <th>Tindakan</th>
                             <th>Hasil</th>
+                            <th>Biaya Tindakan</th>
                         </thead>
                         <tbody>
                         <?php
 //                        $queryselect = "SELECT * FROM tbl_tindakan WHERE id_pri = $id_ubah  ";
                         $queryselect = "select * from tbl_tindakan 
-                                         inner join tbl_dokter on tbl_tindakan.id_user=tbl_dokter.id_user";
+                                         inner join tbl_dokter on tbl_tindakan.id_user=tbl_dokter.id_user where id_pri = $id_ubah";
                         $resultselect = mysqli_query($db_handle, $queryselect );
                         if (mysqli_num_rows($resultselect)) {
                         //echo "ada isinya";
@@ -156,6 +160,7 @@ if (isset($_GET)) {
                                 <td><?php echo $tindakan['tanggal']; ?> </td>
                                 <td><?php echo $tindakan['tindakan']; ?> </td>
                                 <td><?php echo $tindakan['hasil']; ?> </td>
+                                <td><?php echo $tindakan['biaya_tindakan']; ?> </td>
                             </tr>
                             <?php
                             $no ++;
@@ -206,6 +211,13 @@ if (isset($_GET)) {
                             <i class="glyphicon glyphicon-check"></i>
                         </span>
                         <textarea name="hasil" class="form-control input-lg" placeholder="Hasil Tindakan" id="" cols="30" rows="5"></textarea>
+                    </div>
+
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
+                            <i>Rp</i>
+                        </span>
+                        <textarea name="biaya_tindakan" class="form-control input-lg" placeholder="Biaya Tindakan" id="" cols="30" rows="1"></textarea>
                     </div>
 
                     <div align="center">

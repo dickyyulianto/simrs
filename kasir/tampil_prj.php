@@ -40,7 +40,7 @@ if (mysqli_num_rows($resultselect)) {
                     echo "<span class='label label-danger'>BELUM</span>";
                 };
                 ?></td>
-            <td><?php echo "<a class='btn btn-info btn-sm' href='kasir.php?view=tampil_ubah_prj&no_rj=" . $row['no_rj'] . "'><i class='glyphicon glyphicon-edit'></i></a>";
+            <td><?php echo "<a class='btn btn-info btn-sm' href='kasir.php?view=tampil_ubah_prj&no_rj=" . $row['no_rj'] . "'><i class='glyphicon glyphicon-edit'></i>Pembayaran</a>";
                 ?></td>
 
         </tr>

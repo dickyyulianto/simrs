@@ -1,7 +1,7 @@
 <?php
 /*
 |--------------------------------------------------------------------------
-| Header Dokter
+| Header Kasir
 |--------------------------------------------------------------------------
 |
 |
@@ -70,7 +70,7 @@ if ($_SESSION['hak_akses'] == 'Kasir') {
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Sistem Informasi Rumah Sakit</a>
         </div>
-        <p class="navbar-text"><label class="label label-info" style="font-size: 14px;">Kasir <?php echo $_SESSION['grup']; ?></label></p>
+        <p class="navbar-text"><label class="label label-info" style="font-size: 14px;"> <?php echo $_SESSION['grup']; ?></label></p>
         <div>
             <ul class="nav navbar-nav">
                 <li <?php if (isset($_GET['view'])) {

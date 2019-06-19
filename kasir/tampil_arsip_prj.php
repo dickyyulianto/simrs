@@ -1,9 +1,9 @@
 <div align="center">
-    <h1><label class="label label-info">Data Pasien Rawat Jalan</label></h1>
+    <h1><label class="label label-info">Arsip Pasien Rawat Jalan</label></h1>
     <br>
-    <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#tambahModal">
-        <i class="glyphicon glyphicon-plus-sign"></i> Tambah Pasien Rawat Jalan
-    </button>
+<!--    <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#tambahModal">-->
+<!--        <i class="glyphicon glyphicon-plus-sign"></i> Tambah Pasien Rawat Jalan-->
+<!--    </button>-->
 </div>
 <br>
 <table id="datatable" class="display stripe">
@@ -43,8 +43,8 @@ if (mysqli_num_rows($resultselect)) {
                     echo "<span class='label label-danger'>BELUM</span>";
                 };
                 ?></td>
-            <td><?php echo "<a class='btn btn-info btn-sm' href='front-office.php?view=tampil_ubah_prj&no_rj=" . $row['no_rj'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
-                    <a class='btn btn-danger btn-sm' href='front-office.php?view=aksi_hapus_prj&no_rj=" . $row['no_rj'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien rawat jalan tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>";
+            <td><?php echo "<a class='btn btn-info btn-sm' href='kasir.php?view=detail_arsip_prj&no_rj=" . $row['no_rj'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
+                    <a class='btn btn-danger btn-sm' href='kasir.php?view=aksi_hapus_prj&no_rj=" . $row['no_rj'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien rawat jalan tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>";
                 ?></td>
 
         </tr>

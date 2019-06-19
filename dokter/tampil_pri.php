@@ -1,9 +1,9 @@
 <div align="center">
     <h1><label class="label label-warning">Data Pasien Rawat Inap</label></h1>
     <br>
-    <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#tambahModal">
-        <i class="glyphicon glyphicon-plus-sign"></i> Tambah Pasien Rawat Inap
-    </button>
+<!--    <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#tambahModal">-->
+<!--        <i class="glyphicon glyphicon-plus-sign"></i> Tambah Pasien Rawat Inap-->
+<!--    </button>-->
 </div>
 <br>
 <table id="datatable" class="display stripe">
@@ -13,7 +13,6 @@
         <th>Kamar</th>
         <th>Check in</th>
         <th>Keluhan</th>
-        <th>Pembayaran</th>
         <th>Aksi</th>
     </thead>
 <?php
@@ -32,13 +31,14 @@ if (mysqli_num_rows($resultselect)) {
             <td><?php echo $row['tipe_kamar']; ?> </td>
             <td><?php echo $row['tanggal_checkin']; ?> </td>
             <td><?php echo $row['keluhan']; ?> </td>
-            <td><?php
-                if ($row['bayar'] >= $row['biaya']) {
-                    echo "<span class='label label-success'>SELESAI</span>";
-                } else {
-                    echo "<span class='label label-danger'>BELUM</span>";
-                };
-                ?> </td>
+<!--            <td>--><?php
+//                if ($row['bayar'] >= $row['biaya']) {
+//                    echo "<span class='label label-success'>SELESAI</span>";
+//                } else {
+//                    echo "<span class='label label-danger'>BELUM</span>";
+//                };
+//                ?><!-- -->
+<!--            </td>-->
             <td>
                 <?php echo "
                 <a class='btn btn-info btn-sm' href='dokter.php?view=tampil_tambah_tindakan&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i> Periksa</a> 
@@ -58,8 +58,7 @@ if (mysqli_num_rows($resultselect)) {
 <th>Pasien</th>
 <th>Kamar</th>
 <th>Check in</th>
-<th>Check out</th>
-<th>Pembayaran</th>
+<th>Keluhan</th>
 <th>Aksi</th>
 </tfoot>
 </table>
