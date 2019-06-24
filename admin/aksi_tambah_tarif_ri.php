@@ -7,5 +7,5 @@
  */
 include '../konfig.php';
 extract($_POST);
-$query = "insert into tbl_tarif_ri values(null,'$perawatan','$pelayanan', '$tarif', '$tipe_kamar', '$kapasitas') ";
+$query = "insert into tbl_tarif_ri values(null,'$perawatan','$pelayanan', '$tipe_kamar', '$tarif', '$kapasitas')";
 mysqli_query($db_handle, $query);

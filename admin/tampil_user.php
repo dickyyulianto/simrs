@@ -181,6 +181,7 @@
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary" id="cetak"><i class="glyphicon glyphicon-print"></i>  Cetak </button>
             </div>
+
         </div>
     </div><!-- /.modal-content -->
 </div><!-- /.modal -->
@@ -203,4 +204,62 @@
     });
 </script>
 
+<script language="javascript" type="text/javascript">
+    function printDiv(divID) {
+        //Get the HTML of div
+        var divElements = document.getElementById(divID).innerHTML;
+        //Get the HTML of whole page
+        var oldPage = document.body.innerHTML;
+
+        //Reset the page's HTML with div's HTML only
+        document.body.innerHTML =
+            "<html><head><title></title></head><body>" +
+            divElements + "</body>";
+
+        //Print Page
+        window.print();
+
+        //Restore orignal HTML
+        document.body.innerHTML = oldPage;
+    }
+</script>
+
+<main id="main">
+    <div id="printableArea">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="head-text-type1">
+
+                    <?php
+                    $query = "SELECT * FROM tbl_user order by id_user desc";
+                    $result = mysqli_query($db_handle, $query);
+                    if (mysqli_num_rows($result)) {
+                        $no = 1;
+                        while ($row = mysqli_fetch_array($result)) {
+                            ?>
+                            <tr>
+                                <td><?php echo $no; ?> </td>
+                                <td><?php echo $row['id_user']; ?> </td>
+                                <td><?php echo $row['username']; ?> </td>
+                                <td><?php echo $row['password']; ?> </td>
+                                <td><?php echo $row['status']; ?> </td>
+                                <td><?php echo $row['hak_akses']; ?> </td>
+                                <td><?php echo $row['grup']; ?> </td>
+                            </tr>
+                            <?php
+                            $no ++;
+                        }
+                    } else {
+                        echo"kosong";
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <a href="javascript:printDiv('printableArea');" class="tt-btn-type1">Cetak Invoice</a>
+</div>
 
