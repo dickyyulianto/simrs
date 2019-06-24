@@ -14,13 +14,14 @@ if (isset($_GET)) {
                 <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Data Rawat Inap</h4>
             </div> 
             <div class="modal-body">
-                <form name="ubah_pri" id="ubah_pri" method="POST" action="front-office/aksi_ubah_pri.php ">
+                <form name="ubah_pri" id="ubah_pri" method="POST" action="dokter/aksi_ubah_pri.php ">
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-user"></i>
                         </span>
                         <input type="hidden" value="<?php echo $id_ubah; ?>" name="id_ri" />
                         <input type="hidden" value="<?php echo $row['id_pasien']; ?>" name="id_pasien" readonly id="id_pasien_hidden" />
+                        <input type="hidden" value="<?php echo $row['id_tarif_ri']; ?>" name="id_tarif_ri" readonly id="id_tarif_ri_hidden" />
                         <input type="text" value="<?php echo $row['nama_pasien']; ?>" name="search" readonly class="search form-control input-lg" id="searchid" placeholder="Masukan ID / Nama Pasien" required autocomplete="off" />
                         <div id="result"></div>
                     </div>
