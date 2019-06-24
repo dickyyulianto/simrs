@@ -12,13 +12,19 @@
         <th>Check out</th>
         <th>Biaya Rawat Inap</th>
         <th>Biaya Tindakan</th>
+        <th>Total</th>
         <th>Pembayaran</th>
         <th>Aksi</th>
     </thead>
 <?php
 $queryselect = "SELECT * FROM tbl_pri inner join tbl_tarif_ri on tbl_pri.id_tarif_ri = tbl_tarif_ri.id_tarif_ri, tbl_pasien where
-            tbl_pri.id_pasien = tbl_pasien.id_pasien order by 
+            tbl_pri.id_pasien = tbl_pasien.id_pasien order by
             tbl_pri.id_ri desc ";
+//$queryselect = "SELECT * FROM tbl_pri p
+//                    inner join tbl_tarif_ri t on p.id_tarif_ri = t.id_tarif_ri
+//                    inner join tbl_tindakan d on p.id_ri = d.id_pri
+//                    , tbl_pasien where tbl_pri.id_pasien = tbl_pasien.id_pasien
+//                    order by tbl_pri.id_ri desc ";
 $resultselect = mysqli_query($db_handle, $queryselect);
 if (mysqli_num_rows($resultselect)) {
     //echo "ada isinya";	
@@ -31,8 +37,33 @@ if (mysqli_num_rows($resultselect)) {
             <td><?php echo $row['tipe_kamar']; ?> </td>
             <td><?php echo $row['tanggal_checkin']; ?> </td>
             <td><?php echo $row['tanggal_checkout']; ?> </td>
-            <td><?php echo $row['tarif']; ?> </td>
-            <td><?php echo $row['biaya_tindakan']; ?> </td>
+            <td><?php
+                $tarif = $row['tarif'];
+                echo $row['tarif'];
+                ?> </td>
+            <td>
+                <?php
+                    $id_ri = $row['id_ri'];
+                    $query = mysqli_query($db_handle, "SELECT biaya_tindakan FROM tbl_tindakan where id_pri = '$id_ri'");
+                    if (mysqli_num_rows($query)) {
+                        $biaya_tindakan = 0;
+                        while ($row = mysqli_fetch_array($query)) {
+                            $biaya_tindakan = $biaya_tindakan + $row['biaya_tindakan'];
+                        }
+                    }
+                    else {
+                        $row = mysqli_fetch_assoc($query);
+                        $biaya_tindakan = $row['biaya_tindakan'];
+                    }
+                    echo $biaya_tindakan;
+                ?>
+            </td>
+            <td>
+                <?php
+                    $total = $tarif + $biaya_tindakan;
+                echo $total;
+                ?>
+            </td>
             <td><?php
                 if ($row['bayar'] >= $row['biaya']) {
                     echo "<span class='label label-success'>SELESAI</span>";
