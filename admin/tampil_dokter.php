@@ -1,12 +1,11 @@
 <div align="center">
     <h1><label class="label label-success">Data Dokter</label></h1>
     <br>
-    <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#tambahModal">
-        <i class="glyphicon glyphicon-plus-sign"></i> Tambah Data Dokter
+    <button class="btn btn-primary btn-large noprint" data-toggle="modal" data-target="#tambahModal" noprint>
+        <i class="glyphicon glyphicon-plus-sign noprint"></i> Tambah Data Dokter
     </button>
-    <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#cetakModal">
-        <i class="glyphicon glyphicon-plus-sign"></i> Cetak Data Dokter
-    </button>
+    <button type="submit" class="btn btn-primary btn-large noprint" onclick="window.print();return false;"><i class="glyphicon glyphicon-print"></i>  Print </button>
+
 
 </div>
 <br>
@@ -152,7 +151,8 @@
                 ?>
                 </tbody>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" id="cetak"><i class="glyphicon glyphicon-print"></i>  Cetak </button>
+                    <button type="submit" class="btn btn-primary " id="cetak"><i class="glyphicon glyphicon-print"></i>  Cetak </button>
+                    <button type="submit" class="btn btn-primary btn-lg noprint" onclick="window.print();return false;"><i class="glyphicon glyphicon-print"></i>  Print </button>
                 </div>
         </div>
     </div><!-- /.modal-content -->
