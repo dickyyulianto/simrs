@@ -65,7 +65,7 @@ if (mysqli_num_rows($resultselect)) {
                 ?>
             </td>
             <td><?php
-                if ($row['bayar'] >= $row['biaya']) {
+                if ($row['bayar'] >= $total) {
                     echo "<span class='label label-success'>SELESAI</span>";
                 } else {
                     echo "<span class='label label-danger'>BELUM</span>";
@@ -73,7 +73,7 @@ if (mysqli_num_rows($resultselect)) {
                 ?> </td>
             <td>
                 <?php echo "
-                <a class='btn btn-info btn-sm' href='kasir.php?view=tampil_tambah_tindakan&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i> Pembayaran</a> 
+                <a class='btn btn-info btn-sm' href='kasir.php?view=tampil_ubah_pri&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i> Pembayaran</a> 
                 "; ?>
             </td>
 
@@ -93,6 +93,7 @@ if (mysqli_num_rows($resultselect)) {
 <th>Check out</th>
 <th>Biaya Rawat Inap</th>
 <th>Biaya Tindakan</th>
+<th>Total</th>
 <th>Pembayaran</th>
 <th>Aksi</th>
 </tfoot>

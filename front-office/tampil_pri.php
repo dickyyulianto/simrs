@@ -12,7 +12,6 @@
     <th>Pasien</th>
     <th>Kamar</th>
     <th>Check in</th>
-<!--    <th>Check out</th>-->
     <th>Keluhan</th>
     <th>Aksi</th>
 </thead>
@@ -56,7 +55,6 @@ if (mysqli_num_rows($resultselect)) {
 <th>Pasien</th>
 <th>Kamar</th>
 <th>Check in</th>
-<!--<th>Check out</th>-->
 <th>Keluhan</th>
 <th>Aksi</th>
 </tfoot>
