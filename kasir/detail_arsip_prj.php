@@ -28,8 +28,8 @@ if (isset($_GET)) {
                     </div>
                     <div class="modal-body">
                         <tr>
-                            <td> <h3> Poli      : <?php echo $row['departemen']?></h3></td>
-                            <td> <h3> Tindakan      : <?php echo $row['tindakan']?></h3></td>
+                            <td> <h3> Poli      : <?php echo $row['departemen']?></h3>
+                            <td> <h3> Tindakan  : <?php echo $row['tindakan']?></h3></td>
                             <td> <h3> Resep     : <?php echo $row['resep']?></h3></td>
                             <td> <h3> Harga Resep  : Rp. <?php echo $row['harga_resep']?></h3></td>
                             <td> <h3> Biaya Tindakan : Rp. <?php echo $row['biaya']?></h3></td>

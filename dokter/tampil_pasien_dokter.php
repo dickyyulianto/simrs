@@ -15,7 +15,7 @@
 </thead>
 <tbody>
     <?php
-    $query = "SELECT p.nama_pasien, rj.* FROM tbl_prj rj left join tbl_pasien p on rj.id_pasien=p.id_pasien left join tbl_dokter d on d.id_user = rj.id_dokter where d.nama_dokter = '" . $_SESSION['grup'] . "' order by rj.tanggal desc";
+    $query = "SELECT p.nama_pasien, rj.* FROM tbl_prj rj left join tbl_pasien p on rj.id_pasien=p.id_pasien left join tbl_dokter d on d.id_user = rj.id_dokter where d.nama_dokter = '" . $_SESSION['grup'] . "'  order by rj.tanggal desc";
     $result = mysqli_query($db_handle, $query);
     if (mysqli_num_rows($result)) {
         //echo"ada isinya";	
@@ -39,7 +39,7 @@
             <?php
         }
     } else {
-        echo"kosong";
+
     }
     ?>
 </tbody>

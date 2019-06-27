@@ -94,7 +94,7 @@ if ($_SESSION['hak_akses'] == 'Kasir') {
             </ul>
 
 
-            <p class="navbar-text navbar-right"><?php echo $_SESSION['username']; ?> login sebagai Kasir <?php echo $_SESSION['grup']; ?> | <a class="btn btn-default btn-xs" href="logout.php"><i class="glyphicon glyphicon-off"></i> Logout</a>  &nbsp;</p>
+            <p class="navbar-text navbar-right"><?php echo $_SESSION['username']; ?> login sebagai  <?php echo $_SESSION['grup']; ?> | <a class="btn btn-default btn-xs" href="logout.php"><i class="glyphicon glyphicon-off"></i> Logout</a>  &nbsp;</p>
         </div>
 
     </nav>

@@ -37,11 +37,11 @@ if (mysqli_num_rows($resultselect)) {
             <td><?php echo $row['tipe_kamar']; ?> </td>
             <td><?php echo $row['tanggal_checkin']; ?> </td>
             <td><?php echo $row['tanggal_checkout']; ?>
-            <td>
-                <?php
-                echo " <a class='btn btn-info btn-sm' href='kasir.php?view=tampil_ubah_pri&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i> Pembayaran</a> 
-                "; ?>
-            </td>
+<!--            <td>-->
+<!--                --><?php
+//                echo " <a class='btn btn-info btn-sm' href='kasir.php?view=tampil_ubah_pri&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i> Pembayaran</a>
+//                "; ?>
+<!--            </td>-->
             <td><?php
                 $tarif = $row['tarif'];
                 echo $row['tarif'];
