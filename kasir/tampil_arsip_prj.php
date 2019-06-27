@@ -43,9 +43,10 @@ if (mysqli_num_rows($resultselect)) {
                     echo "<span class='label label-danger'>BELUM</span>";
                 };
                 ?></td>
-            <td><?php echo "<a class='btn btn-info btn-sm' href='kasir.php?view=detail_arsip_prj&no_rj=" . $row['no_rj'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
-                    <a class='btn btn-danger btn-sm' href='kasir.php?view=aksi_hapus_prj&no_rj=" . $row['no_rj'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien rawat jalan tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>";
-                ?></td>
+            <td>
+                <?php echo "<a class='btn btn-info btn-sm' href='kasir.php?view=detail_arsip_prj&no_rj=" . $row['no_rj'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
+                <a class='btn btn-danger btn-sm' href='kasir.php?view=aksi_hapus_prj&no_rj=" . $row['no_rj'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien rawat jalan tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>"; ?>
+            </td>
 
         </tr>
         <?php
@@ -204,62 +205,3 @@ if (mysqli_num_rows($resultselect)) {
         });
     });
 </script>
-
-<!------------------------- lihat tarif -------------------->
-
-<!--<script type="text/javascript" language="javascript">-->
-<!--    $(document).ready(function () {-->
-<!--        $("#departemen").change(function (event) {-->
-<!--            var selectvalue = $(this).val();-->
-<!--            $.ajax({-->
-<!--                url: 'front-office/aksi_lihat_tarif_rj.php?departemen=' + selectvalue,-->
-<!--                success: function (tarif) {-->
-<!--                    document.getElementById('biaya').value = tarif;-->
-<!--                }-->
-<!--            });-->
-<!--        });-->
-<!--    });-->
-<!--</script>-->
-
-<!--<script type="text/javascript">
-    $(document).ready(function ($) {
-        var list_target_id = 'list-target'; //first select list ID
-        var list_select_id = 'list-select'; //second select list ID
-        var initial_target_html = '<option value="">Pilih Dokter</option>'; //Initial prompt for target select
-
-        $('#' + list_target_id).html(initial_target_html); //Give the target select the prompt option
-
-        $('#' + list_select_id).change(function (e) {
-            //Grab the chosen value on first select list change
-            var selectvalue = $(this).val();
-
-
-            //Display 'loading' status in the target select list
-            $('#' + list_target_id).html('<option value="">Loading...</option>');
-
-            if (selectvalue == "") {
-                //Display initial prompt in target select if blank value selected
-                $('#' + list_target_id).html(initial_target_html);
-            } else {
-                //Make AJAX request, using the selected value as the GET
-                $.ajax({url: 'ajax-get-values.php?svalue=' + selectvalue,
-                    success: function (output) {
-                        //alert(output);
-                        $('#' + list_target_id).html(output);
-                    },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        alert(xhr.status + " " + thrownError);
-                    }});
-
-                $.ajax({url: 'get-tarif-rj.php?departemen=' + selectvalue,
-                    success: function (output) {
-                        //alert(output);
-                        document.getElementById('biaya').value = output;
-                    },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        alert(xhr.status + " " + thrownError);
-                    }});
-            }
-        });
-    });
-</script>-->

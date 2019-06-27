@@ -17,8 +17,8 @@
 </thead>
 <?php
 $queryselect = "SELECT * FROM tbl_prj, tbl_pasien where
-            tbl_prj.id_pasien = tbl_pasien.id_pasien order by 
-            tbl_prj.no_rj desc";
+            tbl_prj.id_pasien = tbl_pasien.id_pasien and tbl_prj.bayar IS NULL order by 
+            tbl_prj.no_rj  desc";
 $resultselect = mysqli_query($db_handle, $queryselect);
 if (mysqli_num_rows($resultselect)) {
     //echo"ada isinya";	

@@ -5,6 +5,13 @@
         <i class="glyphicon glyphicon-plus-sign noprint"></i> Tambah Data Dokter
     </button>
     <button type="submit" class="btn btn-primary btn-large noprint" onclick="window.print();return false;"><i class="glyphicon glyphicon-print"></i>  Print </button>
+    <style>
+        @media print {
+            .noprint {
+                display: none;
+            }
+        }
+    </style>
 
 
 </div>
@@ -16,7 +23,7 @@
     <th>Nama Dokter</th>
     <th>Departemen</th>
     <th>Jadwal Praktik</th>
-    <th>Aksi</th>
+    <th class=noprint>Aksi</th>
     </thead>
     <tbody>
     <?php
@@ -32,7 +39,7 @@
                 <td><?php echo $row['nama_dokter']; ?> </td>
                 <td><?php echo $row['departemen']; ?> </td>
                 <td><?php echo $row['jadwal_praktik']; ?> </td>
-                <td><?php echo "<a class='btn btn-info btn-sm' href='admin.php?view=tampil_ubah_dokter&id_user=" . $row['id_user'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
+                <td class=noprint><?php echo "<a class='btn btn-info btn-sm' href='admin.php?view=tampil_ubah_dokter&id_user=" . $row['id_user'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
                     <a class='btn btn-danger btn-sm' href='admin.php?view=aksi_hapus_dokter&id_user=" . $row['id_user'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data dokter tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>";
                     ?></td>
             </tr>
@@ -44,7 +51,7 @@
     }
     ?>
     </tbody>
-    <tfoot>
+    <tfoot class="noprint">
     <th>No</th>
     <th>ID Dokter</th>
     <th>Nama Dokter</th>

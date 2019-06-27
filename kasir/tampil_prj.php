@@ -48,7 +48,7 @@ if (mysqli_num_rows($resultselect)) {
         $no ++;
     }
 } else {
-    echo"kosong";
+
 }
 ?>
 <tfoot>

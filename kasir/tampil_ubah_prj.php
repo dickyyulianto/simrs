@@ -16,40 +16,25 @@ if (isset($_GET)) {
                 <form name="edit_prj" id="edit_prj" method="POST" action="Kasir/aksi_ubah_prj.php">
                     <input type="hidden" name="no_rj" value="<?php echo $id_ubah; ?>"/>
                     <div class="input-group input-lg">
-                        <span class="input-group-addon">
-                            <i class="glyphicon glyphicon-user"> </i>
-                        </span>
                         <input type="hidden"  value="<?php echo $row['id_pasien']; ?>" name="id_pasien" id="id_pasien_hidden" />
-                        <input type="text" readonly value="<?php echo $row['nama_pasien']; ?>" name="search" class="search form-control input-lg" id="searchid" placeholder="Masukan ID / Nama Pasien"   />
                         <div id="result"></div>
                     </div>
-                    <div class="input-group input-lg ">
-                        <span class="input-group-addon">
-                            <i class="fa fa-hospital-o fa-lg"></i>
-                        </span>
-                        <input type="text" readonly value="<?php echo $row['departemen']; ?>" name="departemen"  id="departemen" placeholder="Departemen"  class="form-control input-lg"   />
+                    <div class="modal-header">
+                        <tr>
+                            <td> <h3> Nama Pasien   : <?php echo $row['nama_pasien']?></h3></td>
+                            <td> <h3> Alamat Pasien : <?php echo $row['alamat']?></h3></td>
+                            <td> <h3> No Hp         : <?php echo $row['no_telepon']?></h3></td>
+                        </tr>
                     </div>
-
-                    <div class="input-group input-lg">
-                        <span class="input-group-addon">Tindakan</span>
-                        <input type="text" name="keluhan" readonly value="<?php echo $row['tindakan']; ?>" placeholder="Tindakan" class="form-control input-lg" required />
-                        <span class="input-group-addon">Resep</span>
-                        <input type="text" name="diagnosa" readonly value="<?php echo $row['resep']; ?>" placeholder="Resep" class="form-control input-lg" required />
-                    </div>
-                    <div class="input-group input-lg"  style="width: 50%">
-                        <span class="input-group-addon" style="width: 50%">Biaya Tindakan (Rp)</span>
-                        <input type="text" id="biaya" value="<?php echo $row['biaya']; ?>" name="biaya" placeholder="Biaya Tindakan" class="form-control input-lg"  readonly required  />
-                        <span class="input-group-addon">,-</span>
-                    </div>
-                    <div class="input-group input-lg" style="width: 50%">
-                        <span class="input-group-addon" style="width: 50%" >Harga Obat (Rp)</span>
-                        <input type="text" id="biaya" value="<?php echo $row['harga_resep']; ?>" name="biaya" placeholder="Biaya Resep" class="form-control input-lg" value="" readonly required />
-                        <span class="input-group-addon">,-</span>
-                    </div>
-                    <div class="input-group input-lg">
-                        <span class="input-group-addon"style="width: 20%">Total Biaya (Rp)</span>
-                        <input type="text" id="biaya" value="<?php echo $row['harga_resep'] + $row['biaya']; ?>" name="biaya" placeholder="Total Biaya" class="form-control input-lg" value="" readonly required />
-                        <span class="input-group-addon">,-</span>
+                    <div class="modal-body">
+                        <tr>
+                            <td> <h3> Poli      : <?php echo $row['departemen']?></h3></td>
+                            <td> <h3> Tindakan      : <?php echo $row['tindakan']?></h3></td>
+                            <td> <h3> Resep     : <?php echo $row['resep']?></h3></td>
+                            <td> <h3> Harga Resep  : Rp. <?php echo $row['harga_resep']?></h3></td>
+                            <td> <h3> Biaya Tindakan : Rp. <?php echo $row['biaya']?></h3></td>
+                            <td> <h3 class="modal-footer"> Total Biaya  : Rp. <?php echo $row['harga_resep']+ $row['biaya']?></h3></td>
+                        </tr>
                     </div>
                     <div class="input-group input-lg">
                         <span class="input-group-addon"style="width: 20%">Pembayaran (Rp)</span>
@@ -61,7 +46,8 @@ if (isset($_GET)) {
                         <button type="submit" class="btn btn-primary btn-lg noprint" onclick="window.print();return false;"><i class="glyphicon glyphicon-print"></i>  Print </button>
                         <button type="submit" class="btn btn-primary btn-lg noprint" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>
                     </div>
-                </>
+
+                </form>
             </div>
 
             <style>

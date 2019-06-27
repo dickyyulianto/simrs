@@ -3,8 +3,8 @@ if (isset($_GET)) {
     include 'konfig.php';
     $id_ubah = $_GET['id_ri'];
     $query = "SELECT * FROM tbl_pri, tbl_pasien, tbl_tarif_ri where "
-            . "tbl_pri.id_pasien = tbl_pasien.id_pasien and tbl_tarif_ri.id_tarif_ri = tbl_pri.id_tarif_ri and "
-            . "tbl_pri.id_ri = '$id_ubah'";
+        . "tbl_pri.id_pasien = tbl_pasien.id_pasien and tbl_tarif_ri.id_tarif_ri = tbl_pri.id_tarif_ri and "
+        . "tbl_pri.id_ri = '$id_ubah'";
     $result = mysqli_query($db_handle, $query) or die(mysqli_error($db_handle));
     if (mysqli_num_rows($result)) {
         while ($row = mysqli_fetch_array($result)) {
@@ -12,7 +12,7 @@ if (isset($_GET)) {
 
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i>  Data Rawat Inap</h4>
-            </div> 
+            </div>
             <div class="modal-body">
                 <form name="ubah_pri" id="ubah_pri" method="POST" action="kasir/aksi_ubah_pri.php ">
                     <div class="input-group input-lg">
@@ -21,13 +21,13 @@ if (isset($_GET)) {
                         <div id="result"></div>
                     </div>
 
-                        <div class="modal-header">
-                            <tr>
-                                <td> <h3> Nama Pasien   : <?php echo $row['nama_pasien']?></h3></td>
-                                <td> <h3> Alamat Pasien : <?php echo $row['alamat']?></h3></td>
-                                <td> <h3> No Hp         : <?php echo $row['no_telepon']?></h3></td>
-                            </tr>
-                        </div>
+                    <div class="modal-header">
+                        <tr>
+                            <td> <h3> Nama Pasien   : <?php echo $row['nama_pasien']?></h3></td>
+                            <td> <h3> Alamat Pasien : <?php echo $row['alamat']?></h3></td>
+                            <td> <h3> No Hp         : <?php echo $row['no_telepon']?></h3></td>
+                        </tr>
+                    </div>
                     <div class="modal-body">
                         <tr>
                             <td> <h3> Perawatan      : <?php echo $row['perawatan']?></h3></td>
@@ -63,19 +63,19 @@ if (isset($_GET)) {
                                     echo $total;
                                     ?></h3>
                             </td>
-<!--                            <td><h3 class="modal-footer" a>Pembayaran : Rp. --><?php //echo $row['bayar'];?><!--</h3></td>-->
+                            <td><h3 class="modal-footer" a>Pembayaran : Rp. <?php echo $row['bayar'];?></h3></td>
                         </tr>
                     </div>
 
-                    <div class="input-group input-lg noprint" >
-                        <span class="input-group-addon">Rp</span>
-                        <input type="text" name="bayar" placeholder="Bayar" class="form-control input-lg" value="<?php echo $row['bayar']?>" required style="font-size: 25px;" />
-                        <span class="input-group-addon">,-</span>
-                    </div>
+<!--                    <div class="input-group input-lg noprint" >-->
+<!--                        <span class="input-group-addon">Rp</span>-->
+<!--                        <input type="text" name="bayar" placeholder="Bayar" class="form-control input-lg" value="--><?php //echo $row['bayar']?><!--" required style="font-size: 25px;" />-->
+<!--                        <span class="input-group-addon">,-</span>-->
+<!--                    </div>-->
 
                     <div class="noprint" align="center">
-                        <button type="reset" class="btn btn-inverse btn-lg"><i class="glyphicon glyphicon-refresh"></i> Reset </button>
-                        <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>
+                        <button type="reset" class="btn btn-inverse btn-lg"><i class="glyphicon glyphicon-refresh" href="kasir/tampil_pri.php"></i> Kembali </button>
+<!--                        <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>-->
                         <button type="submit" class="btn btn-warning btn-lg " onclick="window.print();return false;"><i class="glyphicon glyphicon-print"></i>  Print </button>
                         <style>
                             @media print {
@@ -90,7 +90,7 @@ if (isset($_GET)) {
 
             </div>
 
-            
+
             <script type="text/javascript">
                 $(function () {
                     $(".search").keyup(function ()
