@@ -78,7 +78,7 @@ if (mysqli_num_rows($resultselect)) {
                 ?> </td>
             <td>
                 <?php
-                echo " <a class='btn btn-info btn-sm' href='kasir.php?view=tampil_ubah_pri&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i> Pembayaran</a> 
+                echo " <a class='btn btn-info btn-sm' href='kasir.php?view=tampil_ubah_pri&id_ri=" . $id_ri . "'><i class='glyphicon glyphicon-edit'></i> Pembayaran</a> 
                 "; ?>
             </td>
 
