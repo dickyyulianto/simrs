@@ -72,8 +72,9 @@
                     };
                     ?> </td>
                 <td>
-                    <?php echo "<a class='btn btn-info btn-sm' href='kasir.php?view=detail_arsip_pri&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
-                    <a class='btn btn-danger btn-sm' href='kasir.php?view=aksi_hapus_pri&id_ri=" . $row['id_ri'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien rawat jalan tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>"; ?>
+
+                    <?php echo "<a class='btn btn-info btn-sm' href='kasir.php?view=detail_arsip_pri&id_ri=" . $id_ri . "'><i class='glyphicon glyphicon-edit'></i></a> | 
+                    <a class='btn btn-danger btn-sm' href='kasir.php?view=aksi_hapus_pri&id_ri=" . $id_ri . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien rawat jalan tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>"; ?>
                 </td>
 
             </tr>

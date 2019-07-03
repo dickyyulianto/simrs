@@ -142,6 +142,7 @@ if (isset($_GET)) {
                             <th>Tanggal</th>
                             <th>Tindakan</th>
                             <th>Hasil</th>
+                            <th>Resep</th>
                             <th>Biaya Tindakan</th>
                         </thead>
                         <tbody>
@@ -161,6 +162,7 @@ if (isset($_GET)) {
                                 <td><?php echo $tindakan['tanggal']; ?> </td>
                                 <td><?php echo $tindakan['tindakan']; ?> </td>
                                 <td><?php echo $tindakan['hasil']; ?> </td>
+                                <td><?php echo $tindakan['resep']; ?> </td>
                                 <td><?php echo $tindakan['biaya_tindakan']; ?> </td>
                             </tr>
                             <?php
@@ -212,6 +214,12 @@ if (isset($_GET)) {
                             <i class="glyphicon glyphicon-check"></i>
                         </span>
                         <textarea name="hasil" class="form-control input-lg" placeholder="Hasil Tindakan" id="" cols="30" rows="5"></textarea>
+                    </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-check"></i>
+                        </span>
+                        <textarea name="resep" class="form-control input-lg" placeholder="Resep" id="" cols="30" rows="5"></textarea>
                     </div>
 
                     <div class="input-group input-lg">

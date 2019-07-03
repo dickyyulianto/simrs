@@ -6,19 +6,21 @@
 <!--    </button>-->
 </div>
 
-<ul class="thumbnails">
-    <li class="span3">
-        <a  href="" class="thumbnail">
-            <h1 align="center">Laporan Data Pasien</h1>
-        </a>
-    </li>
-    <li class="span3">
-        <a href="" class="thumbnail">
-            <h1 align="center">Laporan Data Rawat Jalan</h1>
-        </a>
-    </li>
+    <div align="center">
+        <div>
+            <a class="btn btn-primary btn-large" href="admin.php?view=tampil_arsip_prj">
+                <i class="glyphicon glyphicon-eye-open"></i> Arsip Pasien Rawat Jalan
+            </a>
+        </div>
+        <div>
+            <br>
+            <a class="btn btn-primary btn-large" href="admin.php?view=tampil_arsip_pri">
+                <i class="glyphicon glyphicon-eye-open"></i> Arsip Pasien Rawat Inap
+            </a>
+        </div>
+    </div>
 
-</ul>
+
 
 
 

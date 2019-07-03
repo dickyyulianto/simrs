@@ -1,69 +1,110 @@
 <div align="center">
-    <h1><label class="label label-warning">Data Pasien Rawat Inap</label></h1>
+    <h1><label class="label label-warning">Arsip Pasien Rawat Inap</label></h1>
     <br>
-<!--    <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#tambahModal">-->
-<!--        <i class="glyphicon glyphicon-plus-sign"></i> Tambah Pasien Rawat Inap-->
-<!--    </button>-->
+    <button type="submit" class="btn btn-primary btn-large noprint" onclick="window.print();return false;"><i class="glyphicon glyphicon-print"></i>  Print </button>
+    <style>
+        @media print {
+            .noprint {
+                display: none;
+            }
+        }
+    </style>
 </div>
 <br>
 <table id="datatable" class="display stripe">
     <thead>
-        <th>No</th>
-        <th>Pasien</th>
-        <th>Kamar</th>
-        <th>Check in</th>
-        <th>Keluhan</th>
-        <th>Aksi</th>
+    <th>No</th>
+    <th>Pasien</th>
+    <th>Kamar</th>
+    <th>Check in</th>
+    <th>Check out</th>
+    <th>Biaya Rawat Inap</th>
+    <th>Biaya Tindakan</th>
+    <th>Total</th>
+    <th>Pembayaran</th>
     </thead>
-<?php
-$queryselect = "SELECT * FROM tbl_pri inner join tbl_tarif_ri on tbl_pri.id_tarif_ri = tbl_tarif_ri.id_tarif_ri, tbl_pasien where
-            tbl_pri.id_pasien = tbl_pasien.id_pasien and tbl_pri.bayar is null order by 
+    <?php
+    $queryselect = "SELECT * FROM tbl_pri inner join tbl_tarif_ri on tbl_pri.id_tarif_ri = tbl_tarif_ri.id_tarif_ri, tbl_pasien where
+            tbl_pri.id_pasien = tbl_pasien.id_pasien and tbl_pri.bayar >0 order by
             tbl_pri.id_ri desc ";
-$resultselect = mysqli_query($db_handle, $queryselect);
-if (mysqli_num_rows($resultselect)) {
-    //echo "ada isinya";	
-    $no = 1;
-    while ($row = mysqli_fetch_array($resultselect)) {
-        ?>
-        <tr>
-            <td><?php echo $no; ?> </td>
-            <td><?php echo "
-                    <a href='dokter.php?view=tampil_riwayat_pasien&id_p=". $row['id_pasien']."'>". $row['nama_pasien']."</a>
-                    " ?> </td>
-            <td><?php echo $row['tipe_kamar']; ?> </td>
-            <td><?php echo $row['tanggal_checkin']; ?> </td>
-            <td><?php echo $row['keluhan']; ?> </td>
-<!--            <td>--><?php
-//                if ($row['bayar'] >= $row['biaya']) {
-//                    echo "<span class='label label-success'>SELESAI</span>";
-//                } else {
-//                    echo "<span class='label label-danger'>BELUM</span>";
-//                };
-//                ?><!-- -->
-<!--            </td>-->
-            <td>
-                <?php echo "
-                <a class='btn btn-info btn-sm' href='dokter.php?view=tampil_tambah_tindakan&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i> Periksa</a> 
-                "; ?>
-            </td>
+    //$queryselect = "SELECT * FROM tbl_pri p
+    //                    inner join tbl_tarif_ri t on p.id_tarif_ri = t.id_tarif_ri
+    //                    inner join tbl_tindakan d on p.id_ri = d.id_pri
+    //                    , tbl_pasien where tbl_pri.id_pasien = tbl_pasien.id_pasien
+    //                    order by tbl_pri.id_ri desc ";
+    $resultselect = mysqli_query($db_handle, $queryselect);
+    if (mysqli_num_rows($resultselect)) {
+        //echo "ada isinya";
+        $no = 1;
+        while ($row = mysqli_fetch_array($resultselect)) {
+            ?>
+            <tr>
+                <td><?php echo $no; ?> </td>
+                <td><?php echo $row['nama_pasien']; ?> </td>
+                <td><?php echo $row['tipe_kamar']; ?> </td>
+                <td><?php echo $row['tanggal_checkin']; ?> </td>
+                <td><?php echo $row['tanggal_checkout']; ?>
+                <td><?php
+                    $tarif = $row['tarif'];
+                    echo $row['tarif'];
+                    ?> </td>
+                <td>
+                    <?php
+                    $id_ri = $row['id_ri'];
+                    $query = mysqli_query($db_handle, "SELECT biaya_tindakan FROM tbl_tindakan where id_pri = '$id_ri'");
+                    if (mysqli_num_rows($query)) {
+                        $biaya_tindakan = 0;
+                        while ($row = mysqli_fetch_array($query)) {
+                            $biaya_tindakan = $biaya_tindakan + $row['biaya_tindakan'];
+                        }
+                    }
+                    else {
+                        $row = mysqli_fetch_assoc($query);
+                        $biaya_tindakan = $row['biaya_tindakan'];
+                    }
+                    echo $biaya_tindakan;
+                    ?>
+                </td>
+                <td>
+                    <?php
+                    $total = $tarif + $biaya_tindakan;
+                    echo $total;
+                    ?>
+                </td>
+                <td><?php
+                    if ($row['bayar'] >=0) {
+                        echo "<span class='label label-success'>SELESAI</span>";
+                    } else {
+                        echo "<span class='label label-danger'>BELUM</span>";
+                    };
+                    ?> </td>
+<!--                <td>-->
+<!---->
+<!--                    --><?php //echo "<a class='btn btn-info btn-sm' href='kasir.php?view=detail_arsip_pri&id_ri=" . $id_ri . "'><i class='glyphicon glyphicon-edit'></i></a> |
+//                    <a class='btn btn-danger btn-sm' href='kasir.php?view=aksi_hapus_pri&id_ri=" . $id_ri . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien rawat jalan tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>"; ?>
+<!--                </td>-->
 
-        </tr>
-        <?php
-        $no ++;
+            </tr>
+            <?php
+            $no ++;
+        }
+    } else {
+
     }
-} else {
-    echo"kosong";
-}
-?>
-<tfoot>
-<th>No</th>
-<th>Pasien</th>
-<th>Kamar</th>
-<th>Check in</th>
-<th>Keluhan</th>
-<th>Aksi</th>
-</tfoot>
+    ?>
+    <tfoot class="noprint">
+    <th>No</th>
+    <th>Pasien</th>
+    <th>Kamar</th>
+    <th>Check in</th>
+    <th>Check out</th>
+    <th>Biaya Rawat Inap</th>
+    <th>Biaya Tindakan</th>
+    <th>Total</th>
+    <th>Pembayaran</th>
+    </tfoot>
 </table>
+
 <!---------------------------- tambah ------------------------->
 <div class="modal fade" id="tambahModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog"  style="width: 700px">
@@ -72,7 +113,7 @@ if (mysqli_num_rows($resultselect)) {
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
                 <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Tambah Pasien Rawat Inap</h4>
-            </div> 
+            </div>
             <div class="modal-body">
                 <form name="tambah_pri" id="tambah_pri" method="POST">
                     <div class="input-group input-lg">
@@ -80,7 +121,7 @@ if (mysqli_num_rows($resultselect)) {
                             <i class="glyphicon glyphicon-user"></i>
                         </span>
                         <input type="hidden" value="" name="id_pasien" id="id_pasien_hidden" />
-                        <input type="text" value="" name="search" class="search form-control input-lg" id="searchid" placeholder="Masukan ID / Nama Pasien" required autofocus autocomplete="off" /> 
+                        <input type="text" value="" name="search" class="search form-control input-lg" id="searchid" placeholder="Masukan ID / Nama Pasien" required autofocus autocomplete="off" />
                         <div id="result"></div>
                     </div>
 
@@ -94,8 +135,8 @@ if (mysqli_num_rows($resultselect)) {
                                 <input type="radio" id="perawatan2" name="perawatan" value="Ruang ICU"> Ruang ICU
                             </label>
                             <label class="btn btn-info">
-                                <input type="radio" id="perawatan3" name="perawatan" value="Perinatologi"> Perinatologi 
-                            </label> 
+                                <input type="radio" id="perawatan3" name="perawatan" value="Perinatologi"> Perinatologi
+                            </label>
                         </div>
                         <br>Jenis Pelayanan<br>
                         <div class="btn-group" data-toggle="buttons">
@@ -108,10 +149,10 @@ if (mysqli_num_rows($resultselect)) {
                             </label>
                             <label class="btn btn-info">
                                 <input type="radio" id="pelayanan3" name="pelayanan" value="Instalasi  Anestesi"> Instalasi  Anestesi
-                            </label> 
+                            </label>
                             <label class="btn btn-info">
                                 <input type="radio" id="pelayanan4" name="pelayanan" value="Gizi Rawat Inap"> Gizi Rawat Inap
-                            </label> 
+                            </label>
                         </div>
                         <br>Fasilitas<br>
                         <div class="btn-group" data-toggle="buttons">
@@ -123,10 +164,10 @@ if (mysqli_num_rows($resultselect)) {
                             </label>
                             <label class="btn btn-info">
                                 <input type="radio" id="tipe_kamar3" name="tipe_kamar" value="Kelas II"> Kelas II
-                            </label> 
+                            </label>
                             <label class="btn btn-info">
                                 <input type="radio" id="tipe_kamar4" name="tipe_kamar" value="Kelas III"> Kelas III
-                            </label> 
+                            </label>
                         </div>
                     </div>
                     <div class="input-group input-lg">
@@ -153,7 +194,7 @@ if (mysqli_num_rows($resultselect)) {
 
                         <span class="input-group-addon">Ruang</span>
                         <input type="text" value="" name="id_ruang" id="id_ruang" class="form-control input-lg" readonly="" required="" style="width: 50%;text-align:center;font-size: 30;"   />
-                        <input type="text" value="" name="hari_menginap" id="hari_menginap" class="form-control input-lg" readonly="" required="" style="width: 50%;text-align:center;font-size: 30;"/> 
+                        <input type="text" value="" name="hari_menginap" id="hari_menginap" class="form-control input-lg" readonly="" required="" style="width: 50%;text-align:center;font-size: 30;"/>
                         <span class="input-group-addon">hari</span>
                     </div>
                     <div class="input-group input-lg">
@@ -165,7 +206,7 @@ if (mysqli_num_rows($resultselect)) {
                         <span class="input-group-addon">Rp</span>
                         <input type="text" name="bayar" placeholder="Bayar" class="form-control input-lg" value="" required style="font-size: 25px;" />
                         <span class="input-group-addon">,-</span>
-                    </div>  
+                    </div>
                     <div align="center">
                         <button type="reset" class="btn btn-inverse btn-lg"><i class="glyphicon glyphicon-refresh"></i> Reset </button>
                         <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>
@@ -173,12 +214,12 @@ if (mysqli_num_rows($resultselect)) {
                 </form>
 
             </div>
-            <!--            <div class="modal-footer"> 
+            <!--            <div class="modal-footer">
                             <button type="reset" class="btn btn-inverse"><i class="glyphicon glyphicon-refresh"></i> Reset </button>
                             <button type="submit" class="btn btn-primary" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>
                         </div>-->
-        </div> 
-    </div><!-- /.modal-content --> 
+        </div>
+    </div><!-- /.modal-content -->
 </div><!-- /.modal -->
 <script type="text/javascript">
     window.onload = function () {
@@ -295,7 +336,7 @@ if (mysqli_num_rows($resultselect)) {
 
             $.ajax({
                 url: 'front-office/aksi_lihat_tarif_ri.php?pelayanan=' + pelayanan +
-                        '&perawatan=' + perawatan + '&tipe_kamar=' + tipe_kamar,
+                    '&perawatan=' + perawatan + '&tipe_kamar=' + tipe_kamar,
                 success: function (respon) {
                     // console.log(respon);
                     var id = $(respon).find('#id_tarif').text();

@@ -7,7 +7,7 @@
  */
 include '../konfig.php';
 extract($_POST);
-$query = "insert into tbl_tindakan values(null,'$id_ri', '$id_dokter', '$tanggal', '$tindakan', '$hasil', '$biaya_tindakan')";
+$query = "insert into tbl_tindakan values(null,'$id_ri', '$id_dokter', '$tanggal', '$tindakan', '$hasil', '$biaya_tindakan',null ,null )";
 mysqli_query($db_handle, $query) or die(mysqli_error($db_handle));
 //echo json_encode(array('success'=>'true'));
 //return true;

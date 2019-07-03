@@ -74,8 +74,7 @@ if (isset($_GET)) {
 <!--                    </div>-->
 
                     <div class="noprint" align="center">
-                        <button type="reset" class="btn btn-inverse btn-lg"><i class="glyphicon glyphicon-refresh" href="kasir/tampil_pri.php"></i> Kembali </button>
-<!--                        <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>-->
+                        <button type="submit" class="btn btn-inverse btn-lg"><i class="glyphicon glyphicon-refresh" href="kasir/tampil_pri.php"></i> Kembali </button>
                         <button type="submit" class="btn btn-warning btn-lg " onclick="window.print();return false;"><i class="glyphicon glyphicon-print"></i>  Print </button>
                         <style>
                             @media print {

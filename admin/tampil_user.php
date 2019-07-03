@@ -1,13 +1,18 @@
 <div align="center">
     <h1><label class="label label-success">Data User</label></h1>
     <br>
-    <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#tambahModal">
+    <button class="btn btn-primary btn-large noprint" data-toggle="modal" data-target="#tambahModal">
         <i class="glyphicon glyphicon-plus-sign"></i> Tambah Data User
     </button>
 
-    <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#cetakModal">
-        <i class="glyphicon glyphicon-plus-sign"></i> Cetak Data User
-    </button>
+    <button type="submit" class="btn btn-primary btn-large noprint" onclick="window.print();return false;"><i class="glyphicon glyphicon-print"></i>  Print </button>
+    <style>
+        @media print {
+            .noprint {
+                display: none;
+            }
+        }
+    </style>
 
 </div>
 <br>
@@ -20,7 +25,7 @@
     <th>Status</th>
     <th>Hak Akses</th>
     <th>Grup</th>
-    <th>Aksi</th>
+    <th class="noprint">Aksi</th>
     </thead>
     <tbody>
     <?php
@@ -38,7 +43,7 @@
                 <td><?php echo $row['status']; ?> </td>
                 <td><?php echo $row['hak_akses']; ?> </td>
                 <td><?php echo $row['grup']; ?> </td>
-                <td><?php echo "<a class='btn btn-info btn-sm' href='admin.php?view=tampil_ubah_user&id_user=" . $row['id_user'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
+                <td class="noprint"><?php echo "<a class='btn btn-info btn-sm ' href='admin.php?view=tampil_ubah_user&id_user=" . $row['id_user'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
                     <a class='btn btn-danger btn-sm' href='admin.php?view=aksi_hapus_user&id_user=" . $row['id_user'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data user tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>";
                     ?></td>
             </tr>
@@ -50,7 +55,7 @@
     }
     ?>
     </tbody>
-    <tfoot>
+    <tfoot class="noprint">
     <th>No</th>
     <th>ID User</th>
     <th>Username</th>

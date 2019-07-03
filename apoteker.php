@@ -74,15 +74,26 @@ if ($_SESSION['hak_akses'] == 'Apoteker') {
         </div>
         <div>
             <ul class="nav navbar-nav">
-
                 <li <?php if (isset($_GET['view'])) {
                     echo $_GET['view'] == 'tampil_prj' || $_GET['view'] == 'tampil_ubah_prj' ? 'class="active"' : '';
-                } ?>><a href="apoteker.php?view=tampil_prj">Pasien Rawat Jalan &nbsp;
-                        <span class="label label-info" style="border-radius: 50px;">
+                } ?>><a href="?view=tampil_prj">Pasien Rawat Jalan &nbsp;
+                        <span class="label label-warning" style="border-radius: 50px;">
                                     <?php
-                                    $hitung_pri = mysqli_query($db_handle,"select * from tbl_prj");
-                                    echo mysqli_num_rows($hitung_pri);
-                                    ?>
+                                    $hitung_pasien = mysqli_query($db_handle,"SELECT * FROM tbl_prj, tbl_pasien where 
+                                      tbl_prj.id_pasien = tbl_pasien.id_pasien and tbl_prj.bayar IS NULL order by tbl_prj.no_rj desc");
+                                    echo mysqli_num_rows($hitung_pasien);
+                                    ?></span></a>
+                </li>
+                <li <?php if (isset($_GET['view'])) {
+                    echo $_GET['view'] == 'tampil_pri' || $_GET['view'] == 'tampil_ubah_pri' ? 'class="active"' : '';
+                } ?>><a href="?view=tampil_pri">Pasien Rawat Inap &nbsp;
+                        <span class="label label-warning" style="border-radius: 50px;">
+                                                <?php
+                                                $hitung_pri = mysqli_query($db_handle,"SELECT * FROM tbl_pri inner join tbl_tarif_ri on tbl_pri.id_tarif_ri = tbl_tarif_ri.id_tarif_ri, tbl_pasien where
+                                    tbl_pri.id_pasien = tbl_pasien.id_pasien and tbl_pri.bayar is null order by tbl_pri.id_ri desc ");
+                                                echo mysqli_num_rows($hitung_pri);
+                                                ?>
+                                            </span></a>
                 </li>
 
             </ul>
