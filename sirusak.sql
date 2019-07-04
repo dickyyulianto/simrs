@@ -49,23 +49,14 @@ CREATE TABLE IF NOT EXISTS `tbl_pasien` (
   `alamat_pj` varchar(20) NOT NULL,
   `no_telepon` varchar(20) NOT NULL,
   PRIMARY KEY (`id_pasien`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sirusak.tbl_pasien: ~12 rows (approximately)
+-- Dumping data for table sirusak.tbl_pasien: ~2 rows (approximately)
 /*!40000 ALTER TABLE `tbl_pasien` DISABLE KEYS */;
 INSERT INTO `tbl_pasien` (`id_pasien`, `nama_pasien`, `alamat`, `jenis_kelamin`, `pekerjaan`, `nama_pj`, `alamat_pj`, `no_telepon`) VALUES
-	(17, 'Kevin Julio', 'Cimahi', 'P', '', '', '', '08172352412'),
-	(18, 'Chelsea Islan', 'Jakarta', 'P', '', '', '', '082416242'),
-	(19, 'Raisa Ardiana', 'Sukabumi', 'P', '', '', '', '0212312415'),
-	(20, 'Tina Toon', 'Banyuwangi', 'P', '', '', '', '08098999'),
-	(21, 'Joshua', 'Surabaya', 'L', '', '', '', '08123122353'),
-	(22, 'Risa Tachibana', 'Jampang', 'P', '', '', '', '08124124412'),
-	(23, 'Sarah Ardelia', 'Bogor', 'P', '', '', '', '0812524124'),
-	(24, 'Jessica Mila', 'Madiun', 'P', '', '', '', '08235141212'),
-	(25, 'Ricky Harun', 'Lampung', 'L', '', '', '', '08235235235'),
-	(26, 'Arjo sedel', 'Sleman', 'L', '', '', '', '123467772'),
-	(27, 'roni', 'sawahan', 'L', '', '', '', '09848487'),
-	(30, 'Sasa', 'Sleman', 'P', 'Ibu Rumah Tangga', 'siso', 'Bantul', '081227722');
+	(1, 'Sasa', 'Sleman', 'P', 'Ibu Rumah Tangga', 'siso', 'Bantul', '081227722'),
+	(2, 'Roni', 'Sleman', 'L', 'PNS', 'Ana', 'Sleman', '08122765431'),
+	(3, 'Jessica Mila ', 'Sleman', 'P', 'Ibu Rumah Tangga', 'Rio', 'Yogyakarta', '09848487');
 /*!40000 ALTER TABLE `tbl_pasien` ENABLE KEYS */;
 
 -- Dumping structure for table sirusak.tbl_pri
@@ -80,30 +71,13 @@ CREATE TABLE IF NOT EXISTS `tbl_pri` (
   `biaya` int(10) DEFAULT NULL,
   `bayar` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_ri`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sirusak.tbl_pri: ~18 rows (approximately)
+-- Dumping data for table sirusak.tbl_pri: ~1 rows (approximately)
 /*!40000 ALTER TABLE `tbl_pri` DISABLE KEYS */;
 INSERT INTO `tbl_pri` (`id_ri`, `id_pasien`, `id_tarif_ri`, `keluhan`, `tanggal_checkin`, `tanggal_checkout`, `hari_menginap`, `biaya`, `bayar`) VALUES
-	(1, 16, 106, 'd', '2019-04-04', '2019-04-12', 8, 1600000, 3333333),
-	(2, 24, 106, 'ttt', '2019-04-05', '2019-04-08', 3, 600000, 150000),
-	(3, 11, 106, 'y', '2019-04-04', '2019-04-05', 1, 200000, 200000),
-	(4, 25, 106, 'y', '2019-04-04', '2019-04-07', 3, 600000, 3333333),
-	(5, 24, 106, 'e', '2019-04-04', '2019-04-05', 1, 200000, 3333333),
-	(6, 16, 105, 'qq', '2019-04-04', '2019-04-06', 2, 650000, 3333),
-	(7, 11, 107, 'e', '2019-04-03', '2019-04-09', 6, 882000, 3333),
-	(8, 16, 107, 'wdwd', '2019-04-10', '2019-04-16', 6, 882000, 200000),
-	(9, 19, 106, 'dsdsd', '2019-04-03', '2019-04-16', 13, 2600000, 150000),
-	(10, 16, 106, 'ad', '2019-04-02', '2019-04-15', 13, 2600000, 3333),
-	(11, 19, 106, 'aaa', '2019-04-08', '2019-04-17', 9, 1800000, 200000),
-	(12, 22, 106, 'as', '2019-04-02', '2019-04-16', 14, 2800000, 150000),
-	(13, 18, 105, 'qqqqq', '2019-04-03', '2019-04-17', 14, 4550000, 200000),
-	(14, 16, 105, 'zzz', '2019-04-16', '2019-04-23', 7, 2275000, 3333333),
-	(16, 18, 105, 'aaaa', '2019-04-02', '2019-04-09', 8, 2600000, 3333333),
-	(17, 19, 106, 'sdsd', '2019-04-02', '2019-04-03', 1, 200000, 200000),
-	(18, 22, 107, 's', '2019-04-02', '2019-04-08', 6, 882000, 3333333),
-	(19, 21, 108, 'gyugyugy', '2019-04-03', NULL, NULL, NULL, NULL),
-	(21, 30, 101, 'aaa', '2019-06-19', NULL, NULL, NULL, NULL);
+	(1, 2, 101, 'Kecelakaan', '2019-06-25', '2019-06-26', 1, 375000, 500000),
+	(2, 3, 101, 'qwdwd', '2019-07-02', NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `tbl_pri` ENABLE KEYS */;
 
 -- Dumping structure for table sirusak.tbl_prj
@@ -116,23 +90,20 @@ CREATE TABLE IF NOT EXISTS `tbl_prj` (
   `keluhan` text NOT NULL,
   `diagnosa` text,
   `biaya` int(10) DEFAULT NULL,
-  `tindakan` varchar(20) DEFAULT NULL,
+  `tindakan` text,
   `resep` text,
   `harga_resep` int(12) DEFAULT NULL,
   `bayar` int(12) DEFAULT NULL,
   PRIMARY KEY (`no_rj`),
   KEY `id_pasien` (`id_pasien`),
   CONSTRAINT `tbl_prj_ibfk_1` FOREIGN KEY (`id_pasien`) REFERENCES `tbl_pasien` (`id_pasien`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sirusak.tbl_prj: ~5 rows (approximately)
+-- Dumping data for table sirusak.tbl_prj: ~2 rows (approximately)
 /*!40000 ALTER TABLE `tbl_prj` DISABLE KEYS */;
 INSERT INTO `tbl_prj` (`no_rj`, `id_dokter`, `id_pasien`, `departemen`, `tanggal`, `keluhan`, `diagnosa`, `biaya`, `tindakan`, `resep`, `harga_resep`, `bayar`) VALUES
-	(15, '1007', 21, 'Syaraf', '2014-12-06 01:30:30', 'sasdfasdg', 'ngelih', 150000, 'tuku beras', 'beras 1 kg', 20000, 34534535),
-	(20, '1012', 24, 'Umum', '2019-03-27 13:50:40', 'mumet', 'flu', 10000, '1. kasih obat flu', '1. obat flu | 3x1', 10000, NULL),
-	(23, '1001', 26, 'Umum', '2019-04-16 10:31:04', 'Mumet', 'weses', 100000, 'wswws', 'ssss', 20000, NULL),
-	(27, '1012', 17, 'Umum', '2019-05-14 12:26:57', 'ndases\r\n', 'wes', 150000, 'wes', 'wes', NULL, 200000),
-	(29, '1001', 30, 'Umum', '2019-06-17 11:39:15', 'seses', 'jjjjj', 12332, 'hsdgjdhb', 'asdhjgdhasbdj', 1200000, 200000);
+	(1, '1001', 1, 'Umum', '2019-06-25 12:24:03', 'Sakit kepala belakang dan demam tinggi', 'Flu', 30000, 'Pemberian obat', 'obat flu', 10000, 40000),
+	(2, '1001', 3, 'Umum', '2019-07-02 10:06:26', 'Muntah Berak', 'Muntaber', 25000, 'Pemberian obat jalan', 'obat muntah | 3x1obat oralit | 3x1', 60000, NULL);
 /*!40000 ALTER TABLE `tbl_prj` ENABLE KEYS */;
 
 -- Dumping structure for table sirusak.tbl_resep
@@ -220,7 +191,7 @@ INSERT INTO `tbl_tarif_ri` (`id_tarif_ri`, `perawatan`, `pelayanan`, `tipe_kamar
 	(134, 'Perinatologi', 'Persalinan Tidak Normal', 'Kelas VIP', 930000, 1),
 	(135, 'Perinatologi', 'Persalinan Tidak Normal', 'Kelas I', 750000, 2),
 	(136, 'Perinatologi', 'Persalinan Tidak Normal', 'Kelas II', 540000, 3),
-	(137, 'Perinatologi', 'Persalinan Tidak Normal', 'Kelas III', 470000, 6);
+	(137, 'Perinatologi', 'Persalinan Tidak Normal', 'Kelas III', 470000, 5);
 /*!40000 ALTER TABLE `tbl_tarif_ri` ENABLE KEYS */;
 
 -- Dumping structure for table sirusak.tbl_tarif_rj
@@ -252,27 +223,18 @@ CREATE TABLE IF NOT EXISTS `tbl_tindakan` (
   `tindakan` text NOT NULL,
   `hasil` text,
   `biaya_tindakan` int(10) DEFAULT '0',
+  `resep` text,
+  `harga_resep` int(10) DEFAULT NULL,
   PRIMARY KEY (`id_tindakan`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
--- Dumping data for table sirusak.tbl_tindakan: ~13 rows (approximately)
+-- Dumping data for table sirusak.tbl_tindakan: ~3 rows (approximately)
 /*!40000 ALTER TABLE `tbl_tindakan` DISABLE KEYS */;
-INSERT INTO `tbl_tindakan` (`id_tindakan`, `id_pri`, `id_user`, `tanggal`, `tindakan`, `hasil`, `biaya_tindakan`) VALUES
-	(2, 18, 1001, '2019-04-14', 'dsfsdf', 'sdfsdf', NULL),
-	(3, 18, 1001, '2019-04-12', 'weada', 'wfsefs', NULL),
-	(4, 18, 1001, '2019-04-17', 'sdgsdgs', 'sdgsdgsdgf', NULL),
-	(5, 18, 1002, '2019-04-19', 'sasad', 'asdasd', NULL),
-	(6, 17, 1010, '2019-05-03', 'sad', 'asds', NULL),
-	(7, 20, 1001, '2019-04-15', 'ankdcknk', 'skdnkdascsdc\r\n\r\ndscnksdcfk', NULL),
-	(8, 22, 1001, '2019-04-16', 'suntik', 'loro', NULL),
-	(9, 22, 1001, '2019-04-16', 'beri obat', 'enak', NULL),
-	(10, 22, 1001, '2019-04-25', 'wwww', 'wwww', NULL),
-	(11, 23, 1001, '2019-04-25', 'aaa', 'aaaa', NULL),
-	(12, 19, 1001, '2019-05-02', 'wes', 'wess', NULL),
-	(13, 19, 1001, '2019-05-18', 'wes', 'wsej', NULL),
-	(14, 19, 1001, '2019-05-18', 'www', 'www', NULL),
-	(15, 19, 1001, '2019-05-18', 'wes', 'sws', 1233444),
-	(16, 20, 1001, '2019-06-17', 'dedede', 'deded', 123333);
+INSERT INTO `tbl_tindakan` (`id_tindakan`, `id_pri`, `id_user`, `tanggal`, `tindakan`, `hasil`, `biaya_tindakan`, `resep`, `harga_resep`) VALUES
+	(17, 1, 1001, '2019-06-25', 'Pemberian betadin untuk luka', 'Luka sudah bersih', 30000, NULL, NULL),
+	(18, 1, 1004, '2019-06-25', 'Pemberian obat penghilang rasa sakit', 'Pasien masih merasa sakit di luka', 45000, NULL, NULL),
+	(19, 1, 1001, '2019-06-26', 'Pemberian obat dan penutupan luka', 'Rasa sakit sudah hilang boleh rawat jalan.', 30000, NULL, NULL),
+	(20, 2, 1001, '2019-07-02', 'qedsf', 'efsfs', 12344, 'jsjsksj', NULL);
 /*!40000 ALTER TABLE `tbl_tindakan` ENABLE KEYS */;
 
 -- Dumping structure for table sirusak.tbl_user
@@ -284,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
   `hak_akses` varchar(20) NOT NULL,
   `grup` varchar(30) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=1035 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1038 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table sirusak.tbl_user: ~22 rows (approximately)
 /*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
@@ -310,7 +272,10 @@ INSERT INTO `tbl_user` (`id_user`, `username`, `password`, `status`, `hak_akses`
 	(1022, 'lili', 'lili', 'Aktif', 'Apoteker', 'Apotek'),
 	(1032, 'lolo', 'olol', 'Aktif', 'Admin', 'Admin'),
 	(1033, 'kasir', 'kasir', 'Aktif', 'Kasir', 'Kasir'),
-	(1034, 'Septianti', 'septi', 'Aktif', 'Dokter', 'Septianti Amalia, S.PSi');
+	(1034, 'Septianti', 'septi', 'Aktif', 'Dokter', 'Septianti Amalia, S.PSi'),
+	(1035, 'front-office', 'front', 'Aktif', 'Front Office', 'FO'),
+	(1036, 'Admin', 'admin', 'Aktif', 'Admin', 'Admin'),
+	(1037, 'Apotik', 'apotik', 'Aktif', 'Apoteker', 'Apotek');
 /*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
