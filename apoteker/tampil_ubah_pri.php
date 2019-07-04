@@ -14,7 +14,7 @@ if (isset($_GET)) {
                 <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Data Rawat Inap</h4>
             </div>
             <div class="modal-body">
-                <form name="ubah_pri" id="ubah_pri" method="POST" action="apoteker/aksi_ubah_pri.php ">
+<!--                <form name="ubah_pri" id="ubah_pri" method="POST" action="apoteker/aksi_ubah_pri.php ">-->
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-user"></i>
@@ -54,7 +54,7 @@ if (isset($_GET)) {
                     <!--                        <span class="input-group-addon">,-</span>-->
                     <!--                    </div>-->
 
-                </form>
+<!--                </form>-->
 
             </div>
 
@@ -75,6 +75,8 @@ if (isset($_GET)) {
                             $no = 1;
                             while ($tindakan = mysqli_fetch_array($resultselect)) {
                                 ?>
+                            <form name="ubah_tindakan" id="ubah_tindakan" method="POST" action="apoteker/aksi_ubah_tindakan.php">
+                                <input type="hidden" value="<?php echo $tindakan['id_tindakan']; ?>" name="id_tindakan" readonly id="id_pasien_hidden" />
                                 <div class="input-group input-lg">
                                     <span class="input-group-addon"><i >Nama Pasien</i></span>
                                     <input type="text" name="nama_pasien" readonly placeholder="Nama Pasien" value="<?php echo $row['nama_pasien']?>" class="form-control input-lg" required />
@@ -89,13 +91,14 @@ if (isset($_GET)) {
                                 </div>
                                 <div class="input-group input-lg">
                                     <span class="input-group-addon"><i >Harga Resep</i></span>
-                                    <input type="text" name="harga_resep"  placeholder="Harga Resep" value="<?php echo $tindakan['harga_resep']?>" class="form-control input-lg" required />
+                                    <input type="number" name="harga_resep"  placeholder="Harga Resep" value="<?php echo $tindakan['harga_resep']?>" class="form-control input-lg" required />
                                 </div>
 
                                 <div align="center">
                                     <button type="reset" class="btn btn-inverse btn-lg"><i class="glyphicon glyphicon-refresh"></i> Reset </button>
                                     <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>
                                 </div>
+                            </form>
 
 <!--                                <tr>-->
 <!--                                    <td>--><?php //echo $no; ?><!-- </td>-->
@@ -114,51 +117,9 @@ if (isset($_GET)) {
                         ?>
                 </div>
             </div>
-            <!------------------------- submit form dari modal -------------------->
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $("button#submit").click(function () {
-                        $.ajax({
-                            type: "POST",
-                            url: "front-office/aksi_tambah_pri.php",
-                            data: $('form#tambah_pri').serialize(),
-                            success: function (msg) {
-                                // alert("berhasil");
-                                $("#tambahModal").modal('hide');
-                                location.href = 'front-office.php?view=tampil_pri';
-                            },
-                            error: function(){
-                                alert('Gagal menambah pasien rawat inap baru');
-                            }
-                        });
-                    });
-                });
-            </script>
-
-
-
 
             <script type="text/javascript">
                 $(function () {
-                    $(".search").keyup(function ()
-                    {
-                        var searchid = $(this).val();
-                        var dataString = 'search=' + searchid;
-                        if (searchid != '')
-                        {
-                            $.ajax({
-                                type: "POST",
-                                url: "front-office/cari-pasien.php",
-                                data: dataString,
-                                cache: false,
-                                success: function (html)
-                                {
-                                    $("#result").html(html).show();
-                                }
-                            });
-                        }
-                        return false;
-                    });
 
                     jQuery("#result").live("click", function (e) {
                         var $clicked = $(e.target);

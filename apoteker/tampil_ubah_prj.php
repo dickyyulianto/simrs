@@ -2,8 +2,8 @@
 if (isset($_GET)) {
     include 'konfig.php';
     $id_ubah = $_GET['no_rj'];
-    $query = "SELECT * FROM tbl_prj, tbl_pasien where "
-            . "tbl_prj.id_pasien = tbl_pasien.id_pasien and "
+    $query = "SELECT * FROM tbl_prj, tbl_pasien, tbl_dokter where "
+            . "tbl_prj.id_pasien = tbl_pasien.id_pasien and tbl_prj.id_dokter = tbl_dokter.id_user and "
             . "no_rj = '$id_ubah'";
     $result = mysqli_query($db_handle, $query);
     if (mysqli_num_rows($result)) {
@@ -22,6 +22,17 @@ if (isset($_GET)) {
                         </span>
                         <input type="hidden" value="<?php echo $row['id_pasien']; ?>" name="id_pasien" readonly id="id_pasien_hidden" />
                         <input type="text" value="<?php echo $row['nama_pasien']; ?>" name="search" readonly class="search form-control input-lg" id="searchid" placeholder="Masukan ID / Nama Pasien" required  />
+
+                        <div id="result"></div>
+
+                    </div>
+
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
+
+                        <input type="text" value="<?php echo $row['nama_dokter']; ?>" name="nama_dokter" readonly class="search form-control input-lg" id="searchid" placeholder="Masukan ID / Nama Pasien" required  />
 
                         <div id="result"></div>
 

@@ -31,14 +31,6 @@
                 <td><?php echo $row['tipe_kamar']; ?> </td>
                 <td><?php echo $row['tanggal_checkin']; ?> </td>
                 <td><?php echo $row['keluhan']; ?> </td>
-                <!--            <td>--><?php
-                //                if ($row['bayar'] >= $row['biaya']) {
-                //                    echo "<span class='label label-success'>SELESAI</span>";
-                //                } else {
-                //                    echo "<span class='label label-danger'>BELUM</span>";
-                //                };
-                //                ?><!-- -->
-                <!--            </td>-->
                 <td>
                     <?php echo "
                 <a class='btn btn-info btn-sm' href='apoteker.php?view=tampil_ubah_pri&id_ri=" . $row['id_ri'] . "'><i class='glyphicon glyphicon-edit'></i> </a> 
