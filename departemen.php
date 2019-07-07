@@ -32,7 +32,7 @@ if ($_SESSION['hak_akses'] == 'Departemen') {
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Sistem Informasi Rumah Sakit</a>
                 </div>
-                <p class="navbar-text">Departemen <?php echo $_SESSION['grup']; ?></p>
+                <p class="navbar-text"><label class="label label-info" style="font-size: 14px;"> <?php echo $_SESSION['grup']; ?></label></p>
                 <div>
                     <ul class="nav navbar-nav">
                         <li <?php if (isset($_GET['view'])) {
@@ -40,7 +40,7 @@ if ($_SESSION['hak_akses'] == 'Departemen') {
     } ?>><a href="?view=tampil_pasien">Pasien &nbsp;
                                 <span class="label label-warning" style="border-radius: 50px;"> 
                                     <?php
-                                    $hitung_pasien = mysqli_query($db_handle, "select * from tbl_prj where departemen='" . $_SESSION['grup'] . "'");
+                                    $hitung_pasien = mysqli_query($db_handle, "select * from tbl_prj where departemen='" . $_SESSION['grup'] . "' and tbl_prj.bayar is null");
                                     echo mysqli_num_rows($hitung_pasien);
                                     ?></span></a>
                         </li>

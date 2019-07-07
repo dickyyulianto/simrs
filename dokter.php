@@ -79,7 +79,7 @@ if ($_SESSION['hak_akses'] == 'Dokter') {
                                 <span class="label label-warning" style="border-radius: 50px;"> 
                                     <?php
                                     $hitung_pasien = mysqli_query($db_handle,"SELECT * FROM tbl_prj, tbl_pasien where 
-                                      tbl_prj.id_pasien = tbl_pasien.id_pasien and tbl_prj.bayar IS NULL order by tbl_prj.no_rj desc");
+                                      tbl_prj.id_pasien = tbl_pasien.id_pasien and tbl_prj.tindakan IS NULL order by tbl_prj.no_rj desc");
                                     echo mysqli_num_rows($hitung_pasien);
                                     ?></span></a>
                         </li>
@@ -89,7 +89,7 @@ if ($_SESSION['hak_akses'] == 'Dokter') {
                                 <span class="label label-warning" style="border-radius: 50px;">
                                                 <?php
                                                 $hitung_pri = mysqli_query($db_handle,"SELECT * FROM tbl_pri inner join tbl_tarif_ri on tbl_pri.id_tarif_ri = tbl_tarif_ri.id_tarif_ri, tbl_pasien where
-                                    tbl_pri.id_pasien = tbl_pasien.id_pasien and tbl_pri.bayar is null order by tbl_pri.id_ri desc ");
+                                    tbl_pri.id_pasien = tbl_pasien.id_pasien and tbl_pri.tanggal_checkout is null order by tbl_pri.id_ri desc ");
                                                 echo mysqli_num_rows($hitung_pri);
                                                 ?>
                                             </span></a>

@@ -2,8 +2,8 @@
 if (isset($_GET)) {
     include 'konfig.php';
     $id_ubah = $_GET['no_rj'];
-    $query = "SELECT * FROM tbl_prj, tbl_pasien where "
-        . "tbl_prj.id_pasien = tbl_pasien.id_pasien and "
+    $query = "SELECT * FROM tbl_prj, tbl_pasien, tbl_dokter where "
+        . "tbl_prj.id_pasien = tbl_pasien.id_pasien and tbl_prj.id_dokter = tbl_dokter.id_user and "
         . "no_rj = '$id_ubah'";
     $result = mysqli_query($db_handle, $query);
     if (mysqli_num_rows($result)) {
@@ -29,6 +29,7 @@ if (isset($_GET)) {
                     <div class="modal-body">
                         <tr>
                             <td> <h3> Poli      : <?php echo $row['departemen']?></h3>
+                            <td> <h3> Nama Dokter      : <?php echo $row['nama_dokter']?></h3></td>
                             <td> <h3> Tindakan  : <?php echo $row['tindakan']?></h3></td>
                             <td> <h3> Resep     : <?php echo $row['resep']?></h3></td>
                             <td> <h3> Harga Resep  : Rp. <?php echo $row['harga_resep']?></h3></td>

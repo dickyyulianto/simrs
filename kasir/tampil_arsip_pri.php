@@ -12,6 +12,7 @@
     <th>Check out</th>
     <th>Biaya Rawat Inap</th>
     <th>Biaya Tindakan</th>
+    <th>Harga Resep</th>
     <th>Total</th>
     <th>Pembayaran</th>
     <th>Aksi</th>
@@ -60,7 +61,24 @@
                 </td>
                 <td>
                     <?php
-                    $total = $tarif + $biaya_tindakan;
+                    //                $id_ri = $row['id_ri'];
+                    $query = mysqli_query($db_handle, "SELECT harga_resep FROM tbl_tindakan where id_pri = '$id_ri'");
+                    if (mysqli_num_rows($query)) {
+                        $harga_resep = 0;
+                        while ($row = mysqli_fetch_array($query)) {
+                            $harga_resep = $harga_resep + $row['harga_resep'];
+                        }
+                    }
+                    else {
+                        $row = mysqli_fetch_assoc($query);
+                        $harga_resep = $row['harga_resep'];
+                    }
+                    echo $harga_resep;
+                    ?>
+                </td>
+                <td>
+                    <?php
+                    $total = $tarif + $biaya_tindakan + $harga_resep;
                     echo $total;
                     ?>
                 </td>
@@ -72,9 +90,8 @@
                     };
                     ?> </td>
                 <td>
-
                     <?php echo "<a class='btn btn-info btn-sm' href='kasir.php?view=detail_arsip_pri&id_ri=" . $id_ri . "'><i class='glyphicon glyphicon-edit'></i></a> | 
-                    <a class='btn btn-danger btn-sm' href='kasir.php?view=aksi_hapus_pri&id_ri=" . $id_ri . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien rawat jalan tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>"; ?>
+                    <a class='btn btn-danger btn-sm' href='kasir.php?view=aksi_hapus_pri&id_ri=" . $id_ri . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data pasien tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>"; ?>
                 </td>
 
             </tr>
@@ -93,6 +110,7 @@
     <th>Check out</th>
     <th>Biaya Rawat Inap</th>
     <th>Biaya Tindakan</th>
+    <th>Harga Resep</th>
     <th>Total</th>
     <th>Pembayaran</th>
     <th>Aksi</th>

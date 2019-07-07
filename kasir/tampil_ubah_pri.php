@@ -36,7 +36,8 @@ if (isset($_GET)) {
                             <td> <h3> Tanggal Masuk  : <?php echo $row['tanggal_checkin']?></h3></td>
                             <td> <h3> Tanggal Keluar : <?php echo $row['tanggal_checkout']?></h3></td>
                             <td> <h3> Lama Perawatan : <?php echo $row['hari_menginap']?> hari</h3></td>
-                            <td> <h3> Biaya Kamar    : Rp.<?php
+                            <td> <h3> Biaya Ruang    : Rp.
+                                    <?php
                                     $tarif = $row['tarif'];
                                     echo $row['tarif'];
                                     ?> </h3></td>
@@ -57,6 +58,23 @@ if (isset($_GET)) {
                                     echo $biaya_tindakan;
                                     ?></h3>
                             </td>
+                            <td><h3>Harga Resep : Rp
+                                <?php
+                                //                $id_ri = $row['id_ri'];
+                                $query = mysqli_query($db_handle, "SELECT harga_resep FROM tbl_tindakan where id_pri = '$id_ri'");
+                                if (mysqli_num_rows($query)) {
+                                    $harga_resep = 0;
+                                    while ($row = mysqli_fetch_array($query)) {
+                                        $harga_resep = $harga_resep + $row['harga_resep'];
+                                    }
+                                }
+                                else {
+                                    $row = mysqli_fetch_assoc($query);
+                                    $harga_resep = $row['harga_resep'];
+                                }
+                                echo $harga_resep;
+                                ?></h3>
+                            </td>
                             <td><h3 class="modal-footer" a> Total Biaya : Rp.
                                     <?php
                                     $total = $tarif + $biaya_tindakan;
@@ -68,7 +86,7 @@ if (isset($_GET)) {
                     </div>
 
                     <div class="input-group input-lg noprint" >
-                        <span class="input-group-addon">Rp</span>
+                        <span class="input-group-addon">Pembayaran (Rp)</span>
                         <input type="text" name="bayar" placeholder="Bayar" class="form-control input-lg" value="<?php echo $row['bayar']?>" required style="font-size: 25px;" />
                         <span class="input-group-addon">,-</span>
                     </div>
@@ -76,14 +94,6 @@ if (isset($_GET)) {
                     <div class="noprint" align="center">
                         <button type="reset" class="btn btn-inverse btn-lg"><i class="glyphicon glyphicon-refresh"></i> Reset </button>
                         <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>
-                        <button type="submit" class="btn btn-warning btn-lg " onclick="window.print();return false;"><i class="glyphicon glyphicon-print"></i>  Print </button>
-                        <style>
-                            @media print {
-                                .noprint {
-                                    display: none;
-                                }
-                            }
-                        </style>
                     </div>
 
                 </form>

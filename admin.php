@@ -72,6 +72,9 @@ if ($_SESSION['hak_akses'] == 'Admin') {
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Admin Web Rumah Sakit</a>
         </div>
+        </div>
+        <p class="navbar-text"><label class="label label-info" style="font-size: 14px;"> <?php echo $_SESSION['grup']; ?></label></p>
+        <div>
         <div>
             <ul class="nav navbar-nav">
 

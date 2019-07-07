@@ -2,9 +2,9 @@
 if (isset($_GET)) {
     include 'konfig.php';
     $id_ubah = $_GET['no_rj'];
-    $query = "SELECT * FROM tbl_prj, tbl_pasien where "
-            . "tbl_prj.id_pasien = tbl_pasien.id_pasien and "
-            . "no_rj = '$id_ubah'";
+    $query = "SELECT * FROM tbl_prj, tbl_pasien, tbl_dokter where "
+        . "tbl_prj.id_pasien = tbl_pasien.id_pasien and tbl_prj.id_dokter = tbl_dokter.id_user and "
+        . "no_rj = '$id_ubah'";
     $result = mysqli_query($db_handle, $query);
     if (mysqli_num_rows($result)) {
         while ($row = mysqli_fetch_array($result)) {
@@ -29,6 +29,7 @@ if (isset($_GET)) {
                     <div class="modal-body">
                         <tr>
                             <td> <h3> Poli      : <?php echo $row['departemen']?></h3></td>
+                            <td> <h3> Nama Dokter      : <?php echo $row['nama_dokter']?></h3></td>
                             <td> <h3> Tindakan      : <?php echo $row['tindakan']?></h3></td>
                             <td> <h3> Resep     : <?php echo $row['resep']?></h3></td>
                             <td> <h3> Harga Resep  : Rp. <?php echo $row['harga_resep']?></h3></td>
@@ -41,22 +42,14 @@ if (isset($_GET)) {
                         <input type="text" name="bayar" value="<?php echo $row['bayar']; ?>" placeholder="Bayar" class="form-control input-lg" value="" required />
                         <span class="input-group-addon">,-</span>
                     </div>
-                    <div align="center">
-                        <button type="reset" class="btn btn-inverse btn-lg noprint"><i class="glyphicon glyphicon-refresh"></i> Reset </button>
-                        <button type="submit" class="btn btn-primary btn-lg noprint" onclick="window.print();return false;"><i class="glyphicon glyphicon-print"></i>  Print </button>
-                        <button type="submit" class="btn btn-primary btn-lg noprint" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>
-                    </div>
+                    <div class="noprint" align="center">
+                        <button type="reset" class="btn btn-inverse btn-lg"><i class="glyphicon glyphicon-refresh"></i> Reset </button>
+                        <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>
+                    </div
 
                 </form>
             </div>
 
-            <style>
-                @media print {
-                    .noprint {
-                        display: none;
-                    }
-                }
-            </style>
 
             <script type="text/javascript">
                 $(function() {

@@ -17,7 +17,7 @@
     </thead>
 <?php
 $queryselect = "SELECT * FROM tbl_pri inner join tbl_tarif_ri on tbl_pri.id_tarif_ri = tbl_tarif_ri.id_tarif_ri, tbl_pasien where
-            tbl_pri.id_pasien = tbl_pasien.id_pasien and tbl_pri.bayar is null order by 
+            tbl_pri.id_pasien = tbl_pasien.id_pasien and tbl_pri.tanggal_checkout is null order by 
             tbl_pri.id_ri desc ";
 $resultselect = mysqli_query($db_handle, $queryselect);
 if (mysqli_num_rows($resultselect)) {
