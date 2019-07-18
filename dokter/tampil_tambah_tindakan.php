@@ -147,9 +147,8 @@ if (isset($_GET)) {
                         </thead>
                         <tbody>
                         <?php
-//                        $queryselect = "SELECT * FROM tbl_tindakan WHERE id_pri = $id_ubah  ";
-                        $queryselect = "select * from tbl_tindakan 
-                                         inner join tbl_dokter on tbl_tindakan.id_user=tbl_dokter.id_user where id_pri = $id_ubah";
+                        $queryselect = "select * from tbl_tindakan
+                                         inner join tbl_user on tbl_tindakan.id_user=tbl_user.id_user where tbl_tindakan.id_pri = $id_ubah";
                         $resultselect = mysqli_query($db_handle, $queryselect );
                         if (mysqli_num_rows($resultselect)) {
                         //echo "ada isinya";
@@ -158,7 +157,7 @@ if (isset($_GET)) {
                         ?>
                             <tr>
                                 <td><?php echo $no; ?> </td>
-                                <td><?php echo $tindakan['nama_dokter']; ?> </td>
+                                <td><?php echo $tindakan['grup']; ?> </td>
                                 <td><?php echo $tindakan['tanggal']; ?> </td>
                                 <td><?php echo $tindakan['tindakan']; ?> </td>
                                 <td><?php echo $tindakan['hasil']; ?> </td>
