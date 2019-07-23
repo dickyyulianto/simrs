@@ -11,7 +11,7 @@ if (isset($_GET)) {
             ?>
 
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i>  Data Rawat Inap</h4>
+                <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i>Detail Pembayaran</h4>
             </div>
             <div class="modal-body">
                 <form name="ubah_pri" id="ubah_pri" method="POST" action="kasir/aksi_ubah_pri.php ">

@@ -46,7 +46,7 @@ if (isset($_GET)) {
                         <select name="departemen" readonly id="departemen" class="form-control input-lg">
                             <option  value=''>Pilih Departemen</option>
                             <?php
-                            $query2 = "SELECT distinct departemen from tbl_tarif_rj";
+                            $query2 = "SELECT distinct departemen from tbl_prj";
                             $result2 = mysqli_query($db_handle, $query2);
                             if (mysqli_num_rows($result2)) {
                                 while ($row2 = mysqli_fetch_array($result2)) {

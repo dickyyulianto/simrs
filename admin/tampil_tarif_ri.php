@@ -1,13 +1,18 @@
 <div align="center">
     <h1><label class="label label-success">Data Tarif Rawat Inap</label></h1>
     <br>
-    <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#tambahModal">
+    <button class="btn btn-primary btn-large noprint" data-toggle="modal" data-target="#tambahModal">
         <i class="glyphicon glyphicon-plus-sign"></i> Tambah Data Tarif
     </button>
 
-    <button class="btn btn-primary btn-large" data-toggle="modal" data-target="#cetakModal">
-        <i class="glyphicon glyphicon-plus-sign"></i> Cetak Data Tarif
-    </button>
+    <button type="submit" class="btn btn-primary btn-large noprint" onclick="window.print();return false;"><i class="glyphicon glyphicon-print"></i>  Print </button>
+    <style>
+        @media print {
+            .noprint {
+                display: none;
+            }
+        }
+    </style>
 
 </div>
 <br>
@@ -20,7 +25,7 @@
     <th>Tipe Kamar</th>
     <th>Tarif</th>
     <th>Kapasitas</th>
-    <th>Aksi</th>
+    <th class="noprint">Aksi</th>
     </thead>
     <tbody>
     <?php
@@ -38,8 +43,8 @@
                 <td><?php echo $row['tarif']; ?> </td>
                 <td><?php echo $row['tipe_kamar']; ?> </td>
                 <td><?php echo $row['kapasitas']; ?> </td>
-                <td><?php echo "<a class='btn btn-info btn-sm' href='admin.php?view=tampil_ubah_tarif_ri&id_tarif_ri=" . $row['id_tarif_ri'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
-                    <a class='btn btn-danger btn-sm' href='admin.php?view=aksi_hapus_tarif_ri&id_tarif_ri=" . $row['id_tarif_ri'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data tarif tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>";
+                <td class="noprint"><?php echo "<a class='btn btn-info btn-sm ' href='admin.php?view=tampil_ubah_tarif_ri&id_tarif_ri=" . $row['id_tarif_ri'] . "'><i class='glyphicon glyphicon-edit'></i></a> | 
+                    <a class='btn btn-danger btn-sm ' href='admin.php?view=aksi_hapus_tarif_ri&id_tarif_ri=" . $row['id_tarif_ri'] . "' onclick='return confirm(&quot;Apakah anda yakin akan menghapus data tarif tersebut?&quot;)'><i class='glyphicon glyphicon-trash'></i></a>";
                     ?></td>
             </tr>
             <?php
@@ -50,7 +55,7 @@
     }
     ?>
     </tbody>
-    <tfoot>
+    <tfoot class="noprint">
     <th>No</th>
     <th>ID Tarif</th>
     <th>Perawatan</th>

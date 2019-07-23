@@ -10,7 +10,7 @@ if (isset($_GET)) {
         while ($row = mysqli_fetch_array($result)) {
             ?>
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Input Pembayaran</h4>
+                <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Detail Pembayaran</h4>
             </div>
             <div class="modal-body">
                 <form name="edit_prj" id="edit_prj" method="POST" action="Kasir/aksi_ubah_prj.php">
@@ -36,6 +36,9 @@ if (isset($_GET)) {
                             <td> <h3> Biaya Tindakan : Rp. <?php echo $row['biaya']?></h3></td>
                             <td> <h3 class="modal-footer"> Total Biaya  : Rp. <?php echo $row['harga_resep']+ $row['biaya']?></h3></td>
                             <td> <h3 class="modal-footer"> Pembayaran : Rp. <?php echo $row['bayar']?></h3></td>
+                            <td> <h3 class="modal-footer"> Kembalian : Rp.
+                                    <?php $kembalian = $row['bayar'] - ($row['harga_resep']+ $row['biaya']);
+                                    echo $kembalian; ?></h3></td>
                         </tr>
                     </div>
                     <div align="center">
