@@ -77,7 +77,7 @@
                 <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Data Tarif Baru</h4>
             </div>
             <div class="modal-body">
-                <form name="tambah_tarif" id="tambah_tarif" method="POST">
+                <form name="tambah_tarif" id="tambah_tarif_ri" method="POST">
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
                             <i class="fa fa-pencil-square"></i>
@@ -125,6 +125,7 @@
             url: "admin/aksi_tambah_tarif_ri.php",
             data: $('form#tambah_tarif_ri').serialize(),
             success: function (msg) {
+                alert(msg)
                 $("#tambahModal").modal('hide')
                 location.href = 'admin.php?view=tampil_tarif_ri';
                 ;
