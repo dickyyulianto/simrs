@@ -67,8 +67,8 @@ if (isset($_GET)) {
                 <div class="row">
                         <?php
                         //                        $queryselect = "SELECT * FROM tbl_tindakan WHERE id_pri = $id_ubah  ";
-                        $queryselect = "select * from tbl_tindakan 
-                                         inner join tbl_dokter on tbl_tindakan.id_user=tbl_dokter.id_user where id_pri = $id_ubah";
+                        $queryselect = "select * from tbl_tindakan
+                                         inner join tbl_user on tbl_tindakan.id_user=tbl_user.id_user where tbl_tindakan.harga_resep is null and tbl_tindakan.id_pri = $id_ubah";
                         $resultselect = mysqli_query($db_handle, $queryselect );
                         if (mysqli_num_rows($resultselect)) {
                             //echo "ada isinya";
@@ -83,7 +83,7 @@ if (isset($_GET)) {
                                 </div>
                                 <div class="input-group input-lg">
                                     <span class="input-group-addon"><i >Nama Dokter</i></span>
-                                    <input type="text" name="nama_dokter" readonly placeholder="Nama Dokter" value="<?php echo $tindakan['nama_dokter']?>" class="form-control input-lg" required />
+                                    <input type="text" name="nama_dokter" readonly placeholder="Nama Dokter" value="<?php echo $tindakan['grup']?>" class="form-control input-lg" required />
                                 </div>
                                 <div class="input-group input-lg">
                                     <span class="input-group-addon"><i >Resep</i></span>

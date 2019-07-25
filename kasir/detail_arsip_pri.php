@@ -37,9 +37,10 @@ if (isset($_GET)) {
                             <td> <h3> Tanggal Keluar : <?php echo $row['tanggal_checkout']?></h3></td>
                             <td> <h3> Lama Perawatan : <?php echo $row['hari_menginap']?> hari</h3></td>
                             <?php $bayar = $row['bayar']; ?>
-                            <td> <h3> Biaya Kamar    : Rp.<?php
-                                    $tarif = $row['tarif'];
-                                    echo $row['tarif'];
+                            <td> <h3> Biaya Kamar    : Rp.
+                                    <?php
+                                    $tarif = $row['biaya'];
+                                    echo $row['biaya'];
                                     ?> </h3></td>
                             <td> <h3> Biaya Tindakan : Rp.
                                     <?php
@@ -77,7 +78,7 @@ if (isset($_GET)) {
                             </td>
                             <td><h3 class="modal-footer" a> Total Biaya : Rp.
                                     <?php
-                                    $total = $tarif + $biaya_tindakan;
+                                    $total = $tarif + $biaya_tindakan + $harga_resep;
                                     echo $total;
                                     ?></h3>
                             </td>

@@ -38,8 +38,8 @@ if (isset($_GET)) {
                             <td> <h3> Lama Perawatan : <?php echo $row['hari_menginap']?> hari</h3></td>
                             <td> <h3> Biaya Ruang    : Rp.
                                     <?php
-                                    $tarif = $row['tarif'];
-                                    echo $row['tarif'];
+                                    $tarif = $row['biaya'] ;
+                                    echo $row['biaya'];
                                     ?> </h3></td>
                             <td> <h3> Biaya Tindakan : Rp.
                                     <?php
@@ -58,7 +58,7 @@ if (isset($_GET)) {
                                     echo $biaya_tindakan;
                                     ?></h3>
                             </td>
-                            <td><h3>Harga Resep : Rp
+                            <td><h3>Harga Resep : Rp.
                                 <?php
                                 //                $id_ri = $row['id_ri'];
                                 $query = mysqli_query($db_handle, "SELECT harga_resep FROM tbl_tindakan where id_pri = '$id_ri'");
@@ -77,7 +77,7 @@ if (isset($_GET)) {
                             </td>
                             <td><h3 class="modal-footer" a> Total Biaya : Rp.
                                     <?php
-                                    $total = $tarif + $biaya_tindakan;
+                                    $total = $tarif + $biaya_tindakan + $harga_resep;
                                     echo $total;
                                     ?></h3>
                             </td>

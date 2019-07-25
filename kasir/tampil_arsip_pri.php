@@ -39,8 +39,8 @@
                 <td><?php echo $row['tanggal_checkin']; ?> </td>
                 <td><?php echo $row['tanggal_checkout']; ?>
                 <td><?php
-                    $tarif = $row['tarif'];
-                    echo $row['tarif'];
+                    $tarif = $row['biaya'];
+                    echo $row['biaya'];
                     ?> </td>
                 <td>
                     <?php

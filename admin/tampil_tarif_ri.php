@@ -125,7 +125,7 @@
             url: "admin/aksi_tambah_tarif_ri.php",
             data: $('form#tambah_tarif_ri').serialize(),
             success: function (msg) {
-                alert(msg)
+
                 $("#tambahModal").modal('hide')
                 location.href = 'admin.php?view=tampil_tarif_ri';
                 ;

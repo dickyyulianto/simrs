@@ -44,8 +44,8 @@ if (mysqli_num_rows($resultselect)) {
 //                "; ?>
 <!--            </td>-->
             <td><?php
-                $tarif = $row['tarif'];
-                echo $row['tarif'];
+                $tarif = $row['biaya'];
+                echo $row['biaya'];
                 ?> </td>
             <td>
                 <?php
