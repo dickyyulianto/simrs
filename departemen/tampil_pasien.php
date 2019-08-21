@@ -1,3 +1,6 @@
+<div align="center">
+    <h1><label class="label label-info">Data Pasien Rawat Jalan</label></h1>
+</div>
 <table id="datatable" class="stripe">
     <thead>
     <th>No RJ</th>

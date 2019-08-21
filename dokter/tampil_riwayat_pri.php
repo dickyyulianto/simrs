@@ -3,56 +3,49 @@
     <br>
     <a type="button" class="btn btn-inverse btn-lg" href="dokter.php?view=tampil_pasien_dokter"><i class="glyphicon glyphicon-refresh" ></i> Kembali </a>
 </div>
-<table id="datatable" class="display stripe">
-    <thead>
-    <th>No RJ</th>
-    <th>Tanggal</th>
-    <th>Departement</th>
-    <th>Dokter</th>
-    <th>Keluhan</th>
-    <th>Diagnosa</th>
-    <th>Tindakan</th>
-    <th>Resep</th>
-</thead>
-<tbody>
-    <?php
-    $id_p = $_GET['id_p'];
-    $query = "SELECT * FROM tbl_prj, tbl_dokter where tbl_prj.id_dokter = tbl_dokter.id_user and id_pasien = $id_p order by tanggal desc";
-//    $query = "SELECT p.nama_pasien, rj.* FROM tbl_prj rj left join tbl_pasien p on rj.id_pasien=p.id_pasien left join tbl_dokter d on d.id_user = rj.id_dokter where d.nama_dokter = '" . $_SESSION['grup'] . "' order by rj.tanggal desc";
-    $result = mysqli_query($db_handle, $query);
-    if (mysqli_num_rows($result)) {
-        //echo"ada isinya";	
-        while ($row = mysqli_fetch_array($result)) {
-            ?>
-            <tr>
-                <td class="no_rj"><?php echo $row['no_rj']; ?> </td>
-                <td class="tanggal"><?php echo $row['tanggal']; ?> </td>
-                <td class="departemen"><?php echo $row['departemen']; ?> </td>
-                <td class="departemen"><?php echo $row['nama_dokter']; ?> </td>
-                <td class="keluhan"><?php echo $row['keluhan']; ?> </td>
-                <td class="diagnosa"><?php echo $row['diagnosa']; ?> </td>
-                <td class="tindakan"><?php echo $row['tindakan']; ?> </td>
-                <td class="resep"><?php echo $row['resep']; ?> </td>
-
-            </tr>
+<div class="modal-body">
+    <div class="row">
+        <table id="datatable" class="display stripe">
+            <thead>
+            <th>No</th>
+            <th>Dokter</th>
+            <th>Tanggal</th>
+            <th>Tindakan</th>
+            <th>Hasil</th>
+            <th>Resep</th>
+            <th>Biaya Tindakan</th>
+            </thead>
+            <tbody>
             <?php
-        }
-    } else {
-        echo"kosong";
-    }
-    ?>
-</tbody>
-<tfoot>
-<th>No RJ</th>
-<th>Tanggal</th>
-<th>Departement</th>
-<th>Dokter</th>
-<th>Keluhan</th>
-<th>Diagnosa</th>
-<th>Tindakan</th>
-<th>Resep</th>
-</tfoot>
-</table>
+            $queryselect = "select * from tbl_pri, tbl_tindakan
+                    inner join tbl_user on tbl_tindakan.id_user=tbl_user.id_user where tbl_tindakan.id_pri = $id_ubah";
+            $resultselect = mysqli_query($db_handle, $queryselect );
+            if (mysqli_num_rows($resultselect)) {
+                //echo "ada isinya";
+                $no = 1;
+                while ($tindakan = mysqli_fetch_array($resultselect)) {
+                    ?>
+                    <tr>
+                        <td><?php echo $no; ?> </td>
+                        <td><?php echo $tindakan['grup']; ?> </td>
+                        <td><?php echo $tindakan['tanggal']; ?> </td>
+                        <td><?php echo $tindakan['tindakan']; ?> </td>
+                        <td><?php echo $tindakan['hasil']; ?> </td>
+                        <td><?php echo $tindakan['resep']; ?> </td>
+                        <td><?php echo $tindakan['biaya_tindakan']; ?> </td>
+                    </tr>
+                    <?php
+                    $no ++;
+                }
+            } else {
+                echo"kosong";
+            }
+            ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 
 <!---------------------------- tambah ------------------------->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -62,7 +55,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
                 <h4 class="modal-title" id="myModalLabel"> <i class="glyphicon glyphicon-edit"></i> Tulis Diagnosa Pasien</h4>
-            </div> 
+            </div>
             <div class="modal-body">
                 <form name="ubah_pasien" id="ubah_pasien" method="POST" action="dokter/aksi_ubah_pasien_dokter.php">
 
@@ -109,31 +102,30 @@
                         </span>
                         <input type="int" id="biaya" name="biaya" value="" placeholder="Biaya Tindakan" class="form-control input-lg" required>
                     </div>
-</div><!-- /.modal -->
+            </div><!-- /.modal -->
 
-<!------------------------- edit -------------------->
+            <!------------------------- edit -------------------->
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("button.edit_data").click(function () {
-            var myModal = $('#editModal');
-            // now get the values from the table
-            var no_rj = $(this).closest('tr').find('td.no_rj').html();
-            var nama_pasien = $(this).closest('tr').find('td.nama_pasien').html();
-            var keluhan = $(this).closest('tr').find('td.keluhan').html();
-           //var diagnosa = $(this).closest('tr').find('td.diagnosa').html();
-            //var tindakan = $(this).closest('tr').find('td.tindakan').html();
-            // var resep = $(this).closest('tr').find('td.resep').html();
-            //var biaya = $(this).closest('tr').find('td.biaya').html();
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("button.edit_data").click(function () {
+                        var myModal = $('#editModal');
+                        // now get the values from the table
+                        var no_rj = $(this).closest('tr').find('td.no_rj').html();
+                        var nama_pasien = $(this).closest('tr').find('td.nama_pasien').html();
+                        var keluhan = $(this).closest('tr').find('td.keluhan').html();
+                        //var diagnosa = $(this).closest('tr').find('td.diagnosa').html();
+                        //var tindakan = $(this).closest('tr').find('td.tindakan').html();
+                        // var resep = $(this).closest('tr').find('td.resep').html();
+                        //var biaya = $(this).closest('tr').find('td.biaya').html();
 
-            document.getElementById('no_rj').value = no_rj;
-            document.getElementById('nama_pasien').value = nama_pasien;
-            document.getElementById('keluhan').value = keluhan;
-            //document.getElementById('diagnosa').value = diagnosa;
-            //document.getElementById('tindakan').value = tindakan;
-            // document.getElementById('resep').value = resep;
-            //document.getElementById('biaya').value = biaya;
-        });
-    });
-</script>
-
+                        document.getElementById('no_rj').value = no_rj;
+                        document.getElementById('nama_pasien').value = nama_pasien;
+                        document.getElementById('keluhan').value = keluhan;
+                        //document.getElementById('diagnosa').value = diagnosa;
+                        //document.getElementById('tindakan').value = tindakan;
+                        // document.getElementById('resep').value = resep;
+                        //document.getElementById('biaya').value = biaya;
+                    });
+                });
+            </script>

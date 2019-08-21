@@ -79,34 +79,37 @@ if (mysqli_num_rows($resultselect)) {
                         <div id="result"></div>
                     </div>
 
-                    <div class="input-group input-lg " align="center">
+                    <div class="input-group input-lg " align="left">
                         Jenis Perawatan<br>
                         <div id="perawatan" class="btn-group" data-toggle="buttons">
                             <label class="btn btn-info">
                                 <input type="radio" id="perawatan1" name="perawatan" value="Rawat Inap per hari"> Rawat Inap per hari
                             </label>
                             <label class="btn btn-info">
-                                <input type="radio" id="perawatan2" name="perawatan" value="Ruang ICU"> Ruang ICU
+                                <input type="radio" id="perawatan2" name="perawatan" value="Ruang HCU"> Ruang HCU
                             </label>
                             <label class="btn btn-info">
                                 <input type="radio" id="perawatan3" name="perawatan" value="Perinatologi"> Perinatologi
                             </label>
+<!--                            <label class="btn btn-info">-->
+<!--                                <input type="radio" id="perawatan4" name="perawatan" value="Ruang Operasi"> Ruang Operasi-->
+<!--                            </label>-->
                         </div>
                         <br>Jenis Pelayanan<br>
                         <div class="btn-group" data-toggle="buttons">
 
                             <label class="btn btn-info">
-                                <input type="radio" id="pelayanan1" name="pelayanan" value="Dokter Spesials dan Umum"> Dokter Spesials dan Umum
+                                <input type="radio" id="pelayanan1" name="pelayanan" value="Dokter Spesialis dan Umum"> Dokter Spesials dan Umum
                             </label>
                             <label class="btn btn-info">
                                 <input type="radio" id="pelayanan2" name="pelayanan" value="Dokter Umum"> Dokter Umum
                             </label>
-                            <label class="btn btn-info">
-                                <input type="radio" id="pelayanan3" name="pelayanan" value="Instalasi  Anestesi"> Instalasi  Anestesi
-                            </label> 
-                            <label class="btn btn-info">
-                                <input type="radio" id="pelayanan4" name="pelayanan" value="Gizi Rawat Inap"> Gizi Rawat Inap
-                            </label> 
+<!--                            <label class="btn btn-info">-->
+<!--                                <input type="radio" id="pelayanan3" name="pelayanan" value="Instalasi  Anestesi"> Instalasi  Anestesi-->
+<!--                            </label>-->
+<!--                            <label class="btn btn-info">-->
+<!--                                <input type="radio" id="pelayanan4" name="pelayanan" value="Gizi Rawat Inap"> Gizi Rawat Inap-->
+<!--                            </label>-->
                         </div>
                         <br>Fasilitas<br>
                         <div class="btn-group" data-toggle="buttons">
@@ -139,7 +142,7 @@ if (mysqli_num_rows($resultselect)) {
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-check"></i>
                         </span>
-                        <textarea name="keluhan" placeholder="Keluhan" class="form-control" rows="5" required></textarea>
+                        <textarea name="keluhan" placeholder="Keluhan / Diagnosa Sebelumnya" class="form-control" rows="5" required></textarea>
                     </div>
                     <div align="center">
                         <button type="button" id="btn_cek_tarif" class="btn btn-success"><i class="glyphicon glyphicon-eye-open"></i> &nbsp; Cari Ruangan</button>
@@ -266,6 +269,8 @@ if (mysqli_num_rows($resultselect)) {
                 var perawatan = document.getElementById("perawatan2").value;
             } else if (document.getElementById("perawatan3").checked) {
                 var perawatan = document.getElementById("perawatan3").value;
+            } else if (document.getElementById("perawatan4").checked) {
+                var perawatan = document.getElementById("perawatan4").value;
             }
 
             if (document.getElementById("pelayanan1").checked) {

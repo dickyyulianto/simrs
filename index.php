@@ -38,9 +38,8 @@ if (isset($_SESSION['hak_akses']) == null) {
                         <?php 
                         if(isset($_GET['error'])){
                             echo '<div class="alert alert-warning alert-dismissible fade in" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
-      Password atau username kurang tepat
-    </div>';
+                                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
+                                    Password atau username kurang tepat </div>';
                         }
                                 ?>
                         <div class="input-group">

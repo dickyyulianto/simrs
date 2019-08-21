@@ -10,6 +10,7 @@
     <thead>
     <th>No</th>
     <th>ID Pasien</th>
+    <th>NIK</th>
     <th>Nama Pasien</th>
     <th>Jenis Kelamin</th>
     <th>Alamat</th>
@@ -28,7 +29,12 @@
             <tr>
                 <td><?php echo $no; ?> </td>
                 <td><?php echo $row['id_pasien']; ?> </td>
-                <td><?php echo $row['nama_pasien']; ?> </td>
+                <td><?php echo $row['NIK']; ?>
+                <td class="nama_pasien">
+                    <?php echo "
+                    <a href='front-office.php?view=tampil_riwayat_pasien&id_p=". $row['id_pasien']."'>". $row['nama_pasien']."</a>
+                    " ?>
+                </td>
                 <td><?php echo $row['jenis_kelamin']; ?> </td>
                 <td><?php echo $row['alamat']; ?> </td>
                 <td><?php echo $row['no_telepon']; ?> </td>
@@ -46,6 +52,7 @@
 </tbody>
 <tfoot><th>No</th>
 <th>ID Pasien</th>
+<th>NIK</th>
 <th>Nama Pasien</th>
 <th>Jenis Kelamin</th>
 <th>Alamat</th>
@@ -69,8 +76,16 @@
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-user"></i>
                         </span>
+                        <input type="text" name="NIK" placeholder="NIK" class="form-control input-lg" required autofocus  />
+                    </div>
+
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
                         <input type="text" name="nama" placeholder="Nama Pasien" class="form-control input-lg" required autofocus  />
                     </div>
+
                     <div class="input-group input-lg ">
 
                         <span class="input-group-addon">
@@ -101,6 +116,12 @@
                     </div>
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-phone"></i>
+                        </span>
+                        <input type="text" name="no_telepon" placeholder="No Telepon Pasien" class="form-control input-lg" required autofocus  />
+                    </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
                             <i class="glyphicon glyphicon-user"></i>
                         </span>
                         <input type="text" name="nama_pj" placeholder="Nama Penanggung Jawab" class="form-control input-lg" required autofocus  />
@@ -115,7 +136,7 @@
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-phone"></i>
                         </span>
-                        <input type="text" name="no_telepon"  placeholder="Nomor Telepon" class="form-control input-lg" required />
+                        <input type="text" name="no_tlp_pj"  placeholder="Nomor Telepon PJ" class="form-control input-lg" required />
                     </div>
 
 

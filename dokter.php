@@ -79,7 +79,7 @@ if ($_SESSION['hak_akses'] == 'Dokter') {
                                 <span class="label label-warning" style="border-radius: 50px;"> 
                                     <?php
                                     $hitung_pasien = mysqli_query($db_handle,"SELECT * FROM tbl_prj, tbl_pasien where 
-                                      tbl_prj.id_pasien = tbl_pasien.id_pasien and tbl_prj.tindakan IS NULL order by tbl_prj.no_rj desc");
+                                      tbl_prj.id_pasien = tbl_pasien.id_pasien and tbl_prj.bayar IS NULL order by tbl_prj.no_rj desc");
                                     echo mysqli_num_rows($hitung_pasien);
                                     ?></span></a>
                         </li>

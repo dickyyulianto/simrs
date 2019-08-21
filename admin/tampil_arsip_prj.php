@@ -25,9 +25,9 @@
 <!--    <th>Aksi</th>-->
 </thead>
 <?php
-$queryselect = "SELECT * FROM tbl_prj, tbl_pasien where
-            tbl_prj.id_pasien = tbl_pasien.id_pasien and tbl_prj.bayar > 0 order by 
-            tbl_prj.no_rj desc";
+$queryselect = "SELECT * FROM tbl_prj, tbl_pasien, tbl_dokter where
+            tbl_prj.id_pasien = tbl_pasien.id_pasien  and tbl_prj.bayar > 0 and tbl_prj.id_dokter = tbl_dokter.id_user order by
+            tbl_prj.no_rj  desc";
 $resultselect = mysqli_query($db_handle, $queryselect);
 if (mysqli_num_rows($resultselect)) {
     //echo"ada isinya";	
@@ -38,7 +38,7 @@ if (mysqli_num_rows($resultselect)) {
             <td><?php echo $no; ?> </td>
             <td><?php echo $row['nama_pasien']; ?> </td>
             <td><?php echo $row['departemen']; ?> </td>
-            <td><?php echo $row['id_dokter']; ?> </td>
+            <td><?php echo $row['nama_dokter']; ?> </td>
             <td><?php echo $row['tanggal']; ?> </td>
             <td><?php echo $row['biaya']; ?> </td>
             <td><?php echo $row['harga_resep']; ?> </td>

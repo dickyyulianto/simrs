@@ -31,12 +31,12 @@ if (isset($_GET)) {
                             <label class="btn btn-info <?php echo $row['perawatan'] == 'Rawat Inap per hari' ? 'active':''; ?>">
                                 <input type="radio" id="perawatan1" name="perawatan" value="Rawat Inap per hari"  <?php echo $row['perawatan'] == 'Rawat Inap per hari' ? 'checked':''; ?>> Rawat Inap per hari
                             </label>
-                            <label class="btn btn-info <?php echo $row['perawatan'] == 'Ruang ICU' ? 'active':''; ?>">
-                                <input type="radio" id="perawatan2" name="perawatan" value="Ruang ICU" <?php echo $row['perawatan'] == 'Ruang ICU' ? 'checked':''; ?>> Ruang ICU
+                            <label class="btn btn-info <?php echo $row['perawatan'] == 'Ruang HCU' ? 'active':''; ?>">
+                                <input type="radio" id="perawatan2" name="perawatan" value="Ruang HCU" <?php echo $row['perawatan'] == 'Ruang HCU' ? 'checked':''; ?>> Ruang HCU
                             </label>
                             <label class="btn btn-info <?php echo $row['perawatan'] == 'Perinatologi' ? 'active':''; ?>">
-                                <input type="radio" id="perawatan3" name="perawatan" value="Perinatologi" <?php echo $row['perawatan'] == 'Perinatologi' ? 'checked':''; ?>> Perinatologi 
-                            </label> 
+                                <input type="radio" id="perawatan3" name="perawatan" value="Perinatologi" <?php echo $row['perawatan'] == 'Perinatologi' ? 'checked':''; ?>> Perinatologi
+                            </label>
                         </div>
                         <br>Jenis Pelayanan<br>
                         <div class="btn-group" data-toggle="buttons">
@@ -48,11 +48,11 @@ if (isset($_GET)) {
                                 <input type="radio" id="pelayanan2" name="pelayanan" value="Dokter Umum" <?php echo $row['pelayanan'] == 'Dokter Umum' ? 'checked':''; ?>> Dokter Umum
                             </label>
                             <label class="btn btn-info <?php echo $row['pelayanan'] == 'Instalasi  Anestesi' ? 'active':''; ?>">
-                                <input type="radio" id="pelayanan3" name="pelayanan" value="Instalasi  Anestesi" <?php echo $row['pelayanan'] == 'Instalasi  Anestesi' ? 'checked':''; ?>> Instalasi  Anestesi
-                            </label> 
+                                <input type="radio" id="pelayanan3" name="pelayanan" value="Instalasi  Anestesi"  <?php echo $row['pelayanan'] == 'Instalasi  Anestesi' ? 'checked':''; ?>> Instalasi  Anestesi
+                            </label>
                             <label class="btn btn-info <?php echo $row['pelayanan'] == 'Gizi Rawat Inap' ? 'active':''; ?>">
                                 <input type="radio" id="pelayanan4" name="pelayanan" value="Gizi Rawat Inap" <?php echo $row['pelayanan'] == 'Gizi Rawat Inap' ? 'checked':''; ?>> Gizi Rawat Inap
-                            </label> 
+                            </label>
                         </div>
                         <br>Fasilitas<br>
                         <div class="btn-group" data-toggle="buttons">

@@ -17,6 +17,12 @@ if (isset($_GET)) {
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-user"></i>
                         </span>
+                        <input type="text" name="NIK" placeholder="NIK" class="form-control input-lg" value="<?php echo $row['NIK'] ?>" required autofocus  />
+                    </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </span>
                         <input type="text" name="nama" placeholder="Nama Pasien" class="form-control input-lg" value="<?php echo $row['nama_pasien'] ?>" required autofocus  />
                     </div>
                     <div class="input-group input-lg ">
@@ -51,6 +57,12 @@ if (isset($_GET)) {
                     </div>
                     <div class="input-group input-lg">
                         <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-phone"></i>
+                        </span>
+                        <input type="text" name="no_telepon" value="<?php echo $row['no_telepon']; ?>" placeholder="Nomor Telepon Pasien" class="form-control input-lg" required />
+                    </div>
+                    <div class="input-group input-lg">
+                        <span class="input-group-addon">
                             <i class="glyphicon glyphicon-user"></i>
                         </span>
                         <input type="text" name="nama_pj" value="<?php echo $row['nama_pj']; ?>" placeholder="Nama Penanggung Jawab" class="form-control input-lg" required autofocus  />
@@ -65,7 +77,7 @@ if (isset($_GET)) {
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-phone"></i>
                         </span>
-                        <input type="text" name="no_telepon" value="<?php echo $row['no_telepon']; ?>" placeholder="Nomor Telepon" class="form-control input-lg" required />
+                        <input type="text" name="no_tlp_pj" value="<?php echo $row['no_tlp_pj']; ?>" placeholder="Nomor Telepon PJ" class="form-control input-lg" required />
                     </div>
 
                     <div align="center">

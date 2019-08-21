@@ -44,7 +44,7 @@ if (isset($_GET)) {
                     </div>
                     <div class="noprint" align="center">
                         <button type="reset" class="btn btn-inverse btn-lg"><i class="glyphicon glyphicon-refresh"></i> Reset </button>
-                        <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>
+                        <button type="submit" class="btn btn-primary btn-lg" id="submit" ><i class="glyphicon glyphicon-floppy-disk"></i>  Simpan </button>
                     </div
 
                 </form>
